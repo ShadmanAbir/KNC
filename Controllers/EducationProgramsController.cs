@@ -51,6 +51,9 @@ namespace KNC.Controllers
         {
             if (ModelState.IsValid)
             {
+                /*educationPrograms.CreatedBy = User.Identity.Name;*/
+                educationPrograms.IsDeleted = false;
+                educationPrograms.CreatedDate = DateTime.Now;
                 _context.Add(educationPrograms);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -86,6 +89,8 @@ namespace KNC.Controllers
             {
                 try
                 {
+                    /*educationPrograms.ModifiedBy = User.Identity.Name;*/
+                    educationPrograms.CreatedDate = DateTime.Now;
                     _context.Update(educationPrograms);
                     await _context.SaveChangesAsync();
                 }
@@ -128,10 +133,13 @@ namespace KNC.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var educationPrograms = await _context.EducationPrograms.FindAsync(id);
+            var educationPrograms = await _context.EducationPrograms.SingleOrDefaultAsync(a => a.EducationProgramID == id && a.IsDeleted != true);
             if (educationPrograms != null)
             {
-                _context.EducationPrograms.Remove(educationPrograms);
+                educationPrograms.IsDeleted = true;
+                educationPrograms.CreatedDate = DateTime.Now;
+                /*educationPrograms.CreatedBy = User.Identity.Name;*/
+                _context.EducationPrograms.Update(educationPrograms);
             }
 
             await _context.SaveChangesAsync();
@@ -140,7 +148,7 @@ namespace KNC.Controllers
 
         private bool EducationProgramsExists(int id)
         {
-            return _context.EducationPrograms.Any(e => e.EducationProgramID == id);
+            return _context.EducationPrograms.Any(e => e.EducationProgramID == id && e.IsDeleted != true);
         }
     }
 }
