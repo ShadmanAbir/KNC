@@ -5,3 +5,4 @@
 *.db-shm
 *.db-wal
 *.vsidx
+/.vs/KNC/v17/.suo
