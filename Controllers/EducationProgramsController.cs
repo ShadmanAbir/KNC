@@ -17,7 +17,7 @@ namespace KNC.Controllers
         
         public async Task<IActionResult> Index()
         {
-            return View(await _context.EducationPrograms.ToListAsync());
+            return View(await _context.EducationPrograms.Where(a => a.IsDeleted != true).ToListAsync());
         }
 
         
