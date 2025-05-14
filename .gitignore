@@ -29,3 +29,7 @@
 /obj/Debug/KNC.Migrations.init.resources
 /bin/roslyn
 /bin
+*.force
+/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+/packages/System.Runtime.CompilerServices.Unsafe.4.5.2
+/packages
