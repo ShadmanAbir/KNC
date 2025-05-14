@@ -1,6 +1,6 @@
-﻿namespace KNC.Helper
+﻿namespace KNC.Service
 {
-    public class Helper
+    public class HelperService
     {
         public string GenerateStudentCode(int id,string program,int count)
         {

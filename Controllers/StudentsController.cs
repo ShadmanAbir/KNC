@@ -3,16 +3,19 @@ using Microsoft.EntityFrameworkCore;
 using KNC.Data;
 using KNC.Models;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using KNC.Service;
 
 namespace KNC.Controllers
 {
     public class StudentsController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly HelperService _helper;
 
-        public StudentsController(ApplicationDbContext context)
+        public StudentsController(ApplicationDbContext context,HelperService helper)
         {
             _context = context;
+            _helper = helper;
         }
 
         public async Task<IActionResult> Index()
@@ -67,6 +70,13 @@ namespace KNC.Controllers
         public async Task<IActionResult> Create([Bind("StudentID,StudentCode,FirstName,LastName,Email,Phone,PermanentAddress,CurrentAddress,AdmissionDate,Program")] Student student)
         {
             ViewBag.ProgramList = new SelectList(_context.EducationPrograms.Where(a => a.IsDeleted != true).ToList(), "EducationProgramID", "ProgramName");
+            var count = await _context.Student.CountAsync();
+            var program = await _context.EducationPrograms.FirstOrDefaultAsync(a => a.EducationProgramID == student.Program && a.IsDeleted != true);
+            if (program == null) {
+                ModelState.AddModelError("Program", "Program not found.");
+                return View(student);
+            }
+            student.StudentCode = _helper.GenerateStudentCode(count +1, program.ProgramName, count);
             if (ModelState.IsValid)
             {
                 /*student.CreatedBy = User.Identity.Name;*/

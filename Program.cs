@@ -1,4 +1,5 @@
 using KNC.Data;
+using KNC.Service;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -12,6 +13,17 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<ApplicationDbContext>();
+
+builder.Services.AddControllersWithViews(options =>
+{
+    options.ModelBindingMessageProvider.SetValueIsInvalidAccessor(_ => "The value is invalid.");
+    options.ModelBindingMessageProvider.SetValueMustNotBeNullAccessor(_ => "The value must not be null.");
+    options.ModelBindingMessageProvider.SetMissingBindRequiredValueAccessor(_ => "The value is required.");
+    options.ModelBindingMessageProvider.SetAttemptedValueIsInvalidAccessor((_, _) => "The value is invalid.");
+    options.ModelBindingMessageProvider.SetMissingKeyOrValueAccessor(() => "The key or value is missing.");
+});
+
+builder.Services.AddScoped<HelperService>();
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
