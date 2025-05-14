@@ -22,7 +22,7 @@ namespace KNC.Controllers
         // GET: Students
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Student.ToListAsync());
+            return View(await _context.Student.Where( a => a.IsDeleted != true).ToListAsync());
         }
 
         // GET: Students/Details/5
@@ -33,8 +33,7 @@ namespace KNC.Controllers
                 return NotFound();
             }
 
-            var student = await _context.Student
-                .FirstOrDefaultAsync(m => m.StudentID == id && m.IsDeleted != true);
+            var student = await _context.Student.FirstOrDefaultAsync(m => m.StudentID == id && m.IsDeleted != true);
             if (student == null)
             {
                 return NotFound();
@@ -86,7 +85,7 @@ namespace KNC.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("StudentID,StudentCode,FirstName,LastName,Email,Phone,PermanentAddress,CurrentAddress,AdmissionDate,Program,IsDeleted,CreatedBy,CreatedDate")] Student student)
+        public async Task<IActionResult> Edit(int id, [Bind("StudentID,StudentCode,FirstName,LastName,Email,Phone,PermanentAddress,CurrentAddress,AdmissionDate,Program")] Student student)
         {
             if (id != student.StudentID)
             {
@@ -97,6 +96,9 @@ namespace KNC.Controllers
             {
                 try
                 {
+                    /*student.CreatedBy = User.Identity.Name;*/
+                    student.CreatedDate = DateTime.Now;
+                    student.IsDeleted = false;
                     _context.Update(student);
                     await _context.SaveChangesAsync();
                 }
@@ -116,7 +118,6 @@ namespace KNC.Controllers
             return View(student);
         }
 
-        // GET: Students/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -125,7 +126,8 @@ namespace KNC.Controllers
             }
 
             var student = await _context.Student
-                .FirstOrDefaultAsync(m => m.StudentID == id);
+                .FirstOrDefaultAsync(m => m.StudentID == id && m.IsDeleted == false);
+
             if (student == null)
             {
                 return NotFound();
@@ -134,15 +136,15 @@ namespace KNC.Controllers
             return View(student);
         }
 
-        // POST: Students/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var student = await _context.Student.FindAsync(id);
+            var student = await _context.Student.SingleOrDefaultAsync(a => a.StudentID == id && a.IsDeleted == true);
             if (student != null)
             {
-                _context.Student.Remove(student);
+                student.IsDeleted = true;
+                _context.Student.Update(student);
             }
 
             await _context.SaveChangesAsync();
