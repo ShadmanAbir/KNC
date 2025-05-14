@@ -110,7 +110,7 @@ namespace KNC.Controllers
             return View(educationPrograms);
         }
 
-        // GET: EducationPrograms/Delete/5
+        
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -128,7 +128,7 @@ namespace KNC.Controllers
             return View(educationPrograms);
         }
 
-        // POST: EducationPrograms/Delete/5
+        
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
