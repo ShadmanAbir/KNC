@@ -31,3 +31,4 @@
 /obj/Debug/net8.0/KNC.csproj.CoreCompileInputs.cache
 /obj/Debug/net8.0/KNC.GeneratedMSBuildEditorConfig.editorconfig
 /bin/Debug/net8.0/KNC.staticwebassets.endpoints.json
+/bin/Debug/net8.0/KNC.staticwebassets.runtime.json
