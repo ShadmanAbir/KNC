@@ -17,3 +17,4 @@
 /obj/Debug/KNC.dll
 /obj/Debug/KNC.pdb
 *.json
+/obj/Debug/KNC.csproj.CoreCompileInputs.cache
