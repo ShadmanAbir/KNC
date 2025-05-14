@@ -11,6 +11,7 @@ namespace KNC.Models
         public required string LastName { get; set; }
 
         public string? Email { get; set; }
+        [RegularExpression(@"^(\+8801)[3-9]\d{8}$", ErrorMessage = "Invalid phone number.")]
         public required string Phone { get; set; }
         public required string PermanentAddress { get; set; }
         public required string CurrentAddress { get; set; }
