@@ -24,6 +24,7 @@ namespace KNC.Controllers
                         select new Student
                         {
                             StudentID = a.StudentID,
+                            Name = a.FirstName + " " + a.LastName,
                             FirstName = a.FirstName,
                             LastName = a.LastName,
                             Email = a.Email,

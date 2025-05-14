@@ -23,5 +23,7 @@ namespace KNC.Models
 
         [NotMapped]
         public string? ProgramName { get; set; }
+        [NotMapped]
+        public string? Name { get; set; }
     }
 }
