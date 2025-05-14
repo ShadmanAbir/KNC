@@ -81,7 +81,6 @@ namespace KNC.Controllers
             {
                 /*student.CreatedBy = User.Identity.Name;*/
                 student.CreatedDate = DateTime.Now;
-                student.StudentCode = "ASD";
                 student.IsDeleted = false;
                 _context.Add(student);
                 await _context.SaveChangesAsync();

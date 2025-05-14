@@ -7,7 +7,7 @@ namespace KNC.Models
         [Key]
         public int EducationProgramID { get; set; }
         public required string ProgramName { get; set; }
-        public required string Description { get; set; }
+        public required string ShortName { get; set; }
         public required string Duration { get; set; }
     }
 }
