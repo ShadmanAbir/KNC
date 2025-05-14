@@ -65,7 +65,7 @@ namespace KNC.Controllers
                 return NotFound();
             }
 
-            var educationPrograms = await _context.EducationPrograms.FindAsync(id);
+            var educationPrograms = await _context.EducationPrograms.SingleOrDefaultAsync( a => a.EducationProgramID == id && a.IsDeleted != true);
             if (educationPrograms == null)
             {
                 return NotFound();
