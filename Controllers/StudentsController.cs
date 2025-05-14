@@ -139,7 +139,9 @@ namespace KNC.Controllers
             var student = await _context.Student.SingleOrDefaultAsync(a => a.StudentID == id && a.IsDeleted == true);
             if (student != null)
             {
+                /*student.CreatedBy = User.Identity.Name;*/
                 student.IsDeleted = true;
+                student.CreatedDate = DateTime.Now;
                 _context.Student.Update(student);
             }
 
