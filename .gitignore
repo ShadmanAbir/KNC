@@ -24,3 +24,6 @@
 /bin/roslyn/csc.exe.config
 /bin/roslyn/csc.rsp
 /bin/roslyn/csi.exe
+/obj/Debug/KNC.csproj.GenerateResource.cache
+/obj/Debug/KNC.csproj.Up2Date
+/obj/Debug/KNC.Migrations.init.resources
