@@ -66,7 +66,7 @@ namespace KNC.Controllers
                 return NotFound();
             }
 
-            var student = await _context.Student.FindAsync(id);
+            var student = await _context.Student.SingleOrDefaultAsync(a => a.StudentID == id && a.IsDeleted != true);
             if (student == null)
             {
                 return NotFound();
@@ -116,8 +116,7 @@ namespace KNC.Controllers
                 return NotFound();
             }
 
-            var student = await _context.Student
-                .FirstOrDefaultAsync(m => m.StudentID == id && m.IsDeleted == false);
+            var student = await _context.Student.SingleOrDefaultAsync(m => m.StudentID == id && m.IsDeleted != true);
 
             if (student == null)
             {
@@ -131,7 +130,7 @@ namespace KNC.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var student = await _context.Student.SingleOrDefaultAsync(a => a.StudentID == id && a.IsDeleted == true);
+            var student = await _context.Student.SingleOrDefaultAsync(a => a.StudentID == id && a.IsDeleted != true);
             if (student != null)
             {
                 /*student.CreatedBy = User.Identity.Name;*/
@@ -146,7 +145,7 @@ namespace KNC.Controllers
 
         private bool StudentExists(int id)
         {
-            return _context.Student.Any(e => e.StudentID == id);
+            return _context.Student.Any(e => e.StudentID == id && e.IsDeleted != true);
         }
     }
 }
