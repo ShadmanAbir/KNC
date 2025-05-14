@@ -21,3 +21,4 @@
 /obj/Debug/KNC.csproj.FileListAbsolute.txt
 *.resources
 /bin/roslyn/csc.exe
+/bin/roslyn/csc.exe.config
