@@ -18,3 +18,6 @@
 /.vs/KNC/CopilotIndices/17.14.552.11226/SemanticSymbols.db
 /.vs/KNC/v17/DocumentLayout.backup.json
 /.vs/KNC/v17/DocumentLayout.json
+/bin/Debug/net8.0/KNC.dll
+/bin/Debug/net8.0/KNC.exe
+/bin/Debug/net8.0/KNC.pdb
