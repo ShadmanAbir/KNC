@@ -19,3 +19,4 @@
 *.json
 /obj/Debug/KNC.csproj.CoreCompileInputs.cache
 /obj/Debug/KNC.csproj.FileListAbsolute.txt
+*.resources
