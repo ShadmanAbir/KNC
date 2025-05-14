@@ -17,26 +17,4 @@ namespace KNC.Models
             return userIdentity;
         }
     }
-
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
-    {
-        public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
-        {
-        }
-
-        public DbSet<Student> Students { get; set; }
-        public DbSet<Faculty> Faculties { get; set; }
-        public DbSet<Courses> Courses { get; set; }
-        public DbSet<Certificates> Certificates { get; set; }
-        public DbSet<Designation> Designation { get; set; }
-        public DbSet<DropDown> DropDowns { get; set; }
-        public DbSet<PaymentInfo> PaymentInfos { get; set; }
-        public DbSet<Sessions> Sessions { get; set; }
-
-        public static ApplicationDbContext Create()
-        {
-            return new ApplicationDbContext();
-        }
-    }
 }

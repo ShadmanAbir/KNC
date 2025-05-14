@@ -13,12 +13,14 @@ namespace KNC.Models
         public string LastName { get; set; }
 
         public string Email { get; set; }
-       // [RegularExpression(@"^(\+8801)[3-9]\d{8}$", ErrorMessage = "Invalid phone number.")]
+        // [RegularExpression(@"^(\+8801)[3-9]\d{8}$", ErrorMessage = "Invalid phone number.")]
+        public string LinkImage { get; set; }
         public string Phone { get; set; }
         public string PermanentAddress { get; set; }
         public string CurrentAddress { get; set; }
         public DateTime AdmissionDate { get; set; }
         public int Program { get; set; }
+
 
 
         [NotMapped]
