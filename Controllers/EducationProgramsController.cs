@@ -29,7 +29,7 @@ namespace KNC.Controllers
             }
 
             var educationPrograms = await _context.EducationPrograms
-                .FirstOrDefaultAsync(m => m.EducationProgramID == id);
+                .FirstOrDefaultAsync(m => m.EducationProgramID == id && m.IsDeleted != true);
             if (educationPrograms == null)
             {
                 return NotFound();
