@@ -1,0 +1,165 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "E:\\Repo\\KNC\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{26C0B19B-8ED0-4E4D-80D6-F4D91B6E6B1B}|KNC.csproj|e:\\repo\\knc\\controllers\\paymentinfoescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{26C0B19B-8ED0-4E4D-80D6-F4D91B6E6B1B}|KNC.csproj|solutionrelative:controllers\\paymentinfoescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{26C0B19B-8ED0-4E4D-80D6-F4D91B6E6B1B}|KNC.csproj|e:\\repo\\knc\\controllers\\designationscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{26C0B19B-8ED0-4E4D-80D6-F4D91B6E6B1B}|KNC.csproj|solutionrelative:controllers\\designationscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{26C0B19B-8ED0-4E4D-80D6-F4D91B6E6B1B}|KNC.csproj|e:\\repo\\knc\\controllers\\educationprogramscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{26C0B19B-8ED0-4E4D-80D6-F4D91B6E6B1B}|KNC.csproj|solutionrelative:controllers\\educationprogramscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{26C0B19B-8ED0-4E4D-80D6-F4D91B6E6B1B}|KNC.csproj|e:\\repo\\knc\\controllers\\certificatescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{26C0B19B-8ED0-4E4D-80D6-F4D91B6E6B1B}|KNC.csproj|solutionrelative:controllers\\certificatescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{26C0B19B-8ED0-4E4D-80D6-F4D91B6E6B1B}|KNC.csproj|e:\\repo\\knc\\models\\certificates.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{26C0B19B-8ED0-4E4D-80D6-F4D91B6E6B1B}|KNC.csproj|solutionrelative:models\\certificates.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{26C0B19B-8ED0-4E4D-80D6-F4D91B6E6B1B}|KNC.csproj|e:\\repo\\knc\\controllers\\coursescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{26C0B19B-8ED0-4E4D-80D6-F4D91B6E6B1B}|KNC.csproj|solutionrelative:controllers\\coursescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{26C0B19B-8ED0-4E4D-80D6-F4D91B6E6B1B}|KNC.csproj|e:\\repo\\knc\\controllers\\facultiescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{26C0B19B-8ED0-4E4D-80D6-F4D91B6E6B1B}|KNC.csproj|solutionrelative:controllers\\facultiescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{26C0B19B-8ED0-4E4D-80D6-F4D91B6E6B1B}|KNC.csproj|e:\\repo\\knc\\controllers\\studentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{26C0B19B-8ED0-4E4D-80D6-F4D91B6E6B1B}|KNC.csproj|solutionrelative:controllers\\studentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{26C0B19B-8ED0-4E4D-80D6-F4D91B6E6B1B}|KNC.csproj|e:\\repo\\knc\\models\\student.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{26C0B19B-8ED0-4E4D-80D6-F4D91B6E6B1B}|KNC.csproj|solutionrelative:models\\student.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "PaymentInfoesController.cs",
+              "DocumentMoniker": "E:\\Repo\\KNC\\Controllers\\PaymentInfoesController.cs",
+              "RelativeDocumentMoniker": "Controllers\\PaymentInfoesController.cs",
+              "ToolTip": "E:\\Repo\\KNC\\Controllers\\PaymentInfoesController.cs",
+              "RelativeToolTip": "Controllers\\PaymentInfoesController.cs",
+              "ViewState": "AgIAAHoAAAAAAAAAAAAAwH0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-13T11:12:04.569Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "DesignationsController.cs",
+              "DocumentMoniker": "E:\\Repo\\KNC\\Controllers\\DesignationsController.cs",
+              "RelativeDocumentMoniker": "Controllers\\DesignationsController.cs",
+              "ToolTip": "E:\\Repo\\KNC\\Controllers\\DesignationsController.cs",
+              "RelativeToolTip": "Controllers\\DesignationsController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-13T11:11:05.302Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "EducationProgramsController.cs",
+              "DocumentMoniker": "E:\\Repo\\KNC\\Controllers\\EducationProgramsController.cs",
+              "RelativeDocumentMoniker": "Controllers\\EducationProgramsController.cs",
+              "ToolTip": "E:\\Repo\\KNC\\Controllers\\EducationProgramsController.cs",
+              "RelativeToolTip": "Controllers\\EducationProgramsController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-13T11:01:55.026Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "CertificatesController.cs",
+              "DocumentMoniker": "E:\\Repo\\KNC\\Controllers\\CertificatesController.cs",
+              "RelativeDocumentMoniker": "Controllers\\CertificatesController.cs",
+              "ToolTip": "E:\\Repo\\KNC\\Controllers\\CertificatesController.cs",
+              "RelativeToolTip": "Controllers\\CertificatesController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-13T10:31:55.843Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Certificates.cs",
+              "DocumentMoniker": "E:\\Repo\\KNC\\Models\\Certificates.cs",
+              "RelativeDocumentMoniker": "Models\\Certificates.cs",
+              "ToolTip": "E:\\Repo\\KNC\\Models\\Certificates.cs",
+              "RelativeToolTip": "Models\\Certificates.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-13T10:30:52.681Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "CoursesController.cs",
+              "DocumentMoniker": "E:\\Repo\\KNC\\Controllers\\CoursesController.cs",
+              "RelativeDocumentMoniker": "Controllers\\CoursesController.cs",
+              "ToolTip": "E:\\Repo\\KNC\\Controllers\\CoursesController.cs",
+              "RelativeToolTip": "Controllers\\CoursesController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-13T08:47:55.001Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "FacultiesController.cs",
+              "DocumentMoniker": "E:\\Repo\\KNC\\Controllers\\FacultiesController.cs",
+              "RelativeDocumentMoniker": "Controllers\\FacultiesController.cs",
+              "ToolTip": "E:\\Repo\\KNC\\Controllers\\FacultiesController.cs",
+              "RelativeToolTip": "Controllers\\FacultiesController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-13T08:41:04.135Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "StudentsController.cs",
+              "DocumentMoniker": "E:\\Repo\\KNC\\Controllers\\StudentsController.cs",
+              "RelativeDocumentMoniker": "Controllers\\StudentsController.cs",
+              "ToolTip": "E:\\Repo\\KNC\\Controllers\\StudentsController.cs",
+              "RelativeToolTip": "Controllers\\StudentsController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-12T11:21:38.856Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Student.cs",
+              "DocumentMoniker": "E:\\Repo\\KNC\\Models\\Student.cs",
+              "RelativeDocumentMoniker": "Models\\Student.cs",
+              "ToolTip": "E:\\Repo\\KNC\\Models\\Student.cs",
+              "RelativeToolTip": "Models\\Student.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAQAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-12T11:05:25.964Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
