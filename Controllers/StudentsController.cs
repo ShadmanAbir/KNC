@@ -34,7 +34,7 @@ namespace KNC.Controllers
             }
 
             var student = await _context.Student
-                .FirstOrDefaultAsync(m => m.StudentID == id);
+                .FirstOrDefaultAsync(m => m.StudentID == id && m.IsDeleted != true);
             if (student == null)
             {
                 return NotFound();
@@ -49,15 +49,15 @@ namespace KNC.Controllers
             return View();
         }
 
-        // POST: Students/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("StudentID,StudentCode,FirstName,LastName,Email,Phone,PermanentAddress,CurrentAddress,AdmissionDate,Program,IsDeleted,CreatedBy,CreatedDate")] Student student)
+        public async Task<IActionResult> Create([Bind("StudentID,StudentCode,FirstName,LastName,Email,Phone,PermanentAddress,CurrentAddress,AdmissionDate,Program")] Student student)
         {
             if (ModelState.IsValid)
             {
+                /*student.CreatedBy = User.Identity.Name;*/
+                student.CreatedDate = DateTime.Now;
+                student.IsDeleted = false;
                 _context.Add(student);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
