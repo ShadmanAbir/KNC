@@ -39,15 +39,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.Program)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IsDeleted)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CreatedBy)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CreatedDate)
-            </th>
+            
             <th></th>
         </tr>
     </thead>
@@ -79,17 +71,9 @@
                 @Html.DisplayFor(modelItem => item.AdmissionDate)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Program)
+                @Html.DisplayFor(modelItem => item.ProgramName)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IsDeleted)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CreatedBy)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CreatedDate)
-            </td>
+           
             <td>
                 <a asp-action="Edit" asp-route-id="@item.StudentID">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.StudentID">Details</a> |

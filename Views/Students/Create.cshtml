@@ -49,7 +49,9 @@
             </div>
             <div class="form-group">
                 <label asp-for="Program" class="control-label"></label>
-                <input asp-for="Program" class="form-control" />
+                <select asp-for="Program" asp-items="ViewBag.ProgramList" class="form-control">
+                    <option value="">-- Select Program --</option>
+                </select>
                 <span asp-validation-for="Program" class="text-danger"></span>
             </div>
             <div class="form-group">

@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using KNC.Data;
 using KNC.Models;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace KNC.Controllers
 {
@@ -16,7 +17,24 @@ namespace KNC.Controllers
 
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Student.Where( a => a.IsDeleted != true).ToListAsync());
+            var data = await (from a in _context.Student
+                        join b in _context.EducationPrograms on a.Program equals b.EducationProgramID into temp
+                        from b in temp.DefaultIfEmpty()
+                        where a.IsDeleted != true
+                        select new Student
+                        {
+                            StudentID = a.StudentID,
+                            FirstName = a.FirstName,
+                            LastName = a.LastName,
+                            Email = a.Email,
+                            Phone = a.Phone,
+                            PermanentAddress = a.PermanentAddress,
+                            CurrentAddress = a.CurrentAddress,
+                            AdmissionDate = a.AdmissionDate,
+                            ProgramName = b.ProgramName
+                        }).ToListAsync();
+
+            return View(data);
         }
 
 
@@ -39,6 +57,7 @@ namespace KNC.Controllers
 
         public IActionResult Create()
         {
+            ViewBag.ProgramList = new SelectList(_context.EducationPrograms.Where(a => a.IsDeleted != true).ToList(), "EducationProgramID", "ProgramName");
             return View();
         }
 
@@ -46,10 +65,12 @@ namespace KNC.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("StudentID,StudentCode,FirstName,LastName,Email,Phone,PermanentAddress,CurrentAddress,AdmissionDate,Program")] Student student)
         {
+            ViewBag.ProgramList = new SelectList(_context.EducationPrograms.Where(a => a.IsDeleted != true).ToList(), "EducationProgramID", "ProgramName");
             if (ModelState.IsValid)
             {
                 /*student.CreatedBy = User.Identity.Name;*/
                 student.CreatedDate = DateTime.Now;
+                student.StudentCode = "ASD";
                 student.IsDeleted = false;
                 _context.Add(student);
                 await _context.SaveChangesAsync();
