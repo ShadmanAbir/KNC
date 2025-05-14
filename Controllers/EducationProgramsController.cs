@@ -19,13 +19,13 @@ namespace KNC.Controllers
             _context = context;
         }
 
-        // GET: EducationPrograms
+        
         public async Task<IActionResult> Index()
         {
             return View(await _context.EducationPrograms.ToListAsync());
         }
 
-        // GET: EducationPrograms/Details/5
+        
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -43,18 +43,16 @@ namespace KNC.Controllers
             return View(educationPrograms);
         }
 
-        // GET: EducationPrograms/Create
+        
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: EducationPrograms/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("EducationProgramID,ProgramName,Description,CourseType,Duration,IsDeleted,CreatedBy,CreatedDate")] EducationPrograms educationPrograms)
+        public async Task<IActionResult> Create([Bind("EducationProgramID,ProgramName,Description,CourseType,Duration")] EducationPrograms educationPrograms)
         {
             if (ModelState.IsValid)
             {
@@ -65,7 +63,6 @@ namespace KNC.Controllers
             return View(educationPrograms);
         }
 
-        // GET: EducationPrograms/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -81,12 +78,9 @@ namespace KNC.Controllers
             return View(educationPrograms);
         }
 
-        // POST: EducationPrograms/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("EducationProgramID,ProgramName,Description,CourseType,Duration,IsDeleted,CreatedBy,CreatedDate")] EducationPrograms educationPrograms)
+        public async Task<IActionResult> Edit(int id, [Bind("EducationProgramID,ProgramName,Description,CourseType,Duration")] EducationPrograms educationPrograms)
         {
             if (id != educationPrograms.EducationProgramID)
             {
