@@ -9,3 +9,5 @@
 /.vs/KNC/v17/DocumentLayout.backup.json
 /.vs/KNC/v17/DocumentLayout.json
 /obj/Debug/KNC.csproj.AssemblyReference.cache
+/App_Data/aspnet-KNC-20250514035116.mdf
+/App_Data/aspnet-KNC-20250514035116_log.ldf
