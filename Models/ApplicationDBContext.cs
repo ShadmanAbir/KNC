@@ -20,6 +20,7 @@ namespace KNC.Models
             return new ApplicationDbContext();
         }
 
+
         public DbSet<Student> Students { get; set; }
         public DbSet<Faculty> Faculties { get; set; }
         public DbSet<Courses> Courses { get; set; }
