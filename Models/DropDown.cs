@@ -1,6 +1,4 @@
-﻿using KNC.Data;
-
-namespace KNC.Models
+﻿namespace KNC.Models
 {
     public class DropDown
     {

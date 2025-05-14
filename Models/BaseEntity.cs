@@ -1,4 +1,6 @@
-﻿namespace KNC.Models
+﻿using System;
+
+namespace KNC.Models
 {
     public class BaseEntity
     {

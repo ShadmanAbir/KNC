@@ -1,17 +1,53 @@
-﻿<!--
-=========================================================
-* Material Dashboard 3 - v3.2.0
-=========================================================
+﻿@*<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Styles.Render("~/Content/material")
+    <link href="~/Content/material-dashboard/css/material-dashboard.css?v=2.1.2" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 
-* Product Page: https://www.creative-tim.com/product/material-dashboard
-* Copyright 2024 Creative Tim (https://www.creative-tim.com)
-* Licensed under MIT (https://www.creative-tim.com/license)
-* Coded by Creative Tim
+</head>
+<body>
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
+        <div class="container">
+            @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Toggle navigation" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
+                <ul class="navbar-nav flex-grow-1">
+                    <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("About", "About", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </nav>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
+    </div>
+    <script src="~/Content/material-dashboard/js/core/jquery.min.js"></script>
+    <script src="~/Content/material-dashboard/js/core/popper.min.js"></script>
+    <script src="~/Content/material-dashboard/js/core/bootstrap-material-design.min.js"></script>
+    <script src="~/Content/material-dashboard/js/material-dashboard.js?v=2.1.2"></script>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/material")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
 
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
--->
+*@
 <!DOCTYPE html>
 <html lang="en">
 
@@ -23,6 +59,11 @@
     <title>
         Khairunnesa Nursing College Portal
     </title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Styles.Render("~/Content/material")
+    <link href="~/Content/material-dashboard/css/material-dashboard.css?v=2.1.2" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
     <!--     Fonts and icons     -->
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Inter:300,400,500,600,700,900" />
     <!-- Nucleo Icons -->
@@ -56,7 +97,7 @@
                     <div class="collapse" id="submenu">
                         <ul class="navbar-nav ms-4 ps-3">
                             <li class="nav-item"><a asp-controller="EducationPrograms" asp-action="Index" class="nav-link text-dark">Prorams</a></li>
-                            
+
                             <li class="nav-item"><a class="nav-link text-dark" href="/Departments">Departments</a></li>
                         </ul>
                     </div>
@@ -107,7 +148,6 @@
                                 <i class="material-symbols-rounded">notifications</i>
                             </a>
                             <ul class="dropdown-menu  dropdown-menu-end  px-2 py-3 me-sm-n4" aria-labelledby="dropdownMenuButton">
-                              
                             </ul>
                         </li>
                         <li class="nav-item d-flex align-items-center">
@@ -203,24 +243,31 @@
         </div>
     </div>
     <!--   Core JS Files   -->
-    <script src="~/js/core/popper.min.js"></script>
-    <script src="~/js/core/bootstrap.min.js"></script>
-    <script src="~/js/plugins/perfect-scrollbar.min.js"></script>
-    <script src="~/js/plugins/smooth-scrollbar.min.js"></script>
+    <script src="~/Content/material-dashboard/js/core/popper.min.js"></script>
+    <script src="~/Content/material-dashboard/js/core/bootstrap.min.js"></script>
+    <script src="~/Content/material-dashboard/js/plugins/perfect-scrollbar.min.js"></script>
+    <script src="~/Content/material-dashboard/js/plugins/smooth-scrollbar.min.js"></script>
     <script>
         var win = navigator.platform.indexOf('Win') > -1;
         if (win && document.querySelector('#sidenav-scrollbar')) {
-          var options = {
-            damping: '0.5'
-          }
-          Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
+            var options = {
+                damping: '0.5'
+            }
+            Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
         }
     </script>
     <!-- Github buttons -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
-    <script src="~/js/material-dashboard.min.js?v=3.2.0"></script>
-    @await RenderSectionAsync("Scripts", required: false)
+    <script src="~/Content/material-dashboard/js/material-dashboard.min.js?v=3.2.0"></script>
+    <script src="~/Content/material-dashboard/js/core/jquery.min.js"></script>
+    <script src="~/Content/material-dashboard/js/core/popper.min.js"></script>
+    <script src="~/Content/material-dashboard/js/core/bootstrap-material-design.min.js"></script>
+    <script src="~/Content/material-dashboard/js/material-dashboard.js?v=2.1.2"></script>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/material")
+    @RenderSection("scripts", required: false)
 </body>
 
 </html>

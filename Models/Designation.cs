@@ -6,7 +6,7 @@ namespace KNC.Models
     {
         [Key]
         public int DesignationID { get; set; }
-        public required string DesignationName { get; set; }
-        public string? Description { get; set; }
+        public string DesignationName { get; set; }
+        public string Description { get; set; }
     }
 }

@@ -7,8 +7,8 @@ namespace KNC.Models
         [Key]
         public int CertificateID { get; set; }
         public int HolderID { get; set; }
-        public required string CertificateName { get; set; }
-        public required string HolderCode { get; set; }
-        public required string Location { get; set; }
+        public string CertificateName { get; set; }
+        public string HolderCode { get; set; }
+        public string Location { get; set; }
     }
 }
