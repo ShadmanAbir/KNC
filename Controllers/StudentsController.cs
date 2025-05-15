@@ -41,6 +41,7 @@ namespace KNC.Controllers
 
         public ActionResult Create()
         {
+            ViewBag.ProgramList = new SelectList(_db.EducationPrograms, "EducationProgramID", "ProgramName");
             return View();
         }
 
@@ -48,6 +49,8 @@ namespace KNC.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Create([Bind(Include = "StudentID,StudentCode,FirstName,LastName,Email,Phone,PermanentAddress,CurrentAddress,AdmissionDate,Program")] Student student)
         {
+
+            ViewBag.ProgramList = new SelectList(_db.EducationPrograms, "EducationProgramID", "ProgramName");
             if (ModelState.IsValid)
             {
                 _db.Students.Add(student);
@@ -60,6 +63,7 @@ namespace KNC.Controllers
 
         public async Task<ActionResult> Edit(int? id)
         {
+            ViewBag.ProgramList = new SelectList(_db.EducationPrograms, "EducationProgramID", "ProgramName");
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -76,6 +80,7 @@ namespace KNC.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Edit([Bind(Include = "StudentID,StudentCode,FirstName,LastName,Email,Phone,PermanentAddress,CurrentAddress,AdmissionDate,Program")] Student student)
         {
+            ViewBag.ProgramList = new SelectList(_db.EducationPrograms, "EducationProgramID", "ProgramName");
             if (ModelState.IsValid)
             {
                 _db.Entry(student).State = EntityState.Modified;

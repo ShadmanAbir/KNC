@@ -9,9 +9,9 @@
     <title>
         Khairunnesa Nursing College Portal
     </title>
-@*    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
-    @Styles.Render("~/Content/material")*@
+    @*    @Styles.Render("~/Content/css")
+        @Scripts.Render("~/bundles/modernizr")
+        @Styles.Render("~/Content/material")*@
     <link href="~/Content/material-dashboard/css/material-dashboard.css?v=2.1.2" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
     <!--     Fonts and icons     -->
@@ -25,6 +25,8 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0" />
     <!-- CSS Files -->
     <link id="pagestyle" href="~/css/material-dashboard.css?v=3.2.0" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" rel="stylesheet" />
+
 </head>
 
 <body class="g-sidenav-show  bg-gray-100">
@@ -46,9 +48,17 @@
                     </a>
                     <div class="collapse" id="submenu">
                         <ul class="navbar-nav ms-4 ps-3">
-                            <li class="nav-item"><a asp-controller="EducationPrograms" asp-action="Index" class="nav-link text-dark">Prorams</a></li>
 
-                            <li class="nav-item"><a class="nav-link text-dark" href="/Departments">Departments</a></li>
+                            <li class="nav-item">@Html.ActionLink("Students", "Index", "Students", null, new { @class = "nav-link text-dark" })</li>
+                            <li class="nav-item">@Html.ActionLink("Faculty", "Index", "Faculties", null, new { @class = "nav-link text-dark" })</li>
+                            <li class="nav-item">@Html.ActionLink("Courses", "Index", "Courses", null, new { @class = "nav-link text-dark" })</li>
+                            <li class="nav-item">@Html.ActionLink("Designation", "Index", "Designations", null, new { @class = "nav-link text-dark" })</li>
+                            <li class="nav-item">@Html.ActionLink("Payment", "Index", "PaymentInfos", null, new { @class = "nav-link text-dark" })</li>
+                            <li class="nav-item">@Html.ActionLink("Session", "Index", "Sessions", null, new { @class = "nav-link text-dark" })</li>
+                            <li class="nav-item">@Html.ActionLink("Programs", "Index", "EducationPrograms", null, new { @class = "nav-link text-dark" })</li>
+                            <li class="nav-item">@Html.ActionLink("Programs", "Index", "EducationPrograms", null, new { @class = "nav-link text-dark" })</li>
+                            <li class="nav-item">@Html.ActionLink("Programs", "Index", "EducationPrograms", null, new { @class = "nav-link text-dark" })</li>
+                            <li class="nav-item">@Html.ActionLink("Programs", "Index", "EducationPrograms", null, new { @class = "nav-link text-dark" })</li>
                         </ul>
                     </div>
                 </li>
@@ -214,6 +224,7 @@
     <script src="~/Content/material-dashboard/js/core/popper.min.js"></script>
     <script src="~/Content/material-dashboard/js/core/bootstrap-material-design.min.js"></script>
     <script src="~/Content/material-dashboard/js/material-dashboard.js?v=2.1.2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/material")
