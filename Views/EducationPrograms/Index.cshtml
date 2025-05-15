@@ -21,15 +21,6 @@
         <th>
             @Html.DisplayNameFor(model => model.Duration)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.IsDeleted)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CreatedBy)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CreatedDate)
-        </th>
         <th></th>
     </tr>
 
@@ -44,15 +35,7 @@
         <td>
             @Html.DisplayFor(modelItem => item.Duration)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IsDeleted)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CreatedBy)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CreatedDate)
-        </td>
+
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.EducationProgramID }) |
             @Html.ActionLink("Details", "Details", new { id=item.EducationProgramID }) |
