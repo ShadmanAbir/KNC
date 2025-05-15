@@ -13,12 +13,17 @@ namespace KNC.Controllers
 {
     public class FacultiesController : Controller
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
+        private ApplicationDbContext _db;
+
+        public FacultiesController(ApplicationDbContext db)
+        {
+            _db = db;
+        }
 
         // GET: Faculties
         public async Task<ActionResult> Index()
         {
-            return View(await db.Faculties.ToListAsync());
+            return View(await _db.Faculties.ToListAsync());
         }
 
         // GET: Faculties/Details/5
@@ -28,7 +33,7 @@ namespace KNC.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Faculty faculty = await db.Faculties.FindAsync(id);
+            Faculty faculty = await _db.Faculties.FindAsync(id);
             if (faculty == null)
             {
                 return HttpNotFound();
@@ -51,8 +56,8 @@ namespace KNC.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Faculties.Add(faculty);
-                await db.SaveChangesAsync();
+                _db.Faculties.Add(faculty);
+                await _db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
 
@@ -66,7 +71,7 @@ namespace KNC.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Faculty faculty = await db.Faculties.FindAsync(id);
+            Faculty faculty = await _db.Faculties.FindAsync(id);
             if (faculty == null)
             {
                 return HttpNotFound();
@@ -83,8 +88,8 @@ namespace KNC.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(faculty).State = EntityState.Modified;
-                await db.SaveChangesAsync();
+                _db.Entry(faculty).State = EntityState.Modified;
+                await _db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
             return View(faculty);
@@ -97,7 +102,7 @@ namespace KNC.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Faculty faculty = await db.Faculties.FindAsync(id);
+            Faculty faculty = await _db.Faculties.FindAsync(id);
             if (faculty == null)
             {
                 return HttpNotFound();
@@ -110,9 +115,9 @@ namespace KNC.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            Faculty faculty = await db.Faculties.FindAsync(id);
-            db.Faculties.Remove(faculty);
-            await db.SaveChangesAsync();
+            Faculty faculty = await _db.Faculties.FindAsync(id);
+            _db.Faculties.Remove(faculty);
+            await _db.SaveChangesAsync();
             return RedirectToAction("Index");
         }
 
@@ -120,7 +125,7 @@ namespace KNC.Controllers
         {
             if (disposing)
             {
-                db.Dispose();
+                _db.Dispose();
             }
             base.Dispose(disposing);
         }
