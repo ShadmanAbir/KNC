@@ -13,7 +13,7 @@ namespace KNC.Controllers
 {
     public class FacultiesController : Controller
     {
-        private ApplicationDbContext _db;
+        private readonly ApplicationDbContext _db;
 
         public FacultiesController(ApplicationDbContext db)
         {
