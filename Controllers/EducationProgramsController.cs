@@ -51,6 +51,9 @@ namespace KNC.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Create([Bind(Include = "EducationProgramID,ProgramName,ShortName,Duration")] EducationPrograms educationPrograms)
         {
+            educationPrograms.CreatedDate = DateTime.Now;
+            educationPrograms.CreatedBy = 1;
+            educationPrograms.IsDeleted = false;
             if (ModelState.IsValid)
             {
                 _db.EducationPrograms.Add(educationPrograms);
@@ -80,6 +83,8 @@ namespace KNC.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Edit([Bind(Include = "EducationProgramID,ProgramName,ShortName,Duration")] EducationPrograms educationPrograms)
         {
+            educationPrograms.CreatedDate = DateTime.Now;
+            educationPrograms.CreatedBy = 1;
             if (ModelState.IsValid)
             {
                 _db.Entry(educationPrograms).State = EntityState.Modified;
