@@ -13,22 +13,25 @@ namespace KNC.Controllers
 {
     public class StudentsController : Controller
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
+        private readonly ApplicationDbContext _db;
 
-        // GET: Students
-        public async Task<ActionResult> Index()
+        public StudentsController(ApplicationDbContext db)
         {
-            return View(await db.Students.ToListAsync());
+            _db = db;
         }
 
-        // GET: Students/Details/5
+        public async Task<ActionResult> Index()
+        {
+            return View(await _db.Students.ToListAsync());
+        }
+
         public async Task<ActionResult> Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Student student = await db.Students.FindAsync(id);
+            Student student = await _db.Students.FindAsync(id);
             if (student == null)
             {
                 return HttpNotFound();
@@ -36,37 +39,32 @@ namespace KNC.Controllers
             return View(student);
         }
 
-        // GET: Students/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Students/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "StudentID,StudentCode,FirstName,LastName,Email,Phone,PermanentAddress,CurrentAddress,AdmissionDate,Program,IsDeleted,CreatedBy,CreatedDate")] Student student)
+        public async Task<ActionResult> Create([Bind(Include = "StudentID,StudentCode,FirstName,LastName,Email,Phone,PermanentAddress,CurrentAddress,AdmissionDate,Program")] Student student)
         {
             if (ModelState.IsValid)
             {
-                db.Students.Add(student);
-                await db.SaveChangesAsync();
+                _db.Students.Add(student);
+                await _db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
 
             return View(student);
         }
 
-        // GET: Students/Edit/5
         public async Task<ActionResult> Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Student student = await db.Students.FindAsync(id);
+            Student student = await _db.Students.FindAsync(id);
             if (student == null)
             {
                 return HttpNotFound();
@@ -74,30 +72,26 @@ namespace KNC.Controllers
             return View(student);
         }
 
-        // POST: Students/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "StudentID,StudentCode,FirstName,LastName,Email,Phone,PermanentAddress,CurrentAddress,AdmissionDate,Program,IsDeleted,CreatedBy,CreatedDate")] Student student)
+        public async Task<ActionResult> Edit([Bind(Include = "StudentID,StudentCode,FirstName,LastName,Email,Phone,PermanentAddress,CurrentAddress,AdmissionDate,Program")] Student student)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(student).State = EntityState.Modified;
-                await db.SaveChangesAsync();
+                _db.Entry(student).State = EntityState.Modified;
+                await _db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
             return View(student);
         }
 
-        // GET: Students/Delete/5
         public async Task<ActionResult> Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Student student = await db.Students.FindAsync(id);
+            Student student = await _db.Students.FindAsync(id);
             if (student == null)
             {
                 return HttpNotFound();
@@ -105,14 +99,13 @@ namespace KNC.Controllers
             return View(student);
         }
 
-        // POST: Students/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            Student student = await db.Students.FindAsync(id);
-            db.Students.Remove(student);
-            await db.SaveChangesAsync();
+            Student student = await _db.Students.FindAsync(id);
+            _db.Students.Remove(student);
+            await _db.SaveChangesAsync();
             return RedirectToAction("Index");
         }
 
@@ -120,7 +113,7 @@ namespace KNC.Controllers
         {
             if (disposing)
             {
-                db.Dispose();
+                _db.Dispose();
             }
             base.Dispose(disposing);
         }
