@@ -189,9 +189,13 @@
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="App_Start\UnityMvcActivator.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CertificatesController.cs" />
+    <Compile Include="Controllers\CoursesController.cs" />
     <Compile Include="Controllers\DesignationsController.cs" />
+    <Compile Include="Controllers\EducationProgramsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\PaymentInfoesController.cs" />
     <Compile Include="Controllers\StudentsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -308,6 +312,26 @@
     <Content Include="Views\Designations\Details.cshtml" />
     <Content Include="Views\Designations\Edit.cshtml" />
     <Content Include="Views\Designations\Index.cshtml" />
+    <Content Include="Views\EducationPrograms\Create.cshtml" />
+    <Content Include="Views\EducationPrograms\Delete.cshtml" />
+    <Content Include="Views\EducationPrograms\Details.cshtml" />
+    <Content Include="Views\EducationPrograms\Edit.cshtml" />
+    <Content Include="Views\EducationPrograms\Index.cshtml" />
+    <Content Include="Views\Certificates\Create.cshtml" />
+    <Content Include="Views\Certificates\Delete.cshtml" />
+    <Content Include="Views\Certificates\Details.cshtml" />
+    <Content Include="Views\Certificates\Edit.cshtml" />
+    <Content Include="Views\Certificates\Index.cshtml" />
+    <Content Include="Views\Courses\Create.cshtml" />
+    <Content Include="Views\Courses\Delete.cshtml" />
+    <Content Include="Views\Courses\Details.cshtml" />
+    <Content Include="Views\Courses\Edit.cshtml" />
+    <Content Include="Views\Courses\Index.cshtml" />
+    <Content Include="Views\PaymentInfoes\Create.cshtml" />
+    <Content Include="Views\PaymentInfoes\Delete.cshtml" />
+    <Content Include="Views\PaymentInfoes\Details.cshtml" />
+    <Content Include="Views\PaymentInfoes\Edit.cshtml" />
+    <Content Include="Views\PaymentInfoes\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
