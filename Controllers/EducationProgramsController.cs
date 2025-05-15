@@ -13,22 +13,27 @@ namespace KNC.Controllers
 {
     public class EducationProgramsController : Controller
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
+        private readonly ApplicationDbContext _db;
 
-        // GET: EducationPrograms
-        public async Task<ActionResult> Index()
+        public EducationProgramsController(ApplicationDbContext db)
         {
-            return View(await db.EducationPrograms.ToListAsync());
+            _db = db;
         }
 
-        // GET: EducationPrograms/Details/5
+        
+        public async Task<ActionResult> Index()
+        {
+            return View(await _db.EducationPrograms.ToListAsync());
+        }
+
+        
         public async Task<ActionResult> Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            EducationPrograms educationPrograms = await db.EducationPrograms.FindAsync(id);
+            EducationPrograms educationPrograms = await _db.EducationPrograms.FindAsync(id);
             if (educationPrograms == null)
             {
                 return HttpNotFound();
@@ -36,37 +41,33 @@ namespace KNC.Controllers
             return View(educationPrograms);
         }
 
-        // GET: EducationPrograms/Create
+        
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: EducationPrograms/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "EducationProgramID,ProgramName,ShortName,Duration,IsDeleted,CreatedBy,CreatedDate")] EducationPrograms educationPrograms)
+        public async Task<ActionResult> Create([Bind(Include = "EducationProgramID,ProgramName,ShortName,Duration")] EducationPrograms educationPrograms)
         {
             if (ModelState.IsValid)
             {
-                db.EducationPrograms.Add(educationPrograms);
-                await db.SaveChangesAsync();
+                _db.EducationPrograms.Add(educationPrograms);
+                await _db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
 
             return View(educationPrograms);
         }
 
-        // GET: EducationPrograms/Edit/5
         public async Task<ActionResult> Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            EducationPrograms educationPrograms = await db.EducationPrograms.FindAsync(id);
+            EducationPrograms educationPrograms = await _db.EducationPrograms.FindAsync(id);
             if (educationPrograms == null)
             {
                 return HttpNotFound();
@@ -74,30 +75,27 @@ namespace KNC.Controllers
             return View(educationPrograms);
         }
 
-        // POST: EducationPrograms/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "EducationProgramID,ProgramName,ShortName,Duration,IsDeleted,CreatedBy,CreatedDate")] EducationPrograms educationPrograms)
+        public async Task<ActionResult> Edit([Bind(Include = "EducationProgramID,ProgramName,ShortName,Duration")] EducationPrograms educationPrograms)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(educationPrograms).State = EntityState.Modified;
-                await db.SaveChangesAsync();
+                _db.Entry(educationPrograms).State = EntityState.Modified;
+                await _db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
             return View(educationPrograms);
         }
 
-        // GET: EducationPrograms/Delete/5
         public async Task<ActionResult> Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            EducationPrograms educationPrograms = await db.EducationPrograms.FindAsync(id);
+            EducationPrograms educationPrograms = await _db.EducationPrograms.FindAsync(id);
             if (educationPrograms == null)
             {
                 return HttpNotFound();
@@ -105,14 +103,13 @@ namespace KNC.Controllers
             return View(educationPrograms);
         }
 
-        // POST: EducationPrograms/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            EducationPrograms educationPrograms = await db.EducationPrograms.FindAsync(id);
-            db.EducationPrograms.Remove(educationPrograms);
-            await db.SaveChangesAsync();
+            EducationPrograms educationPrograms = await _db.EducationPrograms.FindAsync(id);
+            _db.EducationPrograms.Remove(educationPrograms);
+            await _db.SaveChangesAsync();
             return RedirectToAction("Index");
         }
 
@@ -120,7 +117,7 @@ namespace KNC.Controllers
         {
             if (disposing)
             {
-                db.Dispose();
+                _db.Dispose();
             }
             base.Dispose(disposing);
         }
