@@ -193,6 +193,7 @@
     <Compile Include="Controllers\CoursesController.cs" />
     <Compile Include="Controllers\DesignationsController.cs" />
     <Compile Include="Controllers\EducationProgramsController.cs" />
+    <Compile Include="Controllers\FacultiesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PaymentInfoesController.cs" />
@@ -332,6 +333,11 @@
     <Content Include="Views\PaymentInfoes\Details.cshtml" />
     <Content Include="Views\PaymentInfoes\Edit.cshtml" />
     <Content Include="Views\PaymentInfoes\Index.cshtml" />
+    <Content Include="Views\Faculties\Create.cshtml" />
+    <Content Include="Views\Faculties\Delete.cshtml" />
+    <Content Include="Views\Faculties\Details.cshtml" />
+    <Content Include="Views\Faculties\Edit.cshtml" />
+    <Content Include="Views\Faculties\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
