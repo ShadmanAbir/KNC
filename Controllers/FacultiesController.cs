@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Linq;
+﻿using System.Data.Entity;
 using System.Threading.Tasks;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
 using KNC.Models;
 
@@ -20,13 +15,11 @@ namespace KNC.Controllers
             _db = db;
         }
 
-        // GET: Faculties
         public async Task<ActionResult> Index()
         {
             return View(await _db.Faculties.ToListAsync());
         }
 
-        // GET: Faculties/Details/5
         public async Task<ActionResult> Details(int? id)
         {
             if (id == null)
@@ -41,18 +34,14 @@ namespace KNC.Controllers
             return View(faculty);
         }
 
-        // GET: Faculties/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Faculties/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "FacultyID,FirstName,LastName,Email,Phone,PermanentAddress,CurrentAddress,Designation,JoiningDate,EducationalQualification,TeachingExperience,ClinicalExperience,LocalPublication,InternationalPublication,IsDeleted,CreatedBy,CreatedDate")] Faculty faculty)
+        public async Task<ActionResult> Create([Bind(Include = "FacultyID,FirstName,LastName,Email,Phone,PermanentAddress,CurrentAddress,Designation,JoiningDate,EducationalQualification,TeachingExperience,ClinicalExperience,LocalPublication,InternationalPublication")] Faculty faculty)
         {
             if (ModelState.IsValid)
             {
@@ -64,7 +53,6 @@ namespace KNC.Controllers
             return View(faculty);
         }
 
-        // GET: Faculties/Edit/5
         public async Task<ActionResult> Edit(int? id)
         {
             if (id == null)
@@ -79,12 +67,9 @@ namespace KNC.Controllers
             return View(faculty);
         }
 
-        // POST: Faculties/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "FacultyID,FirstName,LastName,Email,Phone,PermanentAddress,CurrentAddress,Designation,JoiningDate,EducationalQualification,TeachingExperience,ClinicalExperience,LocalPublication,InternationalPublication,IsDeleted,CreatedBy,CreatedDate")] Faculty faculty)
+        public async Task<ActionResult> Edit([Bind(Include = "FacultyID,FirstName,LastName,Email,Phone,PermanentAddress,CurrentAddress,Designation,JoiningDate,EducationalQualification,TeachingExperience,ClinicalExperience,LocalPublication,InternationalPublication")] Faculty faculty)
         {
             if (ModelState.IsValid)
             {
@@ -95,7 +80,6 @@ namespace KNC.Controllers
             return View(faculty);
         }
 
-        // GET: Faculties/Delete/5
         public async Task<ActionResult> Delete(int? id)
         {
             if (id == null)
@@ -110,7 +94,6 @@ namespace KNC.Controllers
             return View(faculty);
         }
 
-        // POST: Faculties/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
