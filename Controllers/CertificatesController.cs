@@ -13,22 +13,25 @@ namespace KNC.Controllers
 {
     public class CertificatesController : Controller
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
+        private readonly ApplicationDbContext _db;
 
-        // GET: Certificates
-        public async Task<ActionResult> Index()
+        public CertificatesController(ApplicationDbContext db)
         {
-            return View(await db.Certificates.ToListAsync());
+            _db = db;
         }
 
-        // GET: Certificates/Details/5
+        public async Task<ActionResult> Index()
+        {
+            return View(await _db.Certificates.ToListAsync());
+        }
+
         public async Task<ActionResult> Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Certificates certificates = await db.Certificates.FindAsync(id);
+            Certificates certificates = await _db.Certificates.FindAsync(id);
             if (certificates == null)
             {
                 return HttpNotFound();
@@ -36,37 +39,32 @@ namespace KNC.Controllers
             return View(certificates);
         }
 
-        // GET: Certificates/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Certificates/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "CertificateID,HolderID,CertificateName,HolderCode,Location,IsDeleted,CreatedBy,CreatedDate")] Certificates certificates)
+        public async Task<ActionResult> Create([Bind(Include = "CertificateID,HolderID,CertificateName,HolderCode,Location")] Certificates certificates)
         {
             if (ModelState.IsValid)
             {
-                db.Certificates.Add(certificates);
-                await db.SaveChangesAsync();
+                _db.Certificates.Add(certificates);
+                await _db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
 
             return View(certificates);
         }
 
-        // GET: Certificates/Edit/5
         public async Task<ActionResult> Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Certificates certificates = await db.Certificates.FindAsync(id);
+            Certificates certificates = await _db.Certificates.FindAsync(id);
             if (certificates == null)
             {
                 return HttpNotFound();
@@ -74,17 +72,14 @@ namespace KNC.Controllers
             return View(certificates);
         }
 
-        // POST: Certificates/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "CertificateID,HolderID,CertificateName,HolderCode,Location,IsDeleted,CreatedBy,CreatedDate")] Certificates certificates)
+        public async Task<ActionResult> Edit([Bind(Include = "CertificateID,HolderID,CertificateName,HolderCode,Location")] Certificates certificates)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(certificates).State = EntityState.Modified;
-                await db.SaveChangesAsync();
+                _db.Entry(certificates).State = EntityState.Modified;
+                await _db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
             return View(certificates);
@@ -97,7 +92,7 @@ namespace KNC.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Certificates certificates = await db.Certificates.FindAsync(id);
+            Certificates certificates = await _db.Certificates.FindAsync(id);
             if (certificates == null)
             {
                 return HttpNotFound();
@@ -110,9 +105,9 @@ namespace KNC.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            Certificates certificates = await db.Certificates.FindAsync(id);
-            db.Certificates.Remove(certificates);
-            await db.SaveChangesAsync();
+            Certificates certificates = await _db.Certificates.FindAsync(id);
+            _db.Certificates.Remove(certificates);
+            await _db.SaveChangesAsync();
             return RedirectToAction("Index");
         }
 
@@ -120,7 +115,7 @@ namespace KNC.Controllers
         {
             if (disposing)
             {
-                db.Dispose();
+                _db.Dispose();
             }
             base.Dispose(disposing);
         }
