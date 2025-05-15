@@ -1,0 +1,126 @@
+﻿
+@model KNC.Models.Student
+
+
+<h4 class="mb-4 text-primary fw-bold">Student Information</h4>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="card shadow p-4">
+
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger mb-3" })
+
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <div class="ms-md-auto pe-md-3 d-flex align-items-center">
+                    <div class="input-group input-group-outline">
+                        @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "form-label" })
+                        @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="ms-md-auto pe-md-3 d-flex align-items-center">
+                    <div class="input-group input-group-outline">
+                        @Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "form-label" })
+                        @Html.TextBoxFor(model => model.LastName, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <br />
+
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <div class="ms-md-auto pe-md-3 d-flex align-items-center">
+                    <div class="input-group input-group-outline">
+                        @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "form-label" })
+                        @Html.TextBoxFor(model => model.Email, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="ms-md-auto pe-md-3 d-flex align-items-center">
+                    <div class="input-group input-group-outline">
+                        @Html.LabelFor(model => model.Phone, htmlAttributes: new { @class = "form-label" })
+                        @Html.TextBoxFor(model => model.Phone, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <br />
+
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <div class="ms-md-auto pe-md-3 d-flex align-items-center">
+                    <div class="input-group input-group-outline">
+                        @Html.LabelFor(model => model.CurrentAddress, htmlAttributes: new { @class = "form-label" })
+                        @Html.TextBoxFor(model => model.CurrentAddress, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.CurrentAddress, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="ms-md-auto pe-md-3 d-flex align-items-center">
+                    <div class="input-group input-group-outline">
+                        @Html.LabelFor(model => model.PermanentAddress, htmlAttributes: new { @class = "form-label" })
+                        @Html.TextBoxFor(model => model.PermanentAddress, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.PermanentAddress, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <br />
+
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <div class="ms-md-auto pe-md-3 align-items-center">
+                    <div class="input-group input-group-outline">
+                        @Html.LabelFor(model => model.AdmissionDate, htmlAttributes: new { @class = "form-label" })
+                        @Html.TextBoxFor(model => model.AdmissionDate, new { @class = "form-control flatpickr", @autocomplete = "off" })
+                        @Html.ValidationMessageFor(model => model.AdmissionDate, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="ms-md-auto pe-md-3 d-flex align-items-center">
+                    <div class="input-group input-group-outline">
+                        @Html.LabelFor(model => model.Program, htmlAttributes: new { @class = "form-label" })
+                        @Html.DropDownListFor(model => model.Program, ViewBag.ProgramList as SelectList, "", new { @class = "form-select" })
+                        @Html.ValidationMessageFor(model => model.Program, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <br />
+
+        <div class="text-end">
+            <input type="submit" value="Create" class="btn btn-primary" />
+            @*@Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-secondary ms-2" })*@
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        flatpickr(".flatpickr", {
+            dateFormat: "Y-m-d", // matches the backend format
+            allowInput: true,
+            altInput: true,
+            altFormat: "F j, Y", // e.g., May 15, 2025
+            // Add more options if you like: minDate, maxDate, etc.
+        });
+    </script>
+}
