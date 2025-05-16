@@ -2,47 +2,87 @@
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
 
-*.db-shm
-*.db-wal
-*.vsidx
-/.vs/KNC/v17/.suo
-/.vs/KNC/v17/DocumentLayout.backup.json
-/.vs/KNC/v17/DocumentLayout.json
-/obj/Debug/KNC.csproj.AssemblyReference.cache
-/App_Data/aspnet-KNC-20250514035116.mdf
-/App_Data/aspnet-KNC-20250514035116_log.ldf
-/.vs/KNC/CopilotIndices/17.14.552.11226/CodeChunks.db
-/bin/KNC.dll
-/bin/KNC.pdb
-/obj/Debug/KNC.dll
-/obj/Debug/KNC.pdb
-*.json
-/obj/Debug/KNC.csproj.CoreCompileInputs.cache
-/obj/Debug/KNC.csproj.FileListAbsolute.txt
-*.resources
-/bin/roslyn/csc.exe
-/bin/roslyn/csc.exe.config
-/bin/roslyn/csc.rsp
-/bin/roslyn/csi.exe
-/obj/Debug/KNC.csproj.GenerateResource.cache
-/obj/Debug/KNC.csproj.Up2Date
-/obj/Debug/KNC.Migrations.init.resources
-/bin/roslyn
-/bin
-*.force
-/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
-/packages/System.Runtime.CompilerServices.Unsafe.4.5.2
-/packages
-/.vs/KNC/CopilotIndices/17.14.552.11226/SemanticSymbols.db
-/.vs/KNC/v17/fileList.bin
-*.db
-obj/Debug/
-.vs/
-.vs/KNC/config/applicationhost.config
-.vs/KNC/config/applicationhost.config
-.vs/ProjectEvaluation/knc.metadata.v9.bin
-.vs/ProjectEvaluation/knc.projects.v9.bin
-.vs/ProjectEvaluation/knc.strings.v9.bin
-obj/KNC.csproj.EntityFrameworkCore.targets
-obj/Debug/.NETFramework,Version=v4.8.AssemblyAttributes.cs
-obj/Debug/DesignTimeResolveAssemblyReferences.cache
+# Build results
+bin/
+obj/
+out/
+
+# User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# VS Code settings
+.vscode/
+
+# Rider settings
+.idea/
+
+# ASP.NET Scaffolding
+ScaffoldingReadMe.txt
+
+# Logs
+*.log
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# NuGet
+*.nupkg
+packages/
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# Entity Framework
+Migrations/
+
+# Publish
+*.Publish.xml
+
+# Others
+*.dbmdl
+*.bak
+*.cache
+*.pdb
+
+# Test results
+TestResults/
+*.trx
+
+# npm
+node_modules/
+
+# Python
+__pycache__/
+*.pyc
+
+# Jupyter
+*.ipynb_checkpoints
+
+# JetBrains Rider
+.idea/
+*.sln.iml
+
+# Local secrets
+secrets.json
+
+# Environment files
+.env
+.env.*
+
+# Coverage
+coverage/
+*.coverage
+*.coveragexml
+
+# ReSharper
+_ReSharper*/
+*.[Rr]e[Ss]harper
+
+# Backup files
+*~
+*.swp
+*.tmp
