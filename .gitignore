@@ -6,6 +6,7 @@
 bin/
 obj/
 out/
+artifacts/
 
 # User-specific files
 *.user
@@ -16,14 +17,21 @@ out/
 # VS Code settings
 .vscode/
 
-# Rider settings
+# Rider/JetBrains settings
 .idea/
+*.sln.iml
+
+# Visual Studio
+.vs/
 
 # ASP.NET Scaffolding
 ScaffoldingReadMe.txt
 
-# Logs
+# Logs and reports
 *.log
+TestResults/
+*.trx
+*.TestResults.xml
 
 # OS generated files
 .DS_Store
@@ -34,26 +42,28 @@ Thumbs.db
 packages/
 project.lock.json
 project.fragment.lock.json
-artifacts/
 
 # Entity Framework
-Migrations/
+*.dbmdl
+*.mdf
+*.ldf
+*.sqlite
+*.db
 
 # Publish
 *.Publish.xml
 
-# Others
-*.dbmdl
+# Cache/backup/temp files
 *.bak
 *.cache
 *.pdb
-
-# Test results
-TestResults/
-*.trx
+*.tmp
+*~
+*.swp
 
 # npm
 node_modules/
+bower_components/
 
 # Python
 __pycache__/
@@ -62,14 +72,8 @@ __pycache__/
 # Jupyter
 *.ipynb_checkpoints
 
-# JetBrains Rider
-.idea/
-*.sln.iml
-
-# Local secrets
+# Local secrets and environment
 secrets.json
-
-# Environment files
 .env
 .env.*
 
@@ -82,7 +86,5 @@ coverage/
 _ReSharper*/
 *.[Rr]e[Ss]harper
 
-# Backup files
-*~
-*.swp
-*.tmp
+# Migration history (optional, keep if you want migrations in git)
+# Migrations/
