@@ -1,8 +1,12 @@
 using KNC.Models;
 using KNC.Services;
 using KNC.ViewModels;
+using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
+using KNC.Helper;
+using Newtonsoft.Json;
 
 namespace KNC.Controllers
 {
@@ -19,13 +23,25 @@ namespace KNC.Controllers
 
         public ActionResult Index()
         {
-            var faculties = _facultyService.GetAll();
+            var cacheKey = "FacultyList";
+            var cached = RedisCacheHelper.Get(cacheKey);
+            List<FacultyViewModel> faculties;
+
+            if (string.IsNullOrEmpty(cached))
+            {
+                faculties = _facultyService.GetAll().ToList();
+                RedisCacheHelper.Set(cacheKey, JsonConvert.SerializeObject(faculties), TimeSpan.FromMinutes(10));
+            }
+            else
+            {
+                faculties = JsonConvert.DeserializeObject<List<FacultyViewModel>>(cached);
+            }
             return View(faculties);
         }
 
         private void PopulateDesignations(FacultyViewModel model)
         {
-            model.Designations = _service.GetAllDesignations()
+            model.Designations = _facultyService.GetAllDesignations()
                 .Where(d => d.IsDeleted != true)
                 .Select(d => new SelectListItem
                 {
@@ -36,7 +52,9 @@ namespace KNC.Controllers
 
         public ActionResult Create()
         {
-            return PartialView("_Create", new FacultyViewModel());
+            var vm = new FacultyViewModel();
+            PopulateDesignations(vm);
+            return PartialView("_Create", vm);
         }
 
         [HttpPost]
@@ -45,16 +63,19 @@ namespace KNC.Controllers
         {
             if (ModelState.IsValid)
             {
-                _service.AddFaculty(vm);
+                _facultyService.AddFaculty(vm);
+                RedisCacheHelper.Remove("FacultyList");
                 return Json(new { success = true });
             }
+            PopulateDesignations(vm);
             return PartialView("_Create", vm);
         }
 
         public ActionResult Edit(int id)
         {
-            var item = _service.GetFacultyById(id);
+            var item = _facultyService.GetFacultyById(id);
             if (item == null) return HttpNotFound();
+            PopulateDesignations(item);
             return PartialView("_Edit", item);
         }
 
@@ -64,22 +85,24 @@ namespace KNC.Controllers
         {
             if (ModelState.IsValid)
             {
-                _service.UpdateFaculty(vm);
+                _facultyService.UpdateFaculty(vm);
+                RedisCacheHelper.Remove("FacultyList");
                 return Json(new { success = true });
             }
+            PopulateDesignations(vm);
             return PartialView("_Edit", vm);
         }
 
         public ActionResult Details(int id)
         {
-            var item = _service.GetFacultyById(id);
+            var item = _facultyService.GetFacultyById(id);
             if (item == null) return HttpNotFound();
             return PartialView("_Details", item);
         }
 
         public ActionResult Delete(int id)
         {
-            var item = _service.GetFacultyById(id);
+            var item = _facultyService.GetFacultyById(id);
             if (item == null) return HttpNotFound();
             return PartialView("_Delete", item);
         }
@@ -88,7 +111,8 @@ namespace KNC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            _service.DeleteFaculty(id);
+            _facultyService.DeleteFaculty(id);
+            RedisCacheHelper.Remove("FacultyList");
             return Json(new { success = true });
         }
     }

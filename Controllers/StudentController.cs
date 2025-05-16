@@ -1,6 +1,8 @@
-﻿using KNC.Models;
+﻿using KNC.Helper;
+using KNC.Models;
 using KNC.Services;
 using KNC.ViewModels;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,7 +21,19 @@ namespace KNC.Controllers
 
         public ActionResult Index()
         {
-            var students = _stService.GetAllStudents(); 
+            var cacheKey = "StudentList";
+            var cached = RedisCacheHelper.Get(cacheKey);
+            List<StudentsViewModel> students;
+
+            if (string.IsNullOrEmpty(cached))
+            {
+                students = _stService.GetAllStudents().ToList();
+                RedisCacheHelper.Set(cacheKey, JsonConvert.SerializeObject(students), TimeSpan.FromMinutes(10));
+            }
+            else
+            {
+                students = JsonConvert.DeserializeObject<List<StudentsViewModel>>(cached);
+            }
             return View(students);
         }
 
@@ -50,6 +64,7 @@ namespace KNC.Controllers
             if (ModelState.IsValid)
             {
                 _stService.AddStudent(stVM);
+                RedisCacheHelper.Remove("StudentList");
                 return Json(new { success = true });
             }
             return PartialView("_Create", stVM);
@@ -69,6 +84,7 @@ namespace KNC.Controllers
             if (ModelState.IsValid)
             {
                 _stService.UpdateStudent(stVM);
+                RedisCacheHelper.Remove("StudentList");
                 return Json(new { success = true });
             }
             return PartialView("_Edit", stVM);
@@ -94,6 +110,7 @@ namespace KNC.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             _stService.DeleteStudent(id);
+            RedisCacheHelper.Remove("StudentList");
             return Json(new { success = true });
         }
     }
