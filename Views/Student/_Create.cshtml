@@ -54,6 +54,12 @@
                             <label class="form-label" for="LinkImage">@Html.DisplayNameFor(m => m.LinkImage)</label>
                             @Html.TextBoxFor(m => m.LinkImage, new { @class = "form-control", id = "LinkImage" })
                         </div>
+
+                        <div class="col-md-6">
+                            @Html.LabelFor(m => m.ProgramID, new { @class = "form-label" })
+                            @Html.DropDownListFor(m => m.ProgramID, Model.Programs, "-- Select Program --", new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.ProgramID)
+                        </div>
                     </div>
                 </div>
 

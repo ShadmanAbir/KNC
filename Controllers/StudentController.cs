@@ -23,6 +23,17 @@ namespace KNC.Controllers
             return View(students);
         }
 
+        private void PopulatePrograms(StudentViewModel model)
+        {
+            model.Programs = _context.Programs
+                .Where(p => p.IsDeleted != true)
+                .Select(p => new SelectListItem
+                {
+                    Value = p.ProgramID.ToString(),
+                    Text = p.ProgramName
+                }).ToList();
+        }
+
         public ActionResult Create()
         {
 
