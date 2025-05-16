@@ -49,6 +49,12 @@
                             <li>
                                 <a class="dropdown-item btnDelete text-danger" href="javascript:void(0);" data-id="@student.StudentID">Delete</a>
                             </li>
+                            <li>
+                                <a class="dropdown-item btnCreateLogin" href="javascript:void(0);" data-id="@student.StudentID" data-email="@student.Email">Create Login Credential</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item btnResetPassword text-warning" href="javascript:void(0);" data-id="@student.StudentID" data-email="@student.Email">Reset Password</a>
+                            </li>
                         </ul>
                     </div>
                 </td>
@@ -75,6 +81,15 @@
             });
             $('#studentsTable').on('click', '.btnDelete', function () {
                 loadModal('@Url.Action("Delete/", new { id = "" })' + $(this).data('id'));
+            });
+            $('#studentsTable').on('click', '.btnCreateLogin', function () {
+                var email = $(this).data('email');
+                var id = $(this).data('id');
+                loadModal('@Url.Action("CreateLoginCredential", "Account")' + '?email=' + encodeURIComponent(email) + '&userType=Student&userId=' + id);
+            });
+            $('#studentsTable').on('click', '.btnResetPassword', function () {
+                var email = $(this).data('email');
+                loadModal('@Url.Action("ResetPassword", "Account")' + '?email=' + encodeURIComponent(email));
             });
         });
 
