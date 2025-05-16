@@ -1,8 +1,11 @@
+using AutoMapper;
+using KNC.Helper;
 using KNC.Models;
 using KNC.Services;
 using System;
 
 using Unity;
+using Unity.Injection;
 
 namespace KNC
 {
@@ -44,6 +47,22 @@ namespace KNC
 
             // TODO: Register your type's mappings here.
             // container.RegisterType<IProductRepository, ProductRepository>();
+
+            var mapperConfig = new MapperConfiguration(cfg =>
+            {
+                cfg.AddProfile<AutoMapperProfile>();
+                // Add other profiles here if needed
+            });
+
+            // Register IMapper in Unity, injecting the MapperConfiguration
+            container.RegisterInstance(mapperConfig); // singleton MapperConfiguration
+
+            // Register IMapper using factory method
+            container.RegisterType<IMapper>(new InjectionFactory(c =>
+            {
+                var config = c.Resolve<MapperConfiguration>();
+                return config.CreateMapper();
+            }));
 
             container.RegisterType<ApplicationDbContext>();
             container.RegisterType<StudentService>();

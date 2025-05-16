@@ -1,0 +1,67 @@
+@model KNC.ViewModels.StudentsViewModel
+
+<div class="modal fade" id="modalForm" tabindex="-1" aria-labelledby="modalFormLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+
+            @using (Html.BeginForm("Create", "Student", FormMethod.Post, new { @class = "form" }))
+            {
+                <div class="modal-header">
+                    <h4 class="modal-title" id="modalFormLabel">Create Student</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body">
+                    @Html.HiddenFor(m => m.ProgramID)
+
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label class="form-label" for="FirstName">@Html.DisplayNameFor(m => m.FirstName)</label>
+                            @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control", id = "FirstName" })
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="form-label" for="LastName">@Html.DisplayNameFor(m => m.LastName)</label>
+                            @Html.TextBoxFor(m => m.LastName, new { @class = "form-control", id = "LastName" })
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="form-label" for="Email">@Html.DisplayNameFor(m => m.Email)</label>
+                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control", id = "Email", type = "email" })
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="form-label" for="Phone">@Html.DisplayNameFor(m => m.Phone)</label>
+                            @Html.TextBoxFor(m => m.Phone, new { @class = "form-control", id = "Phone" })
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="form-label" for="AdmissionDate">@Html.DisplayNameFor(m => m.AdmissionDate)</label>
+                            @Html.TextBoxFor(m => m.AdmissionDate, new { @class = "form-control", id = "AdmissionDate", type = "date" })
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="form-label" for="PermanentAddress">@Html.DisplayNameFor(m => m.PermanentAddress)</label>
+                            @Html.TextBoxFor(m => m.PermanentAddress, new { @class = "form-control", id = "PermanentAddress" })
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="form-label" for="CurrentAddress">@Html.DisplayNameFor(m => m.CurrentAddress)</label>
+                            @Html.TextBoxFor(m => m.CurrentAddress, new { @class = "form-control", id = "CurrentAddress" })
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="form-label" for="LinkImage">@Html.DisplayNameFor(m => m.LinkImage)</label>
+                            @Html.TextBoxFor(m => m.LinkImage, new { @class = "form-control", id = "LinkImage" })
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-success">Save</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                </div>
+            }
+        </div>
+    </div>
+</div>

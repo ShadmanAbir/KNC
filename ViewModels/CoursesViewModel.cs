@@ -13,6 +13,6 @@ namespace KNC.ViewModels
 /*        public int ProgramID { get; set; }
 
         public EducationPrograms Programs { get; set; }*/
-        public ICollection<ProgramCourse> ProgramCourses { get; set; } = new List<ProgramCourse>();
+        //public ICollection<ProgramCourse> ProgramCourses { get; set; } = new List<ProgramCourse>();
     }
 }
