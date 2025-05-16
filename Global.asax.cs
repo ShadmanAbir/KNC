@@ -21,5 +21,10 @@ namespace KNC
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
+        protected void Application_Error()
+        {
+            var ex = Server.GetLastError();
+            KNC.Helpers.ErrorHandler.Log(ex, HttpContext.Current?.User?.Identity?.Name);
+        }
     }
 }

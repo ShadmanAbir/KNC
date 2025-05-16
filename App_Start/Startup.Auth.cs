@@ -7,6 +7,7 @@ using Microsoft.Owin.Security.Google;
 using Owin;
 using KNC.Models;
 
+[assembly: OwinStartup(typeof(KNC.Startup))]
 namespace KNC
 {
     public partial class Startup
