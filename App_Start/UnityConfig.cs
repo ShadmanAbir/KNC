@@ -1,4 +1,5 @@
 using KNC.Models;
+using KNC.Services;
 using System;
 
 using Unity;
@@ -45,6 +46,7 @@ namespace KNC
             // container.RegisterType<IProductRepository, ProductRepository>();
 
             container.RegisterType<ApplicationDbContext>();
+            container.RegisterType<StudentService>();
         }
     }
 }
