@@ -1,6 +1,7 @@
 using KNC.Services;
 using KNC.ViewModels;
 using System;
+using System.Linq;
 using System.Web.Mvc;
 
 namespace KNC.Controllers
@@ -17,6 +18,17 @@ namespace KNC.Controllers
         {
             var items = _service.GetAllFaculties();
             return View(items);
+        }
+
+        private void PopulateDesignations(FacultyViewModel model)
+        {
+            model.Designations = _service.GetAllDesignations()
+                .Where(d => d.IsDeleted != true)
+                .Select(d => new SelectListItem
+                {
+                    Value = d.DesignationID.ToString(),
+                    Text = d.Title
+                }).ToList();
         }
 
         public ActionResult Create()
