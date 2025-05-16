@@ -1,4 +1,3 @@
-// filepath: /workspaces/KNC/Views/Courses/_Edit.cshtml
 @model KNC.ViewModels.CoursesViewModel
 
 <div class="modal fade" id="modalForm" tabindex="-1" aria-labelledby="modalFormLabel" aria-hidden="true">
