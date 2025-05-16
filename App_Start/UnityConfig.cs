@@ -2,8 +2,8 @@ using AutoMapper;
 using KNC.Helper;
 using KNC.Models;
 using KNC.Services;
+using KNC.Repositories;
 using System;
-
 using Unity;
 using Unity.Injection;
 
@@ -64,8 +64,23 @@ namespace KNC
                 return config.CreateMapper();
             }));
 
+            // Register DbContext
             container.RegisterType<ApplicationDbContext>();
+
+            // Register services
             container.RegisterType<StudentService>();
+            container.RegisterType<FacultyService>();
+            container.RegisterType<ProgramService>();
+            container.RegisterType<ProgramCourseService>();
+            container.RegisterType<RoutineService>();
+            container.RegisterType<DesignationService>();
+            container.RegisterType<DropDownService>();
+            container.RegisterType<EducationProgramsService>();
+            container.RegisterType<StudentEnrollmentService>();
+            container.RegisterType<StudentFeeService>();
+            container.RegisterType<MonthlyFeeService>();
+            container.RegisterType<CourseTeacherAssignmentService>();
+            container.RegisterType<CourseService>();
         }
     }
 }

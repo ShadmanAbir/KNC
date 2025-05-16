@@ -13,7 +13,18 @@ namespace KNC.Helper
         public AutoMapperProfile()
         {
             CreateMap<Student, StudentsViewModel>().ReverseMap();
-
+            CreateMap<Faculty, FacultyViewModel>().ReverseMap();
+            CreateMap<Program, ProgramViewModel>().ReverseMap();
+            CreateMap<ProgramCourse, ProgramCourseViewModel>().ReverseMap();
+            CreateMap<Routine, RoutineViewModel>().ReverseMap();
+            CreateMap<Designation, DesignationViewModel>().ReverseMap();
+            CreateMap<DropDown, DropDownViewModel>().ReverseMap();
+            CreateMap<EducationPrograms, EducationProgramsViewModel>().ReverseMap();
+            CreateMap<StudentEnrollment, StudentEnrollmentViewModel>().ReverseMap();
+            CreateMap<StudentFee, StudentFeeViewModel>().ReverseMap();
+            CreateMap<MonthlyFee, MonthlyFeeViewModel>().ReverseMap();
+            CreateMap<CourseTeacherAssignment, CourseTeacherAssignmentViewModel>().ReverseMap();
+            CreateMap<Course, CoursesViewModel>().ReverseMap();
         }
     }
 }
