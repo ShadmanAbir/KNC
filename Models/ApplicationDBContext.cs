@@ -70,7 +70,7 @@ namespace KNC.Models
             modelBuilder.Entity<StudentFee>()
                 .HasRequired(f => f.Student)
                 .WithMany(s => s.StudentFees)
-                .HasForeignKey(f => f.StudentId);
+                .HasForeignKey(f => f.StudentID);
 
             // Student - Marks (many-to-many via StudentCourseMark)
             modelBuilder.Entity<Mark>()
@@ -158,7 +158,7 @@ namespace KNC.Models
         public DbSet<StudentFee> StudentFees { get; set; }
 
         // Roles & Modules (RBAC)
-        public DbSet<Module> Modules { get; set; }
+        //public DbSet<Module> Modules { get; set; }
         //public DbSet<RoleModule> RoleModules { get; set; }
 
         // Supporting Features

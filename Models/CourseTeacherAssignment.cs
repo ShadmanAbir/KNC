@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -7,6 +8,7 @@ namespace KNC.Models
 {
     public class CourseTeacherAssignment : BaseEntity
     {
+        [Key]
         public int AssignmentID { get; set; }
         public int ProgramCourseID { get; set; }
         public int FacultyID { get; set; }
