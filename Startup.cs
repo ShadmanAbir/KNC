@@ -8,7 +8,11 @@ namespace KNC
     {
         public void Configuration(IAppBuilder app)
         {
-            app.MapSignalR();
+            GlobalConfiguration.Configuration
+                .UseSqlServerStorage("DefaultConnection"); // Use your connection string name
+
+            app.UseHangfireDashboard("/hangfire");
+            app.UseHangfireServer();
         }
     }
 }
