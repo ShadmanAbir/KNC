@@ -218,18 +218,23 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDBContext.cs" />
     <Compile Include="Models\BaseEntity.cs" />
-    <Compile Include="Models\Certificates.cs" />
     <Compile Include="Models\Courses.cs" />
+    <Compile Include="Models\CourseTeacherAssignment.cs" />
     <Compile Include="Models\Designation.cs" />
     <Compile Include="Models\DropDown.cs" />
     <Compile Include="Models\EducationPrograms.cs" />
     <Compile Include="Models\ErrorViewModel.cs" />
     <Compile Include="Models\Faculty.cs" />
+    <Compile Include="Models\FeeStructure.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\PaymentInfo.cs" />
-    <Compile Include="Models\Sessions.cs" />
+    <Compile Include="Models\Mark.cs" />
+    <Compile Include="Models\MonthlyFee.cs" />
+    <Compile Include="Models\ProgramCourse.cs" />
+    <Compile Include="Models\Routine.cs" />
     <Compile Include="Models\Student.cs" />
+    <Compile Include="Models\StudentEnrollment.cs" />
+    <Compile Include="Models\StudentFee.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>

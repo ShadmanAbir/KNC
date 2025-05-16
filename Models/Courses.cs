@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace KNC.Models
 {
@@ -6,9 +7,10 @@ namespace KNC.Models
     {
         [Key]
         public int CourseID { get; set; }
-        public string CourseName { get; set; }
+        public string CourseCode { get; set; } 
+        public string CourseName { get; set; } 
         public string Description { get; set; }
-        public decimal Fee { get; set; }
-        public string Duration { get; set; }
+
+        public ICollection<ProgramCourse> ProgramCourses { get; set; } = new List<ProgramCourse>();
     }
 }

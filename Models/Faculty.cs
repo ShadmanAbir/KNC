@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Web.Routing;
 
 namespace KNC.Models
 {
@@ -15,14 +17,13 @@ namespace KNC.Models
         public string Phone { get; set; }
         public string PermanentAddress { get; set; }
         public string CurrentAddress { get; set; }
-        public int Designation { get; set; }
+        public int DesignationID { get; set; }
         public DateTime JoiningDate { get; set; }
         public string EducationalQualification { get; set; }
-        public int TeachingExperience { get; set; }
-        public int ClinicalExperience { get; set; }
 
-        public int LocalPublication { get; set; }
-        public int InternationalPublication { get; set; }
+        public Courses Course { get; set; }
+        public ICollection<Routine> Routines { get; set; } = new List<Routine>();
+        public ICollection<CourseTeacherAssignment> Assignments { get; set; } = new List<CourseTeacherAssignment>();
 
     }
 }

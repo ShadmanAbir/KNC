@@ -20,14 +20,14 @@
             <div class="col-md-6">
                 <div class="input-group input-group-outline">
                     @Html.LabelFor(model => model.FirstName, new { @class = "form-label" })
-                    @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control is-filled is-focused" } })
                     @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="input-group input-group-outline">
                     @Html.LabelFor(model => model.LastName, new { @class = "form-label" })
-                    @Html.TextBoxFor(model => model.LastName, new { @class = "form-control" })
+                    @Html.TextBoxFor(model => model.LastName, new { @class = "form-control is-filled" })
                     @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -37,14 +37,14 @@
             <div class="col-md-6">
                 <div class="input-group input-group-outline">
                     @Html.LabelFor(model => model.Email, new { @class = "form-label" })
-                    @Html.TextBoxFor(model => model.Email, new { @class = "form-control" })
+                    @Html.TextBoxFor(model => model.Email, new { @class = "form-control is-filled" })
                     @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="input-group input-group-outline">
                     @Html.LabelFor(model => model.Phone, new { @class = "form-label" })
-                    @Html.TextBoxFor(model => model.Phone, new { @class = "form-control" })
+                    @Html.TextBoxFor(model => model.Phone, new { @class = "form-control is-filled" })
                     @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -54,14 +54,14 @@
             <div class="col-md-6">
                 <div class="input-group input-group-outline">
                     @Html.LabelFor(model => model.CurrentAddress, new { @class = "form-label" })
-                    @Html.TextBoxFor(model => model.CurrentAddress, new { @class = "form-control" })
+                    @Html.TextBoxFor(model => model.CurrentAddress, new { @class = "form-control is-filled" })
                     @Html.ValidationMessageFor(model => model.CurrentAddress, "", new { @class = "text-danger" })
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="input-group input-group-outline">
                     @Html.LabelFor(model => model.PermanentAddress, new { @class = "form-label" })
-                    @Html.TextBoxFor(model => model.PermanentAddress, new { @class = "form-control" })
+                    @Html.TextBoxFor(model => model.PermanentAddress, new { @class = "form-control is-filled" })
                     @Html.ValidationMessageFor(model => model.PermanentAddress, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -78,7 +78,7 @@
             <div class="col-md-6">
                 <div class="input-group input-group-outline">
                     @Html.LabelFor(model => model.Program, new { @class = "form-label" })
-                    @Html.DropDownListFor(model => model.Program, ViewBag.ProgramList as SelectList, "", new { @class = "form-select" })
+                    @Html.DropDownListFor(model => model.Program, ViewBag.ProgramList as SelectList, "", new { @class = "form-select is-filled" })
                     @Html.ValidationMessageFor(model => model.Program, "", new { @class = "text-danger" })
                 </div>
             </div>
