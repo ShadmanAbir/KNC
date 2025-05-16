@@ -26,15 +26,6 @@ namespace KNC
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
 
-            bundles.Add(new StyleBundle("~/Content/material").Include(
-          "~/Content/material-dashboard/css/material-dashboard.css"));
-
-            bundles.Add(new ScriptBundle("~/bundles/material").Include(
-                      "~/Content/material-dashboard/js/core/jquery.min.js",
-                      "~/Content/material-dashboard/js/core/popper.min.js",
-                      "~/Content/material-dashboard/js/core/bootstrap-material-design.min.js",
-                      "~/Content/material-dashboard/js/material-dashboard.js"));
-
         }
     }
 }
