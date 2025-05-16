@@ -6,10 +6,84 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-
+    <style>
+        body {
+            padding-left: 220px;
+        }
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 210px;
+            background: #343a40;
+            color: #fff;
+            padding-top: 60px;
+            z-index: 1000;
+        }
+        .sidebar .sidebar-header {
+            padding: 20px;
+            background: #23272b;
+            font-size: 1.3em;
+            text-align: center;
+            font-weight: bold;
+        }
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+        .sidebar ul li {
+            padding: 12px 20px;
+        }
+        .sidebar ul li a {
+            color: #fff;
+            text-decoration: none;
+            display: block;
+            border-radius: 4px;
+            transition: background 0.2s;
+        }
+        .sidebar ul li a:hover, .sidebar ul li.active a {
+            background: #495057;
+        }
+        .body-content {
+            margin-left: 0;
+        }
+        @media (max-width: 768px) {
+            body {
+                padding-left: 0;
+            }
+            .sidebar {
+                position: static;
+                width: 100%;
+                height: auto;
+                padding-top: 0;
+            }
+        }
+    </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
+    <div class="sidebar">
+        <div class="sidebar-header">
+            KNC Modules
+        </div>
+        <ul>
+            <li>@Html.ActionLink("Dashboard", "Index", "Home")</li>
+            <li>@Html.ActionLink("Students", "Index", "Student")</li>
+            <li>@Html.ActionLink("Faculty", "Index", "Faculty")</li>
+            <li>@Html.ActionLink("Programs", "Index", "Program")</li>
+            <li>@Html.ActionLink("Courses", "Index", "Courses")</li>
+            <li>@Html.ActionLink("Program Courses", "Index", "ProgramCourse")</li>
+            <li>@Html.ActionLink("Designations", "Index", "Designation")</li>
+            <li>@Html.ActionLink("DropDowns", "Index", "DropDown")</li>
+            <li>@Html.ActionLink("Education Programs", "Index", "EducationPrograms")</li>
+            <li>@Html.ActionLink("Student Enrollments", "Index", "StudentEnrollment")</li>
+            <li>@Html.ActionLink("Student Fees", "Index", "StudentFee")</li>
+            <li>@Html.ActionLink("Monthly Fees", "Index", "MonthlyFee")</li>
+            <li>@Html.ActionLink("Course Teacher Assignments", "Index", "CourseTeacherAssignment")</li>
+            <li>@Html.ActionLink("Routines", "Index", "Routine")</li>
+        </ul>
+    </div>
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark" style="margin-left:210px;">
         <div class="container">
             @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Toggle navigation" aria-controls="navbarSupportedContent"
