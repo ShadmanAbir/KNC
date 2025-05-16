@@ -1,17 +1,23 @@
-@model KNC.ViewModels.StudentsViewModel
-<div class="modal fade" id="deleteModal" tabindex="-1">
-    <div class="modal-dialog"><div class="modal-content">
-        @using (Html.BeginForm("DeleteConfirmed", "Student", FormMethod.Post))
-        {
-            @Html.HiddenFor(m => m.StudentID)
-            <div class="modal-header"><h4>Confirm Delete</h4></div>
-            <div class="modal-body">
-                <p>Are you sure you want to delete <strong>@Model.FirstName @Model.LastName</strong>?</p>
-            </div>
-            <div class="modal-footer">
-                <button type="submit" class="btn btn-danger">Yes</button>
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
-            </div>
-        }
-    </div></div>
+@model KNC.ViewModels.FacultyViewModel
+
+<div class="modal fade" id="modalForm" tabindex="-1" aria-labelledby="modalFormLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            @using (Html.BeginForm("DeleteConfirmed", "Faculty", FormMethod.Post))
+            {
+                <div class="modal-header">
+                    <h4 class="modal-title" id="modalFormLabel">Delete Faculty</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Are you sure you want to delete <strong>@Model.FacultyName</strong>?</p>
+                    @Html.HiddenFor(m => m.FacultyID)
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                </div>
+            }
+        </div>
+    </div>
 </div>
