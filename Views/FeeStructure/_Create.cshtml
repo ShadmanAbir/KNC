@@ -1,0 +1,40 @@
+@model KNC.ViewModels.FeeStructureViewModel
+
+<div class="modal fade" id="modalForm" tabindex="-1" aria-labelledby="modalFormLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            @using (Html.BeginForm("Create", "FeeStructure", FormMethod.Post, new { @class = "form" }))
+            {
+                <div class="modal-header">
+                    <h4 class="modal-title" id="modalFormLabel">Create Fee Structure</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    @Html.HiddenFor(m => m.FeeStructureID)
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            @Html.LabelFor(m => m.ProgramID, new { @class = "form-label" })
+                            @Html.TextBoxFor(m => m.ProgramID, new { @class = "form-control" })
+                        </div>
+                        <div class="col-md-6">
+                            @Html.LabelFor(m => m.Amount, new { @class = "form-label" })
+                            @Html.TextBoxFor(m => m.Amount, new { @class = "form-control" })
+                        </div>
+                        <div class="col-md-6">
+                            @Html.LabelFor(m => m.Year, new { @class = "form-label" })
+                            @Html.TextBoxFor(m => m.Year, new { @class = "form-control" })
+                        </div>
+                        <div class="col-md-12">
+                            @Html.LabelFor(m => m.Description, new { @class = "form-label" })
+                            @Html.TextAreaFor(m => m.Description, new { @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-success">Save</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                </div>
+            }
+        </div>
+    </div>
+</div>
