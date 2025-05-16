@@ -1,0 +1,57 @@
+@model List<KNC.ViewModels.StudentsViewModel>
+
+<h2>Student List</h2>
+<button class="btn btn-success" id="btnAdd">Add New Student</button>
+
+<div id="modal-placeholder"></div>
+
+<table class="table table-bordered mt-3">
+    <thead>
+        <tr>
+            <th>Full Name</th>
+            <th>Program</th>
+            <th>Year</th>
+            <th>Email</th>
+            <th>Contact Number</th>
+            <th>Admission Date</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var student in Model)
+        {
+            <tr>
+                <td>@student.FirstName @student.LastName</td>
+                <td>Program</td>
+                <td>Year</td>
+                <td>@student.Email</td>
+                <td>@student.Phone</td>
+                <td>@student.AdmissionDate.ToString("yyyy-MM-dd")</td>
+@*                <td>
+                    <img src="@student.LinkImage" alt="Student Image" style="height: 50px;" />
+                </td>*@
+                <td>
+                    <button class="btn btn-primary btnEdit" data-id="@student.StudentID">Edit</button>
+                    <button class="btn btn-info btnDetails" data-id="@student.StudentID">Details</button>
+                    <button class="btn btn-danger btnDelete" data-id="@student.StudentID">Delete</button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@section scripts {
+    <script>
+        function loadModal(url) {
+            $.get(url, function(data) {
+                $('#modal-placeholder').html(data);
+                $('#modal-placeholder').find('.modal').modal('show');
+            });
+        }
+
+        $('#btnAdd').click(() => loadModal('@Url.Action("Create")'));
+        $('.btnEdit').click(function () { loadModal('@Url.Action("Edit/", new { id = "" })' + $(this).data('id')); });
+        $('.btnDetails').click(function () { loadModal('@Url.Action("Details/", new { id = "" })' + $(this).data('id')); });
+        $('.btnDelete').click(function () { loadModal('@Url.Action("Delete/", new { id = "" })' + $(this).data('id')); });
+    </script>
+}

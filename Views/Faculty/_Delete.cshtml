@@ -1,0 +1,17 @@
+@model KNC.ViewModels.StudentsViewModel
+<div class="modal fade" id="deleteModal" tabindex="-1">
+    <div class="modal-dialog"><div class="modal-content">
+        @using (Html.BeginForm("DeleteConfirmed", "Student", FormMethod.Post))
+        {
+            @Html.HiddenFor(m => m.StudentID)
+            <div class="modal-header"><h4>Confirm Delete</h4></div>
+            <div class="modal-body">
+                <p>Are you sure you want to delete <strong>@Model.FirstName @Model.LastName</strong>?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-danger">Yes</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+            </div>
+        }
+    </div></div>
+</div>

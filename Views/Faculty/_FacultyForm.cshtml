@@ -1,0 +1,44 @@
+﻿@model KNC.ViewModels.F
+
+<div class="row g-3">
+    <div class="col-md-6">
+        @Html.LabelFor(m => m.FirstName, new { @class = "form-label" })
+        @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control", id = "FirstName" })
+    </div>
+    <div class="col-md-6">
+        @Html.LabelFor(m => m.LastName, new { @class = "form-label" })
+        @Html.TextBoxFor(m => m.LastName, new { @class = "form-control", id = "LastName" })
+    </div>
+
+    <div class="col-md-6">
+        @Html.LabelFor(m => m.Email, new { @class = "form-label" })
+        @Html.TextBoxFor(m => m.Email, new { @class = "form-control", id = "Email", type = "email" })
+    </div>
+    <div class="col-md-6">
+        @Html.LabelFor(m => m.Phone, new { @class = "form-label" })
+        @Html.TextBoxFor(m => m.Phone, new { @class = "form-control", id = "Phone" })
+    </div>
+
+    <div class="col-md-6">
+        @Html.LabelFor(m => m.PermanentAddress, new { @class = "form-label" })
+        @Html.TextBoxFor(m => m.PermanentAddress, new { @class = "form-control", id = "PermanentAddress" })
+    </div>
+    <div class="col-md-6">
+        @Html.LabelFor(m => m.CurrentAddress, new { @class = "form-label" })
+        @Html.TextBoxFor(m => m.CurrentAddress, new { @class = "form-control", id = "CurrentAddress" })
+    </div>
+
+    <div class="col-md-6">
+        @Html.LabelFor(m => m.DesignationID, new { @class = "form-label" })
+        @Html.TextBoxFor(m => m.DesignationID, new { @class = "form-control", id = "DesignationID", type = "number" })
+    </div>
+    <div class="col-md-6">
+        @Html.LabelFor(m => m.JoiningDate, new { @class = "form-label" })
+        @Html.TextBoxFor(m => m.JoiningDate, new { @class = "form-control", id = "JoiningDate", type = "date" })
+    </div>
+
+    <div class="col-12">
+        @Html.LabelFor(m => m.EducationalQualification, new { @class = "form-label" })
+        @Html.TextAreaFor(m => m.EducationalQualification, new { @class = "form-control", rows = 3, id = "EducationalQualification" })
+    </div>
+</div>
