@@ -67,7 +67,7 @@
             KNC Modules
         </div>
         <ul>
-            <li>@Html.ActionLink("Dashboard", "Index", "Home")</li>
+0            <li>@Html.ActionLink("Dashboard", "Index", "Dashboard")</li>
             <li>@Html.ActionLink("Students", "Index", "Student")</li>
             <li>@Html.ActionLink("Faculty", "Index", "Faculty")</li>
             <li>@Html.ActionLink("Programs", "Index", "Program")</li>
@@ -82,24 +82,18 @@
             <li>@Html.ActionLink("Course Teacher Assignments", "Index", "CourseTeacherAssignment")</li>
             <li>@Html.ActionLink("Routines", "Index", "Routine")</li>
         </ul>
-    </div>
-    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark" style="margin-left:210px;">
-        <div class="container">
-            @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Toggle navigation" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
-                <ul class="navbar-nav flex-grow-1">
-                    <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                    <li>@Html.ActionLink("About", "About", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                </ul>
-                @Html.Partial("_LoginPartial")
-            </div>
+        <div style="position:absolute;bottom:20px;width:100%;text-align:center;">
+            @{
+                var userName = User.Identity.IsAuthenticated ? User.Identity.Name : null;
+            }
+            @if (!string.IsNullOrEmpty(userName))
+            {
+                <span class="badge bg-info text-dark" style="font-size:1em;">
+                    <i class="bi bi-person"></i> @userName
+                </span>
+            }
         </div>
-    </nav>
+    </div>
     <div class="container body-content">
         @RenderBody()
         <hr />
