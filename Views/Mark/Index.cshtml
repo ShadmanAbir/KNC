@@ -1,0 +1,47 @@
+@model IEnumerable<KNC.ViewModels.MarkViewModel>
+
+@{
+    ViewBag.Title = "Marks";
+}
+
+<h2>Marks</h2>
+
+<p>
+    <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalForm" onclick="showCreateModal()">Create New</button>
+</p>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Student ID</th>
+            <th>Program Course ID</th>
+            <th>Exam Name</th>
+            <th>Marks Obtained</th>
+            <th>Total Marks</th>
+            <th>Grade</th>
+            <th>Exam Date</th>
+            <th>Remarks</th>
+            <th style="width:150px"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.StudentID</td>
+                <td>@item.ProgramCourseID</td>
+                <td>@item.ExamName</td>
+                <td>@item.MarksObtained</td>
+                <td>@item.TotalMarks</td>
+                <td>@item.Grade</td>
+                <td>@item.ExamDate.ToShortDateString()</td>
+                <td>@item.Remarks</td>
+                <td>
+                    <button class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#modalForm" onclick="showDetailsModal(@item.MarkID)">Details</button>
+                    <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#modalForm" onclick="showEditModal(@item.MarkID)">Edit</button>
+                    <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#modalForm" onclick="showDeleteModal(@item.MarkID)">Delete</button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

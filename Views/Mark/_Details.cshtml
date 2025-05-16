@@ -1,0 +1,35 @@
+@model KNC.ViewModels.MarkViewModel
+
+<div class="modal fade" id="modalForm" tabindex="-1" aria-labelledby="modalFormLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="modalFormLabel">Mark Details</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <dl class="row">
+                    <dt class="col-sm-4">Student ID</dt>
+                    <dd class="col-sm-8">@Model.StudentID</dd>
+                    <dt class="col-sm-4">Program Course ID</dt>
+                    <dd class="col-sm-8">@Model.ProgramCourseID</dd>
+                    <dt class="col-sm-4">Exam Name</dt>
+                    <dd class="col-sm-8">@Model.ExamName</dd>
+                    <dt class="col-sm-4">Marks Obtained</dt>
+                    <dd class="col-sm-8">@Model.MarksObtained</dd>
+                    <dt class="col-sm-4">Total Marks</dt>
+                    <dd class="col-sm-8">@Model.TotalMarks</dd>
+                    <dt class="col-sm-4">Grade</dt>
+                    <dd class="col-sm-8">@Model.Grade</dd>
+                    <dt class="col-sm-4">Exam Date</dt>
+                    <dd class="col-sm-8">@Model.ExamDate.ToShortDateString()</dd>
+                    <dt class="col-sm-4">Remarks</dt>
+                    <dd class="col-sm-8">@Model.Remarks</dd>
+                </dl>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
