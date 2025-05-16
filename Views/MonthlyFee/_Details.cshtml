@@ -1,0 +1,29 @@
+@model KNC.ViewModels.MonthlyFeeViewModel
+
+<div class="modal fade" id="modalForm" tabindex="-1" aria-labelledby="modalFormLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="modalFormLabel">Monthly Fee Details</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <dl class="row">
+                    <dt class="col-sm-4">Student ID</dt>
+                    <dd class="col-sm-8">@Model.StudentID</dd>
+                    <dt class="col-sm-4">Month</dt>
+                    <dd class="col-sm-8">@Model.Month</dd>
+                    <dt class="col-sm-4">Year</dt>
+                    <dd class="col-sm-8">@Model.Year</dd>
+                    <dt class="col-sm-4">Amount</dt>
+                    <dd class="col-sm-8">@Model.Amount</dd>
+                    <dt class="col-sm-4">Remarks</dt>
+                    <dd class="col-sm-8">@Model.Remarks</dd>
+                </dl>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

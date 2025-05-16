@@ -1,0 +1,41 @@
+@model IEnumerable<KNC.ViewModels.MonthlyFeeViewModel>
+
+@{
+    ViewBag.Title = "Monthly Fees";
+}
+
+<h2>Monthly Fees</h2>
+
+<p>
+    <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalForm" onclick="showCreateModal()">Create New</button>
+</p>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Student ID</th>
+            <th>Month</th>
+            <th>Year</th>
+            <th>Amount</th>
+            <th>Remarks</th>
+            <th style="width:150px"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.StudentID</td>
+                <td>@item.Month</td>
+                <td>@item.Year</td>
+                <td>@item.Amount</td>
+                <td>@item.Remarks</td>
+                <td>
+                    <button class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#modalForm" onclick="showDetailsModal(@item.MonthlyFeeID)">Details</button>
+                    <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#modalForm" onclick="showEditModal(@item.MonthlyFeeID)">Edit</button>
+                    <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#modalForm" onclick="showDeleteModal(@item.MonthlyFeeID)">Delete</button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
