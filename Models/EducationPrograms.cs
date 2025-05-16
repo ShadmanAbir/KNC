@@ -14,5 +14,6 @@ namespace KNC.Models
         public ICollection<ProgramCourse> ProgramCourses { get; set; } = new List<ProgramCourse>();
         public ICollection<Student> Students { get; set; } = new List<Student>();
         public ICollection<Routine> Routines { get; set; } = new List<Routine>();
+        public ICollection<FeeStructure> FeeStructures { get; set; } = new List<FeeStructure>();
     }
 }

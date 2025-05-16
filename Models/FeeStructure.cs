@@ -12,5 +12,7 @@ namespace KNC.Models
         public string FeeType { get; set; } = null; // Registration, Dorm, etc.
         public decimal Amount { get; set; }
         public string Frequency { get; set; }
+
+        public EducationPrograms Programs { get; set; }
     }
 }

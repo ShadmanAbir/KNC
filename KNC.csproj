@@ -189,16 +189,8 @@
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="App_Start\UnityMvcActivator.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\CertificatesController.cs" />
-    <Compile Include="Controllers\CoursesController.cs" />
-    <Compile Include="Controllers\DesignationsController.cs" />
-    <Compile Include="Controllers\EducationProgramsController.cs" />
-    <Compile Include="Controllers\FacultiesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\PaymentInfoesController.cs" />
-    <Compile Include="Controllers\SessionsController.cs" />
-    <Compile Include="Controllers\StudentsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -286,9 +278,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
     <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
@@ -309,46 +298,6 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Students\Create.cshtml" />
-    <Content Include="Views\Students\Delete.cshtml" />
-    <Content Include="Views\Students\Details.cshtml" />
-    <Content Include="Views\Students\Edit.cshtml" />
-    <Content Include="Views\Students\Index.cshtml" />
-    <Content Include="Views\Designations\Create.cshtml" />
-    <Content Include="Views\Designations\Delete.cshtml" />
-    <Content Include="Views\Designations\Details.cshtml" />
-    <Content Include="Views\Designations\Edit.cshtml" />
-    <Content Include="Views\Designations\Index.cshtml" />
-    <Content Include="Views\EducationPrograms\Create.cshtml" />
-    <Content Include="Views\EducationPrograms\Delete.cshtml" />
-    <Content Include="Views\EducationPrograms\Details.cshtml" />
-    <Content Include="Views\EducationPrograms\Edit.cshtml" />
-    <Content Include="Views\EducationPrograms\Index.cshtml" />
-    <Content Include="Views\Certificates\Create.cshtml" />
-    <Content Include="Views\Certificates\Delete.cshtml" />
-    <Content Include="Views\Certificates\Details.cshtml" />
-    <Content Include="Views\Certificates\Edit.cshtml" />
-    <Content Include="Views\Certificates\Index.cshtml" />
-    <Content Include="Views\Courses\Create.cshtml" />
-    <Content Include="Views\Courses\Delete.cshtml" />
-    <Content Include="Views\Courses\Details.cshtml" />
-    <Content Include="Views\Courses\Edit.cshtml" />
-    <Content Include="Views\Courses\Index.cshtml" />
-    <Content Include="Views\PaymentInfoes\Create.cshtml" />
-    <Content Include="Views\PaymentInfoes\Delete.cshtml" />
-    <Content Include="Views\PaymentInfoes\Details.cshtml" />
-    <Content Include="Views\PaymentInfoes\Edit.cshtml" />
-    <Content Include="Views\PaymentInfoes\Index.cshtml" />
-    <Content Include="Views\Faculties\Create.cshtml" />
-    <Content Include="Views\Faculties\Delete.cshtml" />
-    <Content Include="Views\Faculties\Details.cshtml" />
-    <Content Include="Views\Faculties\Edit.cshtml" />
-    <Content Include="Views\Faculties\Index.cshtml" />
-    <Content Include="Views\Sessions\Create.cshtml" />
-    <Content Include="Views\Sessions\Delete.cshtml" />
-    <Content Include="Views\Sessions\Details.cshtml" />
-    <Content Include="Views\Sessions\Edit.cshtml" />
-    <Content Include="Views\Sessions\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
