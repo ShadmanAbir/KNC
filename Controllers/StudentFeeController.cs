@@ -1,0 +1,77 @@
+using KNC.Services;
+using KNC.ViewModels;
+using System;
+using System.Web.Mvc;
+
+namespace KNC.Controllers
+{
+    public class StudentFeeController : Controller
+    {
+        private readonly StudentFeeService _service;
+        public StudentFeeController(StudentFeeService service)
+        {
+            _service = service;
+        }
+
+        public ActionResult Index()
+        {
+            var items = _service.GetAllStudentFees();
+            return View(items);
+        }
+
+        public ActionResult Create()
+        {
+            return PartialView("_Create", new StudentFeeViewModel());
+        }
+
+        [HttpPost]
+        public ActionResult Create(StudentFeeViewModel vm)
+        {
+            if (ModelState.IsValid)
+            {
+                _service.AddStudentFee(vm);
+                return Json(new { success = true });
+            }
+            return PartialView("_Create", vm);
+        }
+
+        public ActionResult Edit(int id)
+        {
+            var item = _service.GetStudentFeeById(id);
+            if (item == null) return HttpNotFound();
+            return PartialView("_Edit", item);
+        }
+
+        [HttpPost]
+        public ActionResult Edit(StudentFeeViewModel vm)
+        {
+            if (ModelState.IsValid)
+            {
+                _service.UpdateStudentFee(vm);
+                return Json(new { success = true });
+            }
+            return PartialView("_Edit", vm);
+        }
+
+        public ActionResult Details(int id)
+        {
+            var item = _service.GetStudentFeeById(id);
+            if (item == null) return HttpNotFound();
+            return PartialView("_Details", item);
+        }
+
+        public ActionResult Delete(int id)
+        {
+            var item = _service.GetStudentFeeById(id);
+            if (item == null) return HttpNotFound();
+            return PartialView("_Delete", item);
+        }
+
+        [HttpPost]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            _service.DeleteStudentFee(id);
+            return Json(new { success = true });
+        }
+    }
+}
