@@ -43,7 +43,7 @@ packages/
 project.lock.json
 project.fragment.lock.json
 
-# Entity Framework
+# Entity Framework / Database
 *.dbmdl
 *.mdf
 *.ldf
@@ -61,7 +61,7 @@ project.fragment.lock.json
 *~
 *.swp
 
-# npm
+# npm / Node.js
 node_modules/
 bower_components/
 
