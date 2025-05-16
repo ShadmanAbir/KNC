@@ -1,6 +1,6 @@
+using KNC.Models;
 using KNC.Services;
 using KNC.ViewModels;
-using System;
 using System.Linq;
 using System.Web.Mvc;
 
@@ -8,16 +8,19 @@ namespace KNC.Controllers
 {
     public class FacultyController : Controller
     {
-        private readonly FacultyService _service;
-        public FacultyController(FacultyService service)
+        private readonly FacultyService _facultyService;
+        private readonly ApplicationDbContext _context;
+
+        public FacultyController(FacultyService facultyService, ApplicationDbContext context)
         {
-            _service = service;
+            _facultyService = facultyService;
+            _context = context;
         }
 
         public ActionResult Index()
         {
-            var items = _service.GetAllFaculties();
-            return View(items);
+            var faculties = _facultyService.GetAll();
+            return View(faculties);
         }
 
         private void PopulateDesignations(FacultyViewModel model)
@@ -37,6 +40,7 @@ namespace KNC.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Create(FacultyViewModel vm)
         {
             if (ModelState.IsValid)
@@ -55,6 +59,7 @@ namespace KNC.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Edit(FacultyViewModel vm)
         {
             if (ModelState.IsValid)
@@ -79,7 +84,8 @@ namespace KNC.Controllers
             return PartialView("_Delete", item);
         }
 
-        [HttpPost]
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
             _service.DeleteFaculty(id);
