@@ -1,0 +1,37 @@
+@model KNC.ViewModels.RoutineViewModel
+
+<div class="modal fade" id="modalForm" tabindex="-1" aria-labelledby="modalFormLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="modalFormLabel">Routine Details</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <dl class="row">
+                    <dt class="col-sm-4">Program ID</dt>
+                    <dd class="col-sm-8">@Model.ProgramID</dd>
+                    <dt class="col-sm-4">Year</dt>
+                    <dd class="col-sm-8">@Model.Year</dd>
+                    <dt class="col-sm-4">Section</dt>
+                    <dd class="col-sm-8">@Model.Section</dd>
+                    <dt class="col-sm-4">Program Course ID</dt>
+                    <dd class="col-sm-8">@Model.ProgramCourseID</dd>
+                    <dt class="col-sm-4">Faculty ID</dt>
+                    <dd class="col-sm-8">@Model.FacultyID</dd>
+                    <dt class="col-sm-4">Room No</dt>
+                    <dd class="col-sm-8">@Model.RoomNo</dd>
+                    <dt class="col-sm-4">Day Of Week</dt>
+                    <dd class="col-sm-8">@Model.DayOfWeek</dd>
+                    <dt class="col-sm-4">Start Time</dt>
+                    <dd class="col-sm-8">@Model.StartTime</dd>
+                    <dt class="col-sm-4">End Time</dt>
+                    <dd class="col-sm-8">@Model.EndTime</dd>
+                </dl>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

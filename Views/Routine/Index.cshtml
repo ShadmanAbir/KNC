@@ -1,0 +1,49 @@
+@model IEnumerable<KNC.ViewModels.RoutineViewModel>
+
+@{
+    ViewBag.Title = "Routines";
+}
+
+<h2>Routines</h2>
+
+<p>
+    <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalForm" onclick="showCreateModal()">Create New</button>
+</p>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Program ID</th>
+            <th>Year</th>
+            <th>Section</th>
+            <th>Program Course ID</th>
+            <th>Faculty ID</th>
+            <th>Room No</th>
+            <th>Day Of Week</th>
+            <th>Start Time</th>
+            <th>End Time</th>
+            <th style="width:150px"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.ProgramID</td>
+                <td>@item.Year</td>
+                <td>@item.Section</td>
+                <td>@item.ProgramCourseID</td>
+                <td>@item.FacultyID</td>
+                <td>@item.RoomNo</td>
+                <td>@item.DayOfWeek</td>
+                <td>@item.StartTime</td>
+                <td>@item.EndTime</td>
+                <td>
+                    <button class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#modalForm" onclick="showDetailsModal(@item.RoutineID)">Details</button>
+                    <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#modalForm" onclick="showEditModal(@item.RoutineID)">Edit</button>
+                    <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#modalForm" onclick="showDeleteModal(@item.RoutineID)">Delete</button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
