@@ -38,3 +38,11 @@
 *.db
 obj/Debug/
 .vs/
+.vs/KNC/config/applicationhost.config
+.vs/KNC/config/applicationhost.config
+.vs/ProjectEvaluation/knc.metadata.v9.bin
+.vs/ProjectEvaluation/knc.projects.v9.bin
+.vs/ProjectEvaluation/knc.strings.v9.bin
+obj/KNC.csproj.EntityFrameworkCore.targets
+obj/Debug/.NETFramework,Version=v4.8.AssemblyAttributes.cs
+obj/Debug/DesignTimeResolveAssemblyReferences.cache
