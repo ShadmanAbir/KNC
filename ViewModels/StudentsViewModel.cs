@@ -1,7 +1,9 @@
-﻿using System;
+﻿using KNC.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace KNC.ViewModels
 {
@@ -19,6 +21,10 @@ namespace KNC.ViewModels
         public string CurrentAddress { get; set; }
         public DateTime AdmissionDate { get; set; }
         public int ProgramID { get; set; }
-        
+        public string ProgramName { get; set; }
+        public int Year { get; set; }
+
+        public IEnumerable<SelectListItem> Programs { get; set; } // For dropdown
+
     }
 }

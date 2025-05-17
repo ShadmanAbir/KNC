@@ -250,8 +250,22 @@
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="App_Start\UnityMvcActivator.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CoursesController.cs" />
+    <Compile Include="Controllers\CourseTeacherAssignmentController.cs" />
+    <Compile Include="Controllers\DashBoardController.cs" />
+    <Compile Include="Controllers\DesignationController.cs" />
+    <Compile Include="Controllers\DropDownController.cs" />
+    <Compile Include="Controllers\EducationProgramsController.cs" />
+    <Compile Include="Controllers\FacultyController.cs" />
+    <Compile Include="Controllers\FeeStructureController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MarkController.cs" />
+    <Compile Include="Controllers\MonthlyFeeController.cs" />
+    <Compile Include="Controllers\ProgramCourseController.cs" />
+    <Compile Include="Controllers\RoutineController.cs" />
     <Compile Include="Controllers\StudentController.cs" />
+    <Compile Include="Controllers\StudentEnrollmentController.cs" />
+    <Compile Include="Controllers\StudentFeeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -276,6 +290,10 @@
     <Compile Include="Migrations\202505160723061_modelcompleted.cs" />
     <Compile Include="Migrations\202505160723061_modelcompleted.Designer.cs">
       <DependentUpon>202505160723061_modelcompleted.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202505170552541_models added.cs" />
+    <Compile Include="Migrations\202505170552541_models added.Designer.cs">
+      <DependentUpon>202505170552541_models added.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -433,11 +451,11 @@
     <Content Include="Views\DropDown\_Delete.cshtml" />
     <Content Include="Views\DropDown\_Details.cshtml" />
     <Content Include="Views\DropDown\_Edit.cshtml" />
-    <Content Include="Views\EducationPrograms\Index.cshtml" />
-    <Content Include="Views\EducationPrograms\_Create.cshtml" />
-    <Content Include="Views\EducationPrograms\_Delete.cshtml" />
-    <Content Include="Views\EducationPrograms\_Details.cshtml" />
-    <Content Include="Views\EducationPrograms\_Edit.cshtml" />
+    <Content Include="Views\Program\Index.cshtml" />
+    <Content Include="Views\Program\_Create.cshtml" />
+    <Content Include="Views\Program\_Delete.cshtml" />
+    <Content Include="Views\Program\_Details.cshtml" />
+    <Content Include="Views\Program\_Edit.cshtml" />
     <Content Include="Views\FeeStructure\Index.cshtml" />
     <Content Include="Views\FeeStructure\_Create.cshtml" />
     <Content Include="Views\FeeStructure\_Delete.cshtml" />
@@ -516,6 +534,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202505160723061_modelcompleted.resx">
       <DependentUpon>202505160723061_modelcompleted.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202505170552541_models added.resx">
+      <DependentUpon>202505170552541_models added.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -7,8 +7,8 @@ namespace KNC.Controllers
 {
     public class EducationProgramsController : Controller
     {
-        private readonly EducationProgramsService _service;
-        public EducationProgramsController(EducationProgramsService service)
+        private readonly ProgramsService _service;
+        public EducationProgramsController(ProgramsService service)
         {
             _service = service;
         }

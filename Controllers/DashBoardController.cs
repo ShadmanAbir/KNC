@@ -18,7 +18,7 @@ namespace KNC.Controllers
             ViewBag.StudentCount = _context.Students.Count(s => !s.IsDeleted);
             ViewBag.FacultyCount = _context.Faculties.Count(f => !f.IsDeleted);
             ViewBag.CourseCount = _context.Courses.Count(c => !c.IsDeleted);
-            ViewBag.ProgramCount = _context.Programs.Count(p => !p.IsDeleted);
+            ViewBag.ProgramCount = _context.EducationPrograms.Count(p => !p.IsDeleted);
             return View();
         }
     }

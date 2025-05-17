@@ -1,4 +1,3 @@
-using KNC.Models;
 using KNC.Services;
 using KNC.ViewModels;
 using System;
@@ -13,12 +12,12 @@ namespace KNC.Controllers
     public class FacultyController : Controller
     {
         private readonly FacultyService _facultyService;
-        private readonly ApplicationDbContext _context;
+        private readonly DesignationService _disgnationService;
 
-        public FacultyController(FacultyService facultyService, ApplicationDbContext context)
+        public FacultyController(FacultyService facultyService, DesignationService disgnationService)
         {
             _facultyService = facultyService;
-            _context = context;
+            _disgnationService = disgnationService;
         }
 
         public ActionResult Index()
@@ -29,7 +28,7 @@ namespace KNC.Controllers
 
             if (string.IsNullOrEmpty(cached))
             {
-                faculties = _facultyService.GetAll().ToList();
+                faculties = _facultyService.GetAllFaculties().ToList();
                 RedisCacheHelper.Set(cacheKey, JsonConvert.SerializeObject(faculties), TimeSpan.FromMinutes(10));
             }
             else
@@ -41,7 +40,7 @@ namespace KNC.Controllers
 
         private void PopulateDesignations(FacultyViewModel model)
         {
-            model.Designations = _facultyService.GetAllDesignations()
+            model.Designations = _disgnationService.GetAllDesignations()
                 .Where(d => d.IsDeleted != true)
                 .Select(d => new SelectListItem
                 {

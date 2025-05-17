@@ -14,9 +14,11 @@ namespace KNC.Controllers
     public class StudentController : Controller
     {
         private readonly StudentService _stService;
-        public StudentController(StudentService stService)
+        private readonly ProgramsService _programService;
+        public StudentController(StudentService stService, ProgramsService programService)
         {
             _stService = stService;
+            _programService = programService;
         }
 
         public ActionResult Index()
@@ -37,21 +39,22 @@ namespace KNC.Controllers
             return View(students);
         }
 
-/*        private void PopulatePrograms(StudentsViewModel model)
+        private void PopulatePrograms(StudentsViewModel model)
         {
-            model.Programs = _context.Programs
+            model.Programs = _programService.GetAllPrograms()
                 .Where(p => p.IsDeleted != true)
                 .Select(p => new SelectListItem
                 {
                     Value = p.ProgramID.ToString(),
                     Text = p.ProgramName
                 }).ToList();
-        }*/
+        }
 
         public ActionResult Create()
         {
-
-            return PartialView("_Create", new StudentsViewModel());
+            var stVM = new StudentsViewModel();
+            PopulatePrograms(stVM);
+            return PartialView("_Create", stVM);
         }
 
         [HttpPost]
@@ -67,6 +70,7 @@ namespace KNC.Controllers
                 RedisCacheHelper.Remove("StudentList");
                 return Json(new { success = true });
             }
+            PopulatePrograms(stVM);
             return PartialView("_Create", stVM);
         }
 
@@ -75,6 +79,7 @@ namespace KNC.Controllers
             var student = _stService.GetStudentById(id);
             if (student == null)
                 return HttpNotFound();
+            PopulatePrograms(student);
             return PartialView("_Edit", student);
         }
 
@@ -87,6 +92,7 @@ namespace KNC.Controllers
                 RedisCacheHelper.Remove("StudentList");
                 return Json(new { success = true });
             }
+            PopulatePrograms(stVM);
             return PartialView("_Edit", stVM);
         }
 
@@ -95,6 +101,7 @@ namespace KNC.Controllers
             var student = _stService.GetStudentById(id);
             if (student == null)
                 return HttpNotFound();
+            PopulatePrograms(student);
             return PartialView("_Details", student);
         }
 
@@ -103,6 +110,7 @@ namespace KNC.Controllers
             var student = _stService.GetStudentById(id);
             if (student == null)
                 return HttpNotFound();
+            PopulatePrograms(student);
             return PartialView("_Delete", student);
         }
 
