@@ -21,7 +21,26 @@ namespace KNC.Services
 
         public List<StudentsViewModel> GetAllStudents()
         {
-            return _mapper.ProjectTo<StudentsViewModel>(_context.Students.Where(a => a.IsDeleted != true)).ToList();
+            return (from a in _context.Students
+                        join p in _context.EducationPrograms on a.ProgramID equals p.EducationProgramID 
+                        where a.IsDeleted != true && p.IsDeleted != true
+                    select new StudentsViewModel
+                        {
+                            StudentID = a.StudentID,
+                            StudentCode = a.StudentCode,
+                            FirstName = a.FirstName,
+                            LastName = a.LastName,
+                            Email = a.Email,
+                            Phone = a.Phone,
+                            PermanentAddress = a.PermanentAddress,
+                            CurrentAddress = a.CurrentAddress,
+                            AdmissionDate = a.AdmissionDate,
+                            ProgramID = a.ProgramID,
+                            LinkImage = a.LinkImage,
+                            CreatedDate = a.CreatedDate,
+                            CreatedBy = a.CreatedBy,
+                            ProgramName = p.ProgramName
+                        }).ToList();
         }
 
         public StudentsViewModel GetStudentById(int id)
