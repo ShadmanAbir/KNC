@@ -6,7 +6,7 @@ namespace KNC.ViewModels
     {
         public int AssignmentID { get; set; }
         public int CourseID { get; set; }
-        public int TeacherID { get; set; }
+        public int FacultyID { get; set; }
         public DateTime AssignedDate { get; set; }
         public string Remarks { get; set; }
     }
