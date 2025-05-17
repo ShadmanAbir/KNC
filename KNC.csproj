@@ -419,7 +419,7 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Dashboard\Index.cshtml" />
     <Content Include="Views\Student\Index.cshtml" />
     <Content Include="Views\Student\_Create.cshtml" />
     <Content Include="Views\Student\_Delete.cshtml" />
@@ -451,11 +451,11 @@
     <Content Include="Views\DropDown\_Delete.cshtml" />
     <Content Include="Views\DropDown\_Details.cshtml" />
     <Content Include="Views\DropDown\_Edit.cshtml" />
-    <Content Include="Views\Program\Index.cshtml" />
-    <Content Include="Views\Program\_Create.cshtml" />
-    <Content Include="Views\Program\_Delete.cshtml" />
-    <Content Include="Views\Program\_Details.cshtml" />
-    <Content Include="Views\Program\_Edit.cshtml" />
+    <Content Include="Views\EducationPrograms\Index.cshtml" />
+    <Content Include="Views\EducationPrograms\_Create.cshtml" />
+    <Content Include="Views\EducationPrograms\_Delete.cshtml" />
+    <Content Include="Views\EducationPrograms\_Details.cshtml" />
+    <Content Include="Views\EducationPrograms\_Edit.cshtml" />
     <Content Include="Views\FeeStructure\Index.cshtml" />
     <Content Include="Views\FeeStructure\_Create.cshtml" />
     <Content Include="Views\FeeStructure\_Delete.cshtml" />

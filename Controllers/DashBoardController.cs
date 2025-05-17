@@ -4,7 +4,6 @@ using KNC.Models;
 
 namespace KNC.Controllers
 {
-    [Authorize]
     public class DashboardController : Controller
     {
         private readonly ApplicationDbContext _context;
