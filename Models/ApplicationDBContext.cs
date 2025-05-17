@@ -137,6 +137,15 @@ namespace KNC.Models
                 .HasRequired(f => f.Programs)
                 .WithMany(p => p.FeeStructures)
                 .HasForeignKey(f => f.ProgramID);
+
+            // Create indexes
+            modelBuilder.Entity<Student>()
+                .HasIndex(s => s.IsDeleted)
+                .HasName("IX_Students_IsDeleted");
+
+            modelBuilder.Entity<Student>()
+                .HasIndex(s => s.ProgramID)
+                .HasName("IX_Students_ProgramID");
         }
 
         // Students and Teachers
