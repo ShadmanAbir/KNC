@@ -148,27 +148,7 @@ namespace KNC.Controllers
         [AllowAnonymous]
         public ActionResult ResetPassword(string code) => code == null ? View("Error") : View();
 
-        //
-        // POST: /Account/ResetPassword
-        [HttpPost]
-        [AllowAnonymous]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> ResetPassword(ResetPasswordViewModel model)
-        {
-            if (!ModelState.IsValid)
-                return View(model);
 
-            var user = await UserManager.FindByNameAsync(model.Email);
-            if (user == null)
-                return RedirectToAction("ResetPasswordConfirmation", "Account");
-
-            var result = await UserManager.ResetPasswordAsync(user.Id, model.Code, model.Password);
-            if (result.Succeeded)
-                return RedirectToAction("ResetPasswordConfirmation", "Account");
-
-            AddErrors(result);
-            return View();
-        }
 
         //
         // GET: /Account/ResetPasswordConfirmation
@@ -207,17 +187,6 @@ namespace KNC.Controllers
                     ModelState.AddModelError("", error);
             }
             return PartialView("_CreateLoginCredential", vm);
-        }
-
-        // GET: /Account/ResetPassword?email=...
-        [Authorize(Roles = "Admin")]
-        public ActionResult ResetPassword(string email)
-        {
-            var vm = new ResetPasswordViewModel
-            {
-                Email = email
-            };
-            return PartialView("_ResetPassword", vm);
         }
 
         // POST: /Account/ResetPassword
