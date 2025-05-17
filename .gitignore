@@ -89,3 +89,4 @@ _ReSharper*/
 # Migration history (optional, keep if you want migrations in git)
 # Migrations/
 /App_Data/AppLog.txt
+*.pubxml
