@@ -19,5 +19,6 @@ namespace KNC.ViewModels
         public string CurrentAddress { get; set; }
         public DateTime AdmissionDate { get; set; }
         public int ProgramID { get; set; }
+        
     }
 }

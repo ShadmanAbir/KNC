@@ -7,6 +7,7 @@ using System.Web.Optimization;
 using System.Web.Routing;
 using System.Web.Security;
 using System.Web.SessionState;
+using KNC.Helper;
 
 namespace KNC
 {
@@ -24,7 +25,7 @@ namespace KNC
         protected void Application_Error()
         {
             var ex = Server.GetLastError();
-            KNC.Helpers.ErrorHandler.Log(ex, HttpContext.Current?.User?.Identity?.Name);
+            ErrorHandler.Log(ex, HttpContext.Current?.User?.Identity?.Name);
         }
     }
 }

@@ -6,7 +6,7 @@ using System.Web;
 
 namespace KNC.Models
 {
-    public class StudentFee
+    public class StudentFee : BaseEntity
     {
         [Key]
         public int FeeID { get; set; }

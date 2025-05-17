@@ -24,7 +24,7 @@ namespace KNC.Services
 
         public FeeStructureViewModel GetFeeStructureById(int id)
         {
-            return _mapper.Map<FeeStructureViewModel>(_context.FeeStructures.SingleOrDefault(a => a.FeeStructureID == id && a.IsDeleted != true));
+            return _mapper.Map<FeeStructureViewModel>(_context.FeeStructures.SingleOrDefault(a => a.ID == id && a.IsDeleted != true));
         }
 
         public void AddFeeStructure(FeeStructureViewModel vm)
@@ -35,7 +35,7 @@ namespace KNC.Services
 
         public void DeleteFeeStructure(int id)
         {
-            var feeStructure = _context.FeeStructures.SingleOrDefault(a => a.FeeStructureID == id && a.IsDeleted != true);
+            var feeStructure = _context.FeeStructures.SingleOrDefault(a => a.ID == id && a.IsDeleted != true);
             if (feeStructure != null)
             {
                 feeStructure.IsDeleted = true;

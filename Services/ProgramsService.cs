@@ -24,7 +24,7 @@ namespace KNC.Services
 
         public EducationProgramsViewModel GetProgramById(int id)
         {
-            return _mapper.Map<EducationProgramsViewModel>(_context.EducationPrograms.SingleOrDefault(a => a.ProgramID == id && a.IsDeleted != true));
+            return _mapper.Map<EducationProgramsViewModel>(_context.EducationPrograms.SingleOrDefault(a => a.EducationProgramID == id && a.IsDeleted != true));
         }
 
         public void AddProgram(EducationProgramsViewModel vm)
@@ -35,7 +35,7 @@ namespace KNC.Services
 
         public void DeleteProgram(int id)
         {
-            var program = _context.EducationPrograms.SingleOrDefault(a => a.ProgramID == id && a.IsDeleted != true);
+            var program = _context.EducationPrograms.SingleOrDefault(a => a.EducationProgramID == id && a.IsDeleted != true);
             if (program != null)
             {
                 program.IsDeleted = true;

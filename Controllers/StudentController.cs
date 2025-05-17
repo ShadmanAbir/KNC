@@ -37,7 +37,7 @@ namespace KNC.Controllers
             return View(students);
         }
 
-        private void PopulatePrograms(StudentViewModel model)
+/*        private void PopulatePrograms(StudentsViewModel model)
         {
             model.Programs = _context.Programs
                 .Where(p => p.IsDeleted != true)
@@ -46,7 +46,7 @@ namespace KNC.Controllers
                     Value = p.ProgramID.ToString(),
                     Text = p.ProgramName
                 }).ToList();
-        }
+        }*/
 
         public ActionResult Create()
         {

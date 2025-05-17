@@ -64,7 +64,7 @@ namespace KNC.Models
             modelBuilder.Entity<MonthlyFee>()
                 .HasRequired(f => f.Student)
                 .WithMany(s => s.MonthlyFees)
-                .HasForeignKey(f => f.StudentId);
+                .HasForeignKey(f => f.StudentID);
 
             // Student - StudentFee (1 to many)
             modelBuilder.Entity<StudentFee>()
@@ -142,6 +142,9 @@ namespace KNC.Models
         // Students and Teachers
         public DbSet<Student> Students { get; set; }
         public DbSet<Faculty> Faculties { get; set; }
+        public DbSet<ProgramCourse> ProgramCourses { get; set; }
+        public DbSet<Designation> Designations { get; set; } // For future-proofing
+
 
         // Programs, Courses, Enrollments, Results
         public DbSet<EducationPrograms> EducationPrograms { get; set; }
@@ -152,10 +155,11 @@ namespace KNC.Models
         // Routine Management
         public DbSet<Routine> Routines { get; set; }
         //public DbSet<Room> Rooms { get; set; }
-
+        public DbSet<CourseTeacherAssignment> CourseTeacherAssignments { get; set; }
         // Payments
         public DbSet<MonthlyFee> MonthlyFees { get; set; }
         public DbSet<StudentFee> StudentFees { get; set; }
+
 
         // Roles & Modules (RBAC)
         //public DbSet<Module> Modules { get; set; }

@@ -14,7 +14,7 @@ namespace KNC.Helper
         {
             CreateMap<Student, StudentsViewModel>().ReverseMap();
             CreateMap<Faculty, FacultyViewModel>().ReverseMap();
-            CreateMap<Program, ProgramViewModel>().ReverseMap();
+            CreateMap<EducationPrograms, EducationProgramsViewModel>().ReverseMap();
             CreateMap<ProgramCourse, ProgramCourseViewModel>().ReverseMap();
             CreateMap<Routine, RoutineViewModel>().ReverseMap();
             CreateMap<Designation, DesignationViewModel>().ReverseMap();
@@ -24,7 +24,7 @@ namespace KNC.Helper
             CreateMap<StudentFee, StudentFeeViewModel>().ReverseMap();
             CreateMap<MonthlyFee, MonthlyFeeViewModel>().ReverseMap();
             CreateMap<CourseTeacherAssignment, CourseTeacherAssignmentViewModel>().ReverseMap();
-            CreateMap<Course, CoursesViewModel>().ReverseMap();
+            CreateMap<Courses, CoursesViewModel>().ReverseMap();
         }
     }
 }

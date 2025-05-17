@@ -14,6 +14,7 @@ namespace KNC
     public static class UnityConfig
     {
         #region Unity Container
+        [Obsolete]
         private static Lazy<IUnityContainer> container =
           new Lazy<IUnityContainer>(() =>
           {
@@ -38,6 +39,7 @@ namespace KNC
         /// allows resolving a concrete type even if it was not previously
         /// registered.
         /// </remarks>
+        [Obsolete]
         public static void RegisterTypes(IUnityContainer container)
         {
             // NOTE: To load from web.config uncomment the line below.

@@ -24,7 +24,7 @@ namespace KNC.Services
 
         public StudentFeeViewModel GetStudentFeeById(int id)
         {
-            return _mapper.Map<StudentFeeViewModel>(_context.StudentFees.SingleOrDefault(a => a.StudentFeeID == id && a.IsDeleted != true));
+            return _mapper.Map<StudentFeeViewModel>(_context.StudentFees.SingleOrDefault(a => a.FeeID == id && a.IsDeleted != true));
         }
 
         public void AddStudentFee(StudentFeeViewModel vm)
@@ -35,7 +35,7 @@ namespace KNC.Services
 
         public void DeleteStudentFee(int id)
         {
-            var fee = _context.StudentFees.SingleOrDefault(a => a.StudentFeeID == id && a.IsDeleted != true);
+            var fee = _context.StudentFees.SingleOrDefault(a => a.FeeID == id && a.IsDeleted != true);
             if (fee != null)
             {
                 fee.IsDeleted = true;

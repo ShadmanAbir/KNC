@@ -19,40 +19,45 @@ namespace KNC.Services
 
         public List<DropDownViewModel> GetAllDropDowns()
         {
-            return _mapper.ProjectTo<DropDownViewModel>(_context.DropDowns.Where(a => a.IsDeleted != true)).ToList();
+            throw new KeyNotFoundException("The key was not found in the dictionary.");
+            //return _mapper.ProjectTo<DropDownViewModel>(_context.DropDowns.Where(a => a.IsDeleted != true)).ToList();
         }
 
         public DropDownViewModel GetDropDownById(int id)
         {
-            return _mapper.Map<DropDownViewModel>(_context.DropDowns.SingleOrDefault(a => a.DropDownID == id && a.IsDeleted != true));
+            throw new KeyNotFoundException("The key was not found in the dictionary.");
+            //return _mapper.Map<DropDownViewModel>(_context.DropDowns.SingleOrDefault(a => a.DropDownID == id && a.IsDeleted != true));
         }
 
         public void AddDropDown(DropDownViewModel vm)
         {
-            _context.DropDowns.Add(_mapper.Map<DropDown>(vm));
-            _context.SaveChanges();
+            throw new KeyNotFoundException("The key was not found in the dictionary.");
+            /*_context.DropDowns.Add(_mapper.Map<DropDown>(vm));
+            _context.SaveChanges();*/
         }
 
         public void DeleteDropDown(int id)
         {
-            var dropdown = _context.DropDowns.SingleOrDefault(a => a.DropDownID == id && a.IsDeleted != true);
-            if (dropdown != null)
-            {
-                dropdown.IsDeleted = true;
-                _context.Entry(dropdown).State = System.Data.Entity.EntityState.Modified;
-                _context.SaveChanges();
-            }
+            throw new KeyNotFoundException("The key was not found in the dictionary.");
+            /*            var dropdown = _context.DropDowns.SingleOrDefault(a => a.DropDownID == id && a.IsDeleted != true);
+                        if (dropdown != null)
+                        {
+                            dropdown.IsDeleted = true;
+                            _context.Entry(dropdown).State = System.Data.Entity.EntityState.Modified;
+                            _context.SaveChanges();
+                        }*/
         }
 
         public void UpdateDropDown(DropDownViewModel vm)
         {
-            var existing = _context.DropDowns.Find(vm.DropDownID);
-            if (existing != null)
-            {
-                _mapper.Map(vm, existing);
-                _context.Entry(existing).State = System.Data.Entity.EntityState.Modified;
-                _context.SaveChanges();
-            }
+            throw new KeyNotFoundException("The key was not found in the dictionary.");
+            /*            var existing = _context.DropDowns.Find(vm.DropDownID);
+                        if (existing != null)
+                        {
+                            _mapper.Map(vm, existing);
+                            _context.Entry(existing).State = System.Data.Entity.EntityState.Modified;
+                            _context.SaveChanges();
+                        }*/
         }
     }
 }
