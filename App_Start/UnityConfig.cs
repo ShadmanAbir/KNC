@@ -2,7 +2,6 @@ using AutoMapper;
 using KNC.Helper;
 using KNC.Models;
 using KNC.Services;
-using KNC.Repositories;
 using System;
 using Unity;
 using Unity.Injection;
