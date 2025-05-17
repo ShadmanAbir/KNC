@@ -46,7 +46,7 @@ namespace KNC.Services
 
         public void UpdateProgram(EducationProgramsViewModel vm)
         {
-            var existing = _context.EducationPrograms.Find(vm.ProgramID);
+            var existing = _context.EducationPrograms.Find(vm.EducationProgramID);
             if (existing != null)
             {
                 _mapper.Map(vm, existing);

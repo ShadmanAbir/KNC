@@ -27,7 +27,7 @@ namespace KNC.Controllers
             var cached = RedisCacheHelper.Get(cacheKey);
             List<StudentsViewModel> students;
 
-            if (string.IsNullOrEmpty(cached))
+            if (cached.Length > 0)
             {
                 students = _stService.GetAllStudents().ToList();
                 RedisCacheHelper.Set(cacheKey, JsonConvert.SerializeObject(students), TimeSpan.FromMinutes(10));
@@ -45,7 +45,7 @@ namespace KNC.Controllers
                 .Where(p => p.IsDeleted != true)
                 .Select(p => new SelectListItem
                 {
-                    Value = p.ProgramID.ToString(),
+                    Value = p.EducationProgramID.ToString(),
                     Text = p.ProgramName
                 }).ToList();
         }

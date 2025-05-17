@@ -11,11 +11,11 @@ namespace KNC
         {
             app.MapSignalR();
 
-            GlobalConfiguration.Configuration
+/*            GlobalConfiguration.Configuration
                 .UseSqlServerStorage("DefaultConnection"); // Use your connection string name
 
             app.UseHangfireDashboard("/hangfire");
-            app.UseHangfireServer();
+            app.UseHangfireServer();*/
         }
     }
 }
