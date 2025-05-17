@@ -295,6 +295,10 @@
     <Compile Include="Migrations\202505170552541_models added.Designer.cs">
       <DependentUpon>202505170552541_models added.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202505170744240_models programfix.cs" />
+    <Compile Include="Migrations\202505170744240_models programfix.Designer.cs">
+      <DependentUpon>202505170744240_models programfix.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDBContext.cs" />
@@ -537,6 +541,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202505170552541_models added.resx">
       <DependentUpon>202505170552541_models added.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202505170744240_models programfix.resx">
+      <DependentUpon>202505170744240_models programfix.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

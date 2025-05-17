@@ -7,10 +7,10 @@
 <h2>Education Programs</h2>
 
 <p>
-    <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalForm" onclick="showCreateModal()">Create New</button>
+    <button class="btn btn-success mb-3" id="btnAdd">Add New Program</button>
 </p>
-
-<table class="table table-bordered table-striped">
+<div id="modal-placeholder"></div>
+<table id="programTable" class="table table-bordered table-striped">
     <thead>
         <tr>
             <th>Program Name</th>
@@ -24,14 +24,61 @@
         {
             <tr>
                 <td>@item.ProgramName</td>
-                <td>@item.DurationInYears</td>
-                <td>@item.Description</td>
+                <td>@item.Duration</td>
+                <td>@item.ShortName</td>
                 <td>
                     <button class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#modalForm" onclick="showDetailsModal(@item.ProgramID)">Details</button>
                     <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#modalForm" onclick="showEditModal(@item.ProgramID)">Edit</button>
                     <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#modalForm" onclick="showDeleteModal(@item.ProgramID)">Delete</button>
                 </td>
+                <td>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-secondary btn-sm dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                            Actions
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a class="dropdown-item btnEdit" href="javascript:void(0);" data-id="@item.ProgramID">Edit</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item btnDetails" href="javascript:void(0);" data-id="@item.ProgramID">Details</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item btnDelete text-danger" href="javascript:void(0);" data-id="@item.ProgramID">Delete</a>
+                            </li>
+                        </ul>
+                    </div>
+                </td>
             </tr>
         }
     </tbody>
 </table>
+@section scripts {
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#programTable').DataTable();
+
+            $('#btnAdd').click(() => loadModal('@Url.Action("Create")'));
+            $('#programTable').on('click', '.btnEdit', function () {
+                loadModal('@Url.Action("Edit/", new { id = "" })' + $(this).data('id'));
+            });
+            $('#programTable').on('click', '.btnDetails', function () {
+                loadModal('@Url.Action("Details/", new { id = "" })' + $(this).data('id'));
+            });
+            $('#programTable').on('click', '.btnDelete', function () {
+                loadModal('@Url.Action("Delete/", new { id = "" })' + $(this).data('id'));
+            });
+        });
+
+        function loadModal(url) {
+            $.get(url, function (data) {
+                $('#modal-placeholder').html(data);
+                $('#modal-placeholder').find('.modal').modal('show');
+            });
+        }
+    </script>
+}

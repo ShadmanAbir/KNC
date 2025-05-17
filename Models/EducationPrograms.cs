@@ -9,7 +9,7 @@ namespace KNC.Models
         public int EducationProgramID { get; set; }
         public string ProgramName { get; set; }
         public string ShortName { get; set; }
-        public string Duration { get; set; }
+        public int Duration { get; set; }
 
         public ICollection<ProgramCourse> ProgramCourses { get; set; } = new List<ProgramCourse>();
         public ICollection<Student> Students { get; set; } = new List<Student>();

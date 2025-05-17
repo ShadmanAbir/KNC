@@ -12,17 +12,17 @@
                 <div class="modal-body">
                     @Html.HiddenFor(m => m.ProgramID)
                     <div class="row g-3">
-                        <div class="col-md-6">
+                        <div class="col-md-12">
                             @Html.LabelFor(m => m.ProgramName, new { @class = "form-label" })
                             @Html.TextBoxFor(m => m.ProgramName, new { @class = "form-control" })
                         </div>
-                        <div class="col-md-6">
-                            @Html.LabelFor(m => m.DurationInYears, new { @class = "form-label" })
-                            @Html.TextBoxFor(m => m.DurationInYears, new { @class = "form-control" })
+                        <div class="col-md-12">
+                            @Html.LabelFor(m => m.Duration, new { @class = "form-label" })
+                            @Html.TextBoxFor(m => m.Duration, new { @class = "form-control" })
                         </div>
                         <div class="col-md-12">
-                            @Html.LabelFor(m => m.Description, new { @class = "form-label" })
-                            @Html.TextAreaFor(m => m.Description, new { @class = "form-control" })
+                            @Html.LabelFor(m => m.ShortName, new { @class = "form-label" })
+                            @Html.TextBoxFor(m => m.ShortName, new { @class = "form-control" })
                         </div>
                     </div>
                 </div>
