@@ -7,8 +7,16 @@ namespace KNC.Helper
     {
         private static readonly Lazy<ConnectionMultiplexer> lazyConnection = new Lazy<ConnectionMultiplexer>(() =>
         {
-            var connStr = System.Configuration.ConfigurationManager.AppSettings["RedisConnection"];
-            return ConnectionMultiplexer.Connect(connStr);
+            try
+            {
+                var connStr = System.Configuration.ConfigurationManager.AppSettings["RedisConnection"];
+                return ConnectionMultiplexer.Connect(connStr);
+            }
+            catch (Exception ex)
+            {
+                // Log or rethrow for debugging
+                throw new InvalidOperationException("Could not connect to Redis. Check your connection string and server.", ex);
+            }
         });
 
         public static ConnectionMultiplexer Connection => lazyConnection.Value;
