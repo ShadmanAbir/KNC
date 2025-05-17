@@ -8,6 +8,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using KNC.Models;
 using KNC.ViewModels;
+using Microsoft.Owin.Security;
 
 namespace KNC.Controllers
 {
