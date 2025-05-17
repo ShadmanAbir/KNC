@@ -27,10 +27,13 @@ namespace KNC.Controllers
         [HttpPost]
         public ActionResult Create(EducationProgramsViewModel vm)
         {
+            vm.CreatedBy = 1;
+            vm.CreatedDate = DateTime.Now;
+            vm.IsDeleted = false;
             if (ModelState.IsValid)
             {
                 _service.AddProgram(vm);
-                return Json(new { success = true });
+                return View("Index");
             }
             return PartialView("_Create", vm);
         }
@@ -45,6 +48,8 @@ namespace KNC.Controllers
         [HttpPost]
         public ActionResult Edit(EducationProgramsViewModel vm)
         {
+            vm.CreatedBy = 1;
+            vm.CreatedDate = DateTime.Now;
             if (ModelState.IsValid)
             {
                 _service.UpdateProgram(vm);
