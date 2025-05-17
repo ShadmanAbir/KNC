@@ -33,7 +33,7 @@ namespace KNC.Controllers
             if (ModelState.IsValid)
             {
                 _service.AddProgram(vm);
-                return View("Index");
+                return RedirectToAction("Index"); // Redirect after successful creation
             }
             return PartialView("_Create", vm);
         }
