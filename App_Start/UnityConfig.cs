@@ -70,17 +70,16 @@ namespace KNC
             // Register services
             container.RegisterType<StudentService>();
             container.RegisterType<FacultyService>();
-            container.RegisterType<ProgramService>();
             container.RegisterType<ProgramCourseService>();
             container.RegisterType<RoutineService>();
             container.RegisterType<DesignationService>();
             container.RegisterType<DropDownService>();
-            container.RegisterType<EducationProgramsService>();
+            container.RegisterType<ProgramsService>();
             container.RegisterType<StudentEnrollmentService>();
             container.RegisterType<StudentFeeService>();
             container.RegisterType<MonthlyFeeService>();
             container.RegisterType<CourseTeacherAssignmentService>();
-            container.RegisterType<CourseService>();
+            container.RegisterType<CoursesService>();
         }
     }
 }

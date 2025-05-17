@@ -6,12 +6,12 @@ using System.Linq;
 
 namespace KNC.Services
 {
-    public class EducationProgramsService
+    public class ProgramsService
     {
         private readonly ApplicationDbContext _context;
         private readonly IMapper _mapper;
 
-        public EducationProgramsService(ApplicationDbContext context, IMapper mapper)
+        public ProgramsService(ApplicationDbContext context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;
