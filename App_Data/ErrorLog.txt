@@ -56,3 +56,171 @@ StackTrace:    at System.Web.Mvc.DefaultControllerFactory.GetControllerInstance(
    at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
 -----------------
 
+----- ERROR -----
+Time: 2025-05-18 04:04:50Z
+Message: An error occurred when trying to create a controller of type 'KNC.Controllers.DashboardController'. Make sure that the controller has a parameterless public constructor.
+Source: System.Web.Mvc
+StackTrace:    at System.Web.Mvc.DefaultControllerFactory.DefaultControllerActivator.Create(RequestContext requestContext, Type controllerType)
+   at System.Web.Mvc.MvcHandler.ProcessRequestInit(HttpContextBase httpContext, IController& controller, IControllerFactory& factory)
+   at System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContextBase httpContext, AsyncCallback callback, Object state)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+InnerException: Could not load file or assembly 'System.Runtime.CompilerServices.Unsafe, Version=4.0.5.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' or one of its dependencies. The located assembly's manifest definition does not match the assembly reference. (Exception from HRESULT: 0x80131040)
+Inner StackTrace:    at Unity.Builder.BuilderContext.Resolve(Type type, String name, InternalRegistration registration)
+   at Unity.Builder.BuilderContext.Resolve(Type type, String name) in C:\projects\container\src\Builder\Context\BuilderContext.cs:line 67
+   at Unity.Builder.BuilderContext.Resolve(ParameterInfo parameter, Object value) in C:\projects\container\src\Builder\Context\BuilderContext.cs:line 217
+   at Unity.Processors.ConstructorProcessor.<>c__DisplayClass16_0.<GetResolverDelegate>b__0(BuilderContext& c) in C:\projects\container\src\Processors\Constructor\ConstructorResolution.cs:line 77
+   at Unity.Processors.MemberProcessor`2.<>c__DisplayClass8_0.<GetResolver>b__0(BuilderContext& c) in C:\projects\container\src\Processors\Abstracts\MemberProcessor.cs:line 162
+   at Unity.Processors.MemberProcessor`2.<>c__DisplayClass8_0.<GetResolver>b__0(BuilderContext& c) in C:\projects\container\src\Processors\Abstracts\MemberProcessor.cs:line 162
+   at Unity.Processors.MemberProcessor`2.<>c__DisplayClass8_0.<GetResolver>b__0(BuilderContext& c) in C:\projects\container\src\Processors\Abstracts\MemberProcessor.cs:line 162
+   at Unity.Strategies.BuildPlanStrategy.PreBuildUp(BuilderContext& context) in C:\projects\container\src\Strategies\BuildPlanStrategy.cs:line 80
+   at Unity.UnityContainer.<>c.<.ctor>b__73_1(BuilderContext& context) in C:\projects\container\src\UnityContainer.Resolution.cs:line 363
+   at Unity.UnityContainer.Unity.IUnityContainer.Resolve(Type type, String name, ResolverOverride[] overrides) in C:\projects\container\src\UnityContainer.IUnityContainer.cs:line 244
+   at System.Web.Mvc.DefaultControllerFactory.DefaultControllerActivator.Create(RequestContext requestContext, Type controllerType)
+-----------------
+
+----- ERROR -----
+Time: 2025-05-18 04:05:52Z
+Message: An error occurred when trying to create a controller of type 'KNC.Controllers.DashboardController'. Make sure that the controller has a parameterless public constructor.
+Source: System.Web.Mvc
+StackTrace:    at System.Web.Mvc.DefaultControllerFactory.DefaultControllerActivator.Create(RequestContext requestContext, Type controllerType)
+   at System.Web.Mvc.MvcHandler.ProcessRequestInit(HttpContextBase httpContext, IController& controller, IControllerFactory& factory)
+   at System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContextBase httpContext, AsyncCallback callback, Object state)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+InnerException: Could not load file or assembly 'System.Runtime.CompilerServices.Unsafe, Version=4.0.5.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' or one of its dependencies. The located assembly's manifest definition does not match the assembly reference. (Exception from HRESULT: 0x80131040)
+Inner StackTrace:    at Unity.Builder.BuilderContext.Resolve(Type type, String name, InternalRegistration registration)
+   at Unity.Builder.BuilderContext.Resolve(Type type, String name) in C:\projects\container\src\Builder\Context\BuilderContext.cs:line 67
+   at Unity.Builder.BuilderContext.Resolve(ParameterInfo parameter, Object value) in C:\projects\container\src\Builder\Context\BuilderContext.cs:line 217
+   at Unity.Processors.ConstructorProcessor.<>c__DisplayClass16_0.<GetResolverDelegate>b__0(BuilderContext& c) in C:\projects\container\src\Processors\Constructor\ConstructorResolution.cs:line 77
+   at Unity.Processors.MemberProcessor`2.<>c__DisplayClass8_0.<GetResolver>b__0(BuilderContext& c) in C:\projects\container\src\Processors\Abstracts\MemberProcessor.cs:line 162
+   at Unity.Processors.MemberProcessor`2.<>c__DisplayClass8_0.<GetResolver>b__0(BuilderContext& c) in C:\projects\container\src\Processors\Abstracts\MemberProcessor.cs:line 162
+   at Unity.Processors.MemberProcessor`2.<>c__DisplayClass8_0.<GetResolver>b__0(BuilderContext& c) in C:\projects\container\src\Processors\Abstracts\MemberProcessor.cs:line 162
+   at Unity.Strategies.BuildPlanStrategy.PreBuildUp(BuilderContext& context) in C:\projects\container\src\Strategies\BuildPlanStrategy.cs:line 80
+   at Unity.UnityContainer.<>c.<.ctor>b__73_1(BuilderContext& context) in C:\projects\container\src\UnityContainer.Resolution.cs:line 363
+   at Unity.UnityContainer.Unity.IUnityContainer.Resolve(Type type, String name, ResolverOverride[] overrides) in C:\projects\container\src\UnityContainer.IUnityContainer.cs:line 244
+   at System.Web.Mvc.DefaultControllerFactory.DefaultControllerActivator.Create(RequestContext requestContext, Type controllerType)
+-----------------
+
+----- ERROR -----
+Time: 2025-05-18 04:15:19Z
+Message: An error occurred when trying to create a controller of type 'KNC.Controllers.DashboardController'. Make sure that the controller has a parameterless public constructor.
+Source: System.Web.Mvc
+StackTrace:    at System.Web.Mvc.DefaultControllerFactory.DefaultControllerActivator.Create(RequestContext requestContext, Type controllerType)
+   at System.Web.Mvc.MvcHandler.ProcessRequestInit(HttpContextBase httpContext, IController& controller, IControllerFactory& factory)
+   at System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContextBase httpContext, AsyncCallback callback, Object state)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+InnerException: Could not load file or assembly 'System.Runtime.CompilerServices.Unsafe, Version=4.0.5.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' or one of its dependencies. The located assembly's manifest definition does not match the assembly reference. (Exception from HRESULT: 0x80131040)
+Inner StackTrace:    at Unity.Builder.BuilderContext.Resolve(Type type, String name, InternalRegistration registration)
+   at Unity.Builder.BuilderContext.Resolve(Type type, String name) in C:\projects\container\src\Builder\Context\BuilderContext.cs:line 67
+   at Unity.Builder.BuilderContext.Resolve(ParameterInfo parameter, Object value) in C:\projects\container\src\Builder\Context\BuilderContext.cs:line 217
+   at Unity.Processors.ConstructorProcessor.<>c__DisplayClass16_0.<GetResolverDelegate>b__0(BuilderContext& c) in C:\projects\container\src\Processors\Constructor\ConstructorResolution.cs:line 77
+   at Unity.Processors.MemberProcessor`2.<>c__DisplayClass8_0.<GetResolver>b__0(BuilderContext& c) in C:\projects\container\src\Processors\Abstracts\MemberProcessor.cs:line 162
+   at Unity.Processors.MemberProcessor`2.<>c__DisplayClass8_0.<GetResolver>b__0(BuilderContext& c) in C:\projects\container\src\Processors\Abstracts\MemberProcessor.cs:line 162
+   at Unity.Processors.MemberProcessor`2.<>c__DisplayClass8_0.<GetResolver>b__0(BuilderContext& c) in C:\projects\container\src\Processors\Abstracts\MemberProcessor.cs:line 162
+   at Unity.Strategies.BuildPlanStrategy.PreBuildUp(BuilderContext& context) in C:\projects\container\src\Strategies\BuildPlanStrategy.cs:line 80
+   at Unity.UnityContainer.<>c.<.ctor>b__73_1(BuilderContext& context) in C:\projects\container\src\UnityContainer.Resolution.cs:line 363
+   at Unity.UnityContainer.Unity.IUnityContainer.Resolve(Type type, String name, ResolverOverride[] overrides) in C:\projects\container\src\UnityContainer.IUnityContainer.cs:line 244
+   at System.Web.Mvc.DefaultControllerFactory.DefaultControllerActivator.Create(RequestContext requestContext, Type controllerType)
+-----------------
+
+----- ERROR -----
+Time: 2025-05-18 04:18:16Z
+Message: An error occurred when trying to create a controller of type 'KNC.Controllers.DashboardController'. Make sure that the controller has a parameterless public constructor.
+Source: System.Web.Mvc
+StackTrace:    at System.Web.Mvc.DefaultControllerFactory.DefaultControllerActivator.Create(RequestContext requestContext, Type controllerType)
+   at System.Web.Mvc.MvcHandler.ProcessRequestInit(HttpContextBase httpContext, IController& controller, IControllerFactory& factory)
+   at System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContextBase httpContext, AsyncCallback callback, Object state)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+InnerException: Could not load file or assembly 'System.Runtime.CompilerServices.Unsafe, Version=4.0.5.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' or one of its dependencies. The located assembly's manifest definition does not match the assembly reference. (Exception from HRESULT: 0x80131040)
+Inner StackTrace:    at Unity.Builder.BuilderContext.Resolve(Type type, String name, InternalRegistration registration)
+   at Unity.Builder.BuilderContext.Resolve(Type type, String name) in C:\projects\container\src\Builder\Context\BuilderContext.cs:line 67
+   at Unity.Builder.BuilderContext.Resolve(ParameterInfo parameter, Object value) in C:\projects\container\src\Builder\Context\BuilderContext.cs:line 217
+   at Unity.Processors.ConstructorProcessor.<>c__DisplayClass16_0.<GetResolverDelegate>b__0(BuilderContext& c) in C:\projects\container\src\Processors\Constructor\ConstructorResolution.cs:line 77
+   at Unity.Processors.MemberProcessor`2.<>c__DisplayClass8_0.<GetResolver>b__0(BuilderContext& c) in C:\projects\container\src\Processors\Abstracts\MemberProcessor.cs:line 162
+   at Unity.Processors.MemberProcessor`2.<>c__DisplayClass8_0.<GetResolver>b__0(BuilderContext& c) in C:\projects\container\src\Processors\Abstracts\MemberProcessor.cs:line 162
+   at Unity.Processors.MemberProcessor`2.<>c__DisplayClass8_0.<GetResolver>b__0(BuilderContext& c) in C:\projects\container\src\Processors\Abstracts\MemberProcessor.cs:line 162
+   at Unity.Strategies.BuildPlanStrategy.PreBuildUp(BuilderContext& context) in C:\projects\container\src\Strategies\BuildPlanStrategy.cs:line 80
+   at Unity.UnityContainer.<>c.<.ctor>b__73_1(BuilderContext& context) in C:\projects\container\src\UnityContainer.Resolution.cs:line 363
+   at Unity.UnityContainer.Unity.IUnityContainer.Resolve(Type type, String name, ResolverOverride[] overrides) in C:\projects\container\src\UnityContainer.IUnityContainer.cs:line 244
+   at System.Web.Mvc.DefaultControllerFactory.DefaultControllerActivator.Create(RequestContext requestContext, Type controllerType)
+-----------------
+
+----- ERROR -----
+Time: 2025-05-18 04:19:39Z
+Message: An error occurred when trying to create a controller of type 'KNC.Controllers.DashboardController'. Make sure that the controller has a parameterless public constructor.
+Source: System.Web.Mvc
+StackTrace:    at System.Web.Mvc.DefaultControllerFactory.DefaultControllerActivator.Create(RequestContext requestContext, Type controllerType)
+   at System.Web.Mvc.MvcHandler.ProcessRequestInit(HttpContextBase httpContext, IController& controller, IControllerFactory& factory)
+   at System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContextBase httpContext, AsyncCallback callback, Object state)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+InnerException: Could not load file or assembly 'System.Runtime.CompilerServices.Unsafe, Version=4.0.5.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' or one of its dependencies. The located assembly's manifest definition does not match the assembly reference. (Exception from HRESULT: 0x80131040)
+Inner StackTrace:    at Unity.Builder.BuilderContext.Resolve(Type type, String name, InternalRegistration registration)
+   at Unity.Builder.BuilderContext.Resolve(Type type, String name) in C:\projects\container\src\Builder\Context\BuilderContext.cs:line 67
+   at Unity.Builder.BuilderContext.Resolve(ParameterInfo parameter, Object value) in C:\projects\container\src\Builder\Context\BuilderContext.cs:line 217
+   at Unity.Processors.ConstructorProcessor.<>c__DisplayClass16_0.<GetResolverDelegate>b__0(BuilderContext& c) in C:\projects\container\src\Processors\Constructor\ConstructorResolution.cs:line 77
+   at Unity.Processors.MemberProcessor`2.<>c__DisplayClass8_0.<GetResolver>b__0(BuilderContext& c) in C:\projects\container\src\Processors\Abstracts\MemberProcessor.cs:line 162
+   at Unity.Processors.MemberProcessor`2.<>c__DisplayClass8_0.<GetResolver>b__0(BuilderContext& c) in C:\projects\container\src\Processors\Abstracts\MemberProcessor.cs:line 162
+   at Unity.Processors.MemberProcessor`2.<>c__DisplayClass8_0.<GetResolver>b__0(BuilderContext& c) in C:\projects\container\src\Processors\Abstracts\MemberProcessor.cs:line 162
+   at Unity.Strategies.BuildPlanStrategy.PreBuildUp(BuilderContext& context) in C:\projects\container\src\Strategies\BuildPlanStrategy.cs:line 80
+   at Unity.UnityContainer.<>c.<.ctor>b__73_1(BuilderContext& context) in C:\projects\container\src\UnityContainer.Resolution.cs:line 363
+   at Unity.UnityContainer.Unity.IUnityContainer.Resolve(Type type, String name, ResolverOverride[] overrides) in C:\projects\container\src\UnityContainer.IUnityContainer.cs:line 244
+   at System.Web.Mvc.DefaultControllerFactory.DefaultControllerActivator.Create(RequestContext requestContext, Type controllerType)
+-----------------
+
+----- ERROR -----
+Time: 2025-05-18 04:22:18Z
+Message: An error occurred when trying to create a controller of type 'KNC.Controllers.StudentController'. Make sure that the controller has a parameterless public constructor.
+Source: System.Web.Mvc
+StackTrace:    at System.Web.Mvc.DefaultControllerFactory.DefaultControllerActivator.Create(RequestContext requestContext, Type controllerType)
+   at System.Web.Mvc.MvcHandler.ProcessRequestInit(HttpContextBase httpContext, IController& controller, IControllerFactory& factory)
+   at System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContextBase httpContext, AsyncCallback callback, Object state)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+InnerException: Could not load file or assembly 'System.Runtime.CompilerServices.Unsafe, Version=4.0.5.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' or one of its dependencies. The located assembly's manifest definition does not match the assembly reference. (Exception from HRESULT: 0x80131040)
+Inner StackTrace:    at Unity.Builder.BuilderContext.Resolve(Type type, String name, InternalRegistration registration)
+   at Unity.Builder.BuilderContext.Resolve(Type type, String name) in C:\projects\container\src\Builder\Context\BuilderContext.cs:line 67
+   at Unity.Builder.BuilderContext.Resolve(ParameterInfo parameter, Object value) in C:\projects\container\src\Builder\Context\BuilderContext.cs:line 217
+   at Unity.Processors.ConstructorProcessor.<>c__DisplayClass16_0.<GetResolverDelegate>b__0(BuilderContext& c) in C:\projects\container\src\Processors\Constructor\ConstructorResolution.cs:line 77
+   at Unity.Processors.MemberProcessor`2.<>c__DisplayClass8_0.<GetResolver>b__0(BuilderContext& c) in C:\projects\container\src\Processors\Abstracts\MemberProcessor.cs:line 162
+   at Unity.Processors.MemberProcessor`2.<>c__DisplayClass8_0.<GetResolver>b__0(BuilderContext& c) in C:\projects\container\src\Processors\Abstracts\MemberProcessor.cs:line 162
+   at Unity.Processors.MemberProcessor`2.<>c__DisplayClass8_0.<GetResolver>b__0(BuilderContext& c) in C:\projects\container\src\Processors\Abstracts\MemberProcessor.cs:line 162
+   at Unity.Strategies.BuildPlanStrategy.PreBuildUp(BuilderContext& context) in C:\projects\container\src\Strategies\BuildPlanStrategy.cs:line 80
+   at Unity.UnityContainer.<>c.<.ctor>b__73_1(BuilderContext& context) in C:\projects\container\src\UnityContainer.Resolution.cs:line 363
+   at Unity.UnityContainer.Unity.IUnityContainer.Resolve(Type type, String name, ResolverOverride[] overrides) in C:\projects\container\src\UnityContainer.IUnityContainer.cs:line 244
+   at System.Web.Mvc.DefaultControllerFactory.DefaultControllerActivator.Create(RequestContext requestContext, Type controllerType)
+-----------------
+
+----- ERROR -----
+Time: 2025-05-18 04:22:51Z
+Message: An error occurred when trying to create a controller of type 'KNC.Controllers.StudentController'. Make sure that the controller has a parameterless public constructor.
+Source: System.Web.Mvc
+StackTrace:    at System.Web.Mvc.DefaultControllerFactory.DefaultControllerActivator.Create(RequestContext requestContext, Type controllerType)
+   at System.Web.Mvc.MvcHandler.ProcessRequestInit(HttpContextBase httpContext, IController& controller, IControllerFactory& factory)
+   at System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContextBase httpContext, AsyncCallback callback, Object state)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+InnerException: Could not load file or assembly 'System.Runtime.CompilerServices.Unsafe, Version=4.0.5.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' or one of its dependencies. The located assembly's manifest definition does not match the assembly reference. (Exception from HRESULT: 0x80131040)
+Inner StackTrace:    at Unity.Builder.BuilderContext.Resolve(Type type, String name, InternalRegistration registration)
+   at Unity.Builder.BuilderContext.Resolve(Type type, String name) in C:\projects\container\src\Builder\Context\BuilderContext.cs:line 67
+   at Unity.Builder.BuilderContext.Resolve(ParameterInfo parameter, Object value) in C:\projects\container\src\Builder\Context\BuilderContext.cs:line 217
+   at Unity.Processors.ConstructorProcessor.<>c__DisplayClass16_0.<GetResolverDelegate>b__0(BuilderContext& c) in C:\projects\container\src\Processors\Constructor\ConstructorResolution.cs:line 77
+   at Unity.Processors.MemberProcessor`2.<>c__DisplayClass8_0.<GetResolver>b__0(BuilderContext& c) in C:\projects\container\src\Processors\Abstracts\MemberProcessor.cs:line 162
+   at Unity.Processors.MemberProcessor`2.<>c__DisplayClass8_0.<GetResolver>b__0(BuilderContext& c) in C:\projects\container\src\Processors\Abstracts\MemberProcessor.cs:line 162
+   at Unity.Processors.MemberProcessor`2.<>c__DisplayClass8_0.<GetResolver>b__0(BuilderContext& c) in C:\projects\container\src\Processors\Abstracts\MemberProcessor.cs:line 162
+   at Unity.Strategies.BuildPlanStrategy.PreBuildUp(BuilderContext& context) in C:\projects\container\src\Strategies\BuildPlanStrategy.cs:line 80
+   at Unity.UnityContainer.<>c.<.ctor>b__73_1(BuilderContext& context) in C:\projects\container\src\UnityContainer.Resolution.cs:line 363
+   at Unity.UnityContainer.Unity.IUnityContainer.Resolve(Type type, String name, ResolverOverride[] overrides) in C:\projects\container\src\UnityContainer.IUnityContainer.cs:line 244
+   at System.Web.Mvc.DefaultControllerFactory.DefaultControllerActivator.Create(RequestContext requestContext, Type controllerType)
+-----------------
+

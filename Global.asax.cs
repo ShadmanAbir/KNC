@@ -8,6 +8,7 @@ using System.Web.Routing;
 using System.Web.Security;
 using System.Web.SessionState;
 using KNC.Helper;
+using System.Reflection;
 
 namespace KNC
 {
@@ -15,17 +16,26 @@ namespace KNC
     {
         protected void Application_Start()
         {
-
-            //UnityConfig.RegisterComponents();
+            AppDomain.CurrentDomain.AssemblyResolve += CurrentDomain_AssemblyResolve;
+            
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
         }
-        protected void Application_Error()
+
+        private Assembly CurrentDomain_AssemblyResolve(object sender, ResolveEventArgs args)
         {
-            var ex = Server.GetLastError();
-            ErrorHandler.Log(ex, HttpContext.Current?.User?.Identity?.Name);
+            if (args.Name.StartsWith("Unity.Abstractions"))
+            {
+                return Assembly.Load("Unity.Abstractions, Version=5.11.7.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0");
+            }
+            if (args.Name.StartsWith("Unity.Container"))
+            {
+                return Assembly.Load("Unity.Container, Version=5.11.11.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0");
+            }
+            return null;
         }
     }
 }
