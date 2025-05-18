@@ -1,7 +1,10 @@
 using AutoMapper;
+using AutoMapper.QueryableExtensions;
 using KNC.Models;
 using KNC.ViewModels;
+using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 
 namespace KNC.Services
@@ -19,27 +22,48 @@ namespace KNC.Services
 
         public List<MarkViewModel> GetAllMarks()
         {
-            return _mapper.ProjectTo<MarkViewModel>(_context.Marks.Where(a => a.IsDeleted != true)).ToList();
+            return _context.Marks
+                .AsNoTracking()
+                .Where(a => !a.IsDeleted)
+                .ProjectTo<MarkViewModel>(_mapper.ConfigurationProvider)
+                .ToList();
         }
 
         public MarkViewModel GetMarkById(int id)
         {
-            return _mapper.Map<MarkViewModel>(_context.Marks.SingleOrDefault(a => a.MarkID == id && a.IsDeleted != true));
+            var mark = _context.Marks
+                .AsNoTracking()
+                .SingleOrDefault(a => a.MarkID == id && !a.IsDeleted);
+            
+            return mark == null ? null : _mapper.Map<MarkViewModel>(mark);
         }
 
         public void AddMark(MarkViewModel vm)
         {
-            _context.Marks.Add(_mapper.Map<Mark>(vm));
+            var entity = _mapper.Map<Mark>(vm);
+            
+            // Set initial values for new mark
+            entity.CreatedDate = DateTime.Now;
+            entity.CreatedBy = vm.CreatedBy;
+            entity.IsDeleted = false;
+            
+            // Set default values if needed
+            entity.ExamName = entity.ExamName ?? "Regular";
+            
+            _context.Marks.Add(entity);
             _context.SaveChanges();
         }
 
         public void DeleteMark(int id)
         {
-            var mark = _context.Marks.SingleOrDefault(a => a.MarkID == id && a.IsDeleted != true);
+            var mark = _context.Marks
+                .SingleOrDefault(a => a.MarkID == id && !a.IsDeleted);
+            
             if (mark != null)
             {
                 mark.IsDeleted = true;
-                _context.Entry(mark).State = System.Data.Entity.EntityState.Modified;
+                mark.CreatedDate = DateTime.Now; // Track modification time
+                _context.Entry(mark).State = EntityState.Modified;
                 _context.SaveChanges();
             }
         }
@@ -49,8 +73,18 @@ namespace KNC.Services
             var existing = _context.Marks.Find(vm.MarkID);
             if (existing != null)
             {
+                // Keep track of deletion status
+                bool wasDeleted = existing.IsDeleted;
+                
+                // Map all properties
                 _mapper.Map(vm, existing);
-                _context.Entry(existing).State = System.Data.Entity.EntityState.Modified;
+                
+                // Preserve/update tracking fields
+                existing.IsDeleted = wasDeleted; // Keep original deletion status
+                existing.CreatedDate = DateTime.Now;
+                existing.CreatedBy = vm.CreatedBy;
+                
+                _context.Entry(existing).State = EntityState.Modified;
                 _context.SaveChanges();
             }
         }

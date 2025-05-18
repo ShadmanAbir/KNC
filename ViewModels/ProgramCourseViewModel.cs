@@ -7,7 +7,6 @@ namespace KNC.ViewModels
         public int ProgramCourseID { get; set; }
         public int ProgramID { get; set; }
         public int CourseID { get; set; }
-        public int Semester { get; set; }
-        public string Remarks { get; set; }
+        public int Year { get; set; }
     }
 }

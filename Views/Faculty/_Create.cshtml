@@ -3,7 +3,7 @@
 <div class="modal fade" id="modalForm" tabindex="-1" aria-labelledby="modalFormLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
-            @using (Html.BeginForm("Create", "Faculty", FormMethod.Post, new { @class = "form" }))
+            @using (Html.BeginForm("Create", "Faculty", FormMethod.Post, new { @class = "form ajax-form" }))
             {
                 <div class="modal-header">
                     <h4 class="modal-title" id="modalFormLabel">Create Faculty</h4>
@@ -11,14 +11,60 @@
                 </div>
                 <div class="modal-body">
                     @Html.HiddenFor(m => m.FacultyID)
+
                     <div class="row g-3">
                         <div class="col-md-6">
-                            @Html.LabelFor(m => m.FacultyName, new { @class = "form-label" })
-                            @Html.TextBoxFor(m => m.FacultyName, new { @class = "form-control" })
+                            @Html.LabelFor(m => m.FirstName, new { @class = "form-label" })
+                            @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.FirstName)
                         </div>
-                        <div class="col-md-12">
-                            @Html.LabelFor(m => m.Description, new { @class = "form-label" })
-                            @Html.TextAreaFor(m => m.Description, new { @class = "form-control" })
+
+                        <div class="col-md-6">
+                            @Html.LabelFor(m => m.LastName, new { @class = "form-label" })
+                            @Html.TextBoxFor(m => m.LastName, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.LastName)
+                        </div>
+
+                        <div class="col-md-6">
+                            @Html.LabelFor(m => m.Email, new { @class = "form-label" })
+                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control", type = "email" })
+                            @Html.ValidationMessageFor(m => m.Email)
+                        </div>
+
+                        <div class="col-md-6">
+                            @Html.LabelFor(m => m.Phone, new { @class = "form-label" })
+                            @Html.TextBoxFor(m => m.Phone, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.Phone)
+                        </div>
+
+                        <div class="col-md-6">
+                            @Html.LabelFor(m => m.JoiningDate, new { @class = "form-label" })
+                            @Html.TextBoxFor(m => m.JoiningDate, new { @class = "form-control", type = "date" })
+                            @Html.ValidationMessageFor(m => m.JoiningDate)
+                        </div>
+
+                        <div class="col-md-6">
+                            @Html.LabelFor(m => m.DesignationID, new { @class = "form-label" })
+                            @Html.DropDownListFor(m => m.DesignationID, Model.Designations, "-- Select Designation --", new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.DesignationID)
+                        </div>
+
+                        <div class="col-md-6">
+                            @Html.LabelFor(m => m.EducationalQualification, new { @class = "form-label" })
+                            @Html.TextBoxFor(m => m.EducationalQualification, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.EducationalQualification)
+                        </div>
+
+                        <div class="col-md-6">
+                            @Html.LabelFor(m => m.PermanentAddress, new { @class = "form-label" })
+                            @Html.TextBoxFor(m => m.PermanentAddress, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.PermanentAddress)
+                        </div>
+
+                        <div class="col-md-6">
+                            @Html.LabelFor(m => m.CurrentAddress, new { @class = "form-label" })
+                            @Html.TextBoxFor(m => m.CurrentAddress, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.CurrentAddress)
                         </div>
                     </div>
                 </div>

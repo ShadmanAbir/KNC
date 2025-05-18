@@ -1,7 +1,10 @@
 using AutoMapper;
+using AutoMapper.QueryableExtensions;
 using KNC.Models;
 using KNC.ViewModels;
+using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 
 namespace KNC.Services
@@ -19,27 +22,45 @@ namespace KNC.Services
 
         public List<FacultyViewModel> GetAllFaculties()
         {
-            return _mapper.ProjectTo<FacultyViewModel>(_context.Faculties.Where(a => a.IsDeleted != true)).ToList();
+            return _context.Faculties
+                .AsNoTracking()
+                .Where(a => !a.IsDeleted)
+                .ProjectTo<FacultyViewModel>(_mapper.ConfigurationProvider)
+                .ToList();
         }
 
         public FacultyViewModel GetFacultyById(int id)
         {
-            return _mapper.Map<FacultyViewModel>(_context.Faculties.SingleOrDefault(a => a.FacultyID == id && a.IsDeleted != true));
+            var faculty = _context.Faculties
+                .AsNoTracking()
+                .SingleOrDefault(a => a.FacultyID == id && !a.IsDeleted);
+            
+            return faculty == null ? null : _mapper.Map<FacultyViewModel>(faculty);
         }
 
         public void AddFaculty(FacultyViewModel vm)
         {
-            _context.Faculties.Add(_mapper.Map<Faculty>(vm));
+            var entity = _mapper.Map<Faculty>(vm);
+            
+            // Set required properties for new faculty
+            entity.CreatedDate = DateTime.Now;
+            entity.CreatedBy = vm.CreatedBy;
+            entity.IsDeleted = false;
+            
+            _context.Faculties.Add(entity);
             _context.SaveChanges();
         }
 
         public void DeleteFaculty(int id)
         {
-            var faculty = _context.Faculties.SingleOrDefault(a => a.FacultyID == id && a.IsDeleted != true);
+            var faculty = _context.Faculties
+                .SingleOrDefault(a => a.FacultyID == id && !a.IsDeleted);
+            
             if (faculty != null)
             {
                 faculty.IsDeleted = true;
-                _context.Entry(faculty).State = System.Data.Entity.EntityState.Modified;
+                faculty.CreatedDate = DateTime.Now; // Track modification time
+                _context.Entry(faculty).State = EntityState.Modified;
                 _context.SaveChanges();
             }
         }
@@ -49,8 +70,18 @@ namespace KNC.Services
             var existing = _context.Faculties.Find(vm.FacultyID);
             if (existing != null)
             {
+                // Keep track of deletion status
+                bool wasDeleted = existing.IsDeleted;
+                
+                // Map all properties
                 _mapper.Map(vm, existing);
-                _context.Entry(existing).State = System.Data.Entity.EntityState.Modified;
+                
+                // Preserve/update tracking fields
+                existing.IsDeleted = wasDeleted; // Keep original deletion status
+                existing.CreatedDate = DateTime.Now;
+                existing.CreatedBy = vm.CreatedBy;
+                
+                _context.Entry(existing).State = EntityState.Modified;
                 _context.SaveChanges();
             }
         }

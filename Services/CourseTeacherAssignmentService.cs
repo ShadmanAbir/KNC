@@ -1,7 +1,10 @@
 using AutoMapper;
+using AutoMapper.QueryableExtensions;
 using KNC.Models;
 using KNC.ViewModels;
+using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 
 namespace KNC.Services
@@ -19,27 +22,44 @@ namespace KNC.Services
 
         public List<CourseTeacherAssignmentViewModel> GetAllAssignments()
         {
-            return _mapper.ProjectTo<CourseTeacherAssignmentViewModel>(_context.CourseTeacherAssignments.Where(a => a.IsDeleted != true)).ToList();
+            return _context.CourseTeacherAssignments
+                .AsNoTracking()
+                .Where(a => !a.IsDeleted)
+                .ProjectTo<CourseTeacherAssignmentViewModel>(_mapper.ConfigurationProvider)
+                .ToList();
         }
 
         public CourseTeacherAssignmentViewModel GetAssignmentById(int id)
         {
-            return _mapper.Map<CourseTeacherAssignmentViewModel>(_context.CourseTeacherAssignments.SingleOrDefault(a => a.AssignmentID == id && a.IsDeleted != true));
+            var assignment = _context.CourseTeacherAssignments
+                .AsNoTracking()
+                .SingleOrDefault(a => a.AssignmentID == id && !a.IsDeleted);
+
+            return assignment == null ? null : _mapper.Map<CourseTeacherAssignmentViewModel>(assignment);
         }
 
         public void AddAssignment(CourseTeacherAssignmentViewModel vm)
         {
-            _context.CourseTeacherAssignments.Add(_mapper.Map<CourseTeacherAssignment>(vm));
+            var entity = _mapper.Map<CourseTeacherAssignment>(vm);
+
+            entity.CreatedDate = DateTime.Now;
+            entity.CreatedBy = vm.CreatedBy;
+            entity.IsDeleted = false;
+
+            _context.CourseTeacherAssignments.Add(entity);
             _context.SaveChanges();
         }
 
         public void DeleteAssignment(int id)
         {
-            var assignment = _context.CourseTeacherAssignments.SingleOrDefault(a => a.AssignmentID == id && a.IsDeleted != true);
+            var assignment = _context.CourseTeacherAssignments
+                .SingleOrDefault(a => a.AssignmentID == id && !a.IsDeleted);
+
             if (assignment != null)
             {
                 assignment.IsDeleted = true;
-                _context.Entry(assignment).State = System.Data.Entity.EntityState.Modified;
+                assignment.CreatedDate = DateTime.Now; // Track modification time
+                _context.Entry(assignment).State = EntityState.Modified;
                 _context.SaveChanges();
             }
         }
@@ -49,8 +69,15 @@ namespace KNC.Services
             var existing = _context.CourseTeacherAssignments.Find(vm.AssignmentID);
             if (existing != null)
             {
+                bool wasDeleted = existing.IsDeleted;
+
                 _mapper.Map(vm, existing);
-                _context.Entry(existing).State = System.Data.Entity.EntityState.Modified;
+
+                existing.IsDeleted = wasDeleted;
+                existing.CreatedDate = DateTime.Now;
+                existing.CreatedBy = vm.CreatedBy;
+
+                _context.Entry(existing).State = EntityState.Modified;
                 _context.SaveChanges();
             }
         }

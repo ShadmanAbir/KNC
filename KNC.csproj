@@ -307,6 +307,10 @@
     <Compile Include="Migrations\202505180702176_fixed indexing.Designer.cs">
       <DependentUpon>202505180702176_fixed indexing.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202505180825292_program Course Fixed.cs" />
+    <Compile Include="Migrations\202505180825292_program Course Fixed.Designer.cs">
+      <DependentUpon>202505180825292_program Course Fixed.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDBContext.cs" />
@@ -553,6 +557,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202505180702176_fixed indexing.resx">
       <DependentUpon>202505180702176_fixed indexing.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202505180825292_program Course Fixed.resx">
+      <DependentUpon>202505180825292_program Course Fixed.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

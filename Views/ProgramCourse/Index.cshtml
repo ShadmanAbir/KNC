@@ -15,8 +15,8 @@
         <tr>
             <th>Program ID</th>
             <th>Course ID</th>
-            <th>Semester</th>
-            <th>Remarks</th>
+            <th>Year</th>
+            
             <th style="width:150px"></th>
         </tr>
     </thead>
@@ -26,8 +26,7 @@
             <tr>
                 <td>@item.ProgramID</td>
                 <td>@item.CourseID</td>
-                <td>@item.Semester</td>
-                <td>@item.Remarks</td>
+                <td>@item.Year</td>
                 <td>
                     <button class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#modalForm" onclick="showDetailsModal(@item.ProgramCourseID)">Details</button>
                     <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#modalForm" onclick="showEditModal(@item.ProgramCourseID)">Edit</button>

@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace KNC.ViewModels
 {
-    public class CoursesViewModel 
+    public class CoursesViewModel : BaseViewModel
     {
         public int CourseID { get; set; }
         public string CourseCode { get; set; } 

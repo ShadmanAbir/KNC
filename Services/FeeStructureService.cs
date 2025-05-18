@@ -1,7 +1,10 @@
 using AutoMapper;
+using AutoMapper.QueryableExtensions;
 using KNC.Models;
 using KNC.ViewModels;
+using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 
 namespace KNC.Services
@@ -19,27 +22,45 @@ namespace KNC.Services
 
         public List<FeeStructureViewModel> GetAllFeeStructures()
         {
-            return _mapper.ProjectTo<FeeStructureViewModel>(_context.FeeStructures.Where(a => a.IsDeleted != true)).ToList();
+            return _context.FeeStructures
+                .AsNoTracking()
+                .Where(a => !a.IsDeleted)
+                .ProjectTo<FeeStructureViewModel>(_mapper.ConfigurationProvider)
+                .ToList();
         }
 
         public FeeStructureViewModel GetFeeStructureById(int id)
         {
-            return _mapper.Map<FeeStructureViewModel>(_context.FeeStructures.SingleOrDefault(a => a.ID == id && a.IsDeleted != true));
+            var feeStructure = _context.FeeStructures
+                .AsNoTracking()
+                .SingleOrDefault(a => a.ID == id && !a.IsDeleted);
+            
+            return feeStructure == null ? null : _mapper.Map<FeeStructureViewModel>(feeStructure);
         }
 
         public void AddFeeStructure(FeeStructureViewModel vm)
         {
-            _context.FeeStructures.Add(_mapper.Map<FeeStructure>(vm));
+            var entity = _mapper.Map<FeeStructure>(vm);
+            
+            // Set initial values for new fee structure
+            entity.CreatedDate = DateTime.Now;
+            entity.CreatedBy = vm.CreatedBy;
+            entity.IsDeleted = false;
+            
+            _context.FeeStructures.Add(entity);
             _context.SaveChanges();
         }
 
         public void DeleteFeeStructure(int id)
         {
-            var feeStructure = _context.FeeStructures.SingleOrDefault(a => a.ID == id && a.IsDeleted != true);
+            var feeStructure = _context.FeeStructures
+                .SingleOrDefault(a => a.ID == id && !a.IsDeleted);
+            
             if (feeStructure != null)
             {
                 feeStructure.IsDeleted = true;
-                _context.Entry(feeStructure).State = System.Data.Entity.EntityState.Modified;
+                feeStructure.CreatedDate = DateTime.Now; // Track modification time
+                _context.Entry(feeStructure).State = EntityState.Modified;
                 _context.SaveChanges();
             }
         }
@@ -49,8 +70,18 @@ namespace KNC.Services
             var existing = _context.FeeStructures.Find(vm.FeeStructureID);
             if (existing != null)
             {
+                // Keep track of deletion status
+                bool wasDeleted = existing.IsDeleted;
+                
+                // Map all properties
                 _mapper.Map(vm, existing);
-                _context.Entry(existing).State = System.Data.Entity.EntityState.Modified;
+                
+                // Preserve/update tracking fields
+                existing.IsDeleted = wasDeleted; // Keep original deletion status
+                existing.CreatedDate = DateTime.Now;
+                existing.CreatedBy = vm.CreatedBy;
+                
+                _context.Entry(existing).State = EntityState.Modified;
                 _context.SaveChanges();
             }
         }

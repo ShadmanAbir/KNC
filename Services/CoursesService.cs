@@ -40,17 +40,25 @@ namespace KNC.Services
         public void AddCourse(CoursesViewModel vm)
         {
             var entity = _mapper.Map<Courses>(vm);
-            entity.CreatedDate = DateTime.Now; // Set CreatedDate on create
+            
+            // Set initial values for new course
+            entity.CreatedDate = DateTime.Now;
+            entity.CreatedBy = vm.CreatedBy;
+            entity.IsDeleted = false;
+            
             _context.Courses.Add(entity);
             _context.SaveChanges();
         }
 
         public void DeleteCourse(int id)
         {
-            var course = _context.Courses.SingleOrDefault(a => a.CourseID == id && !a.IsDeleted);
+            var course = _context.Courses
+                .SingleOrDefault(a => a.CourseID == id && !a.IsDeleted);
+            
             if (course != null)
             {
                 course.IsDeleted = true;
+                course.CreatedDate = DateTime.Now; // Update modification time
                 _context.Entry(course).State = EntityState.Modified;
                 _context.SaveChanges();
             }
@@ -61,8 +69,17 @@ namespace KNC.Services
             var existing = _context.Courses.Find(vm.CourseID);
             if (existing != null)
             {
+                // Keep track of deletion status
+                bool wasDeleted = existing.IsDeleted;
+                
+                // Map all properties
                 _mapper.Map(vm, existing);
-                existing.CreatedDate = DateTime.Now; // Set CreatedDate on update
+                
+                // Preserve/update tracking fields
+                existing.IsDeleted = wasDeleted; // Keep original deletion status
+                existing.CreatedDate = DateTime.Now;
+                existing.CreatedBy = vm.CreatedBy;
+                
                 _context.Entry(existing).State = EntityState.Modified;
                 _context.SaveChanges();
             }

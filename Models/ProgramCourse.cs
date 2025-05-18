@@ -12,7 +12,6 @@ namespace KNC.Models
         public int ProgramID { get; set; }
         public int CourseID { get; set; }
         public int Year { get; set; }
-        public string Section { get; set; }
 
         public EducationPrograms Program { get; set; }
         public Courses Course { get; set; } 
