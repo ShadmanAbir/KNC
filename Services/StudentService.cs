@@ -40,7 +40,7 @@ namespace KNC.Services
                             CreatedDate = a.CreatedDate,
                             CreatedBy = a.CreatedBy,
                             ProgramName = p.ProgramName
-                        }).ToList();
+                        }).AsNoTrackingWithIdentityResolution().ToList();
         }
 
         public StudentsViewModel GetStudentById(int id)
