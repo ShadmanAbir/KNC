@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -9,6 +10,7 @@ namespace KNC.Models
     {
         public int MonthlyFeeID { get; set; }
         public int StudentID { get; set; }
+        [MaxLength(7)]
         public string MonthYear { get; set; } = null; //2025-05
         public decimal Amount { get; set; }
         public DateTime DueDate { get; set; }

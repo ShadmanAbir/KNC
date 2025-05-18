@@ -27,14 +27,14 @@ namespace KNC.Controllers
             var cached = RedisCacheHelper.Get(cacheKey);
             List<StudentsViewModel> students;
 
-            if (cached.Length > 0)
+            if (!string.IsNullOrEmpty(cached))
             {
-                students = _stService.GetAllStudents().ToList();
-                RedisCacheHelper.Set(cacheKey, JsonConvert.SerializeObject(students), TimeSpan.FromMinutes(10));
+                students = JsonConvert.DeserializeObject<List<StudentsViewModel>>(cached);
             }
             else
             {
-                students = JsonConvert.DeserializeObject<List<StudentsViewModel>>(cached);
+                students = _stService.GetAllStudents().ToList();
+                RedisCacheHelper.Set(cacheKey, JsonConvert.SerializeObject(students), TimeSpan.FromMinutes(10));
             }
             return View(students);
         }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -10,6 +11,7 @@ namespace KNC.Models
         public int RoutineID { get; set; }
         public int ProgramID { get; set; }
         public int Year { get; set; }
+        [MaxLength(7)]
         public string Section { get; set; }
         public int ProgramCourseID { get; set; }
         public int FacultyID { get; set; }
