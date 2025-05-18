@@ -1,7 +1,10 @@
 using AutoMapper;
+using AutoMapper.QueryableExtensions;
 using KNC.Models;
 using KNC.ViewModels;
+using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 
 namespace KNC.Services
@@ -19,27 +22,36 @@ namespace KNC.Services
 
         public List<CoursesViewModel> GetAllCourses()
         {
-            return _mapper.ProjectTo<CoursesViewModel>(_context.Courses.Where(a => a.IsDeleted != true)).ToList();
+            return _context.Courses
+                .AsNoTracking()
+                .Where(a => !a.IsDeleted)
+                .ProjectTo<CoursesViewModel>(_mapper.ConfigurationProvider)
+                .ToList();
         }
 
         public CoursesViewModel GetCourseById(int id)
         {
-            return _mapper.Map<CoursesViewModel>(_context.Courses.SingleOrDefault(a => a.CourseID == id && a.IsDeleted != true));
+            var course = _context.Courses
+                .AsNoTracking()
+                .SingleOrDefault(a => a.CourseID == id && !a.IsDeleted);
+            return course == null ? null : _mapper.Map<CoursesViewModel>(course);
         }
 
         public void AddCourse(CoursesViewModel vm)
         {
-            _context.Courses.Add(_mapper.Map<Courses>(vm));
+            var entity = _mapper.Map<Courses>(vm);
+            entity.CreatedDate = DateTime.Now; // Set CreatedDate on create
+            _context.Courses.Add(entity);
             _context.SaveChanges();
         }
 
         public void DeleteCourse(int id)
         {
-            var course = _context.Courses.SingleOrDefault(a => a.CourseID == id && a.IsDeleted != true);
+            var course = _context.Courses.SingleOrDefault(a => a.CourseID == id && !a.IsDeleted);
             if (course != null)
             {
                 course.IsDeleted = true;
-                _context.Entry(course).State = System.Data.Entity.EntityState.Modified;
+                _context.Entry(course).State = EntityState.Modified;
                 _context.SaveChanges();
             }
         }
@@ -50,7 +62,8 @@ namespace KNC.Services
             if (existing != null)
             {
                 _mapper.Map(vm, existing);
-                _context.Entry(existing).State = System.Data.Entity.EntityState.Modified;
+                existing.CreatedDate = DateTime.Now; // Set CreatedDate on update
+                _context.Entry(existing).State = EntityState.Modified;
                 _context.SaveChanges();
             }
         }

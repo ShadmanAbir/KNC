@@ -5,7 +5,6 @@ namespace KNC.ViewModels
 {
     public class CoursesViewModel 
     {
-        [Key]
         public int CourseID { get; set; }
         public string CourseCode { get; set; } 
         public string CourseName { get; set; } 

@@ -30,7 +30,7 @@ namespace KNC.Controllers
             if (ModelState.IsValid)
             {
                 _service.AddCourse(vm);
-                return Json(new { success = true });
+                return RedirectToAction("Index");
             }
             return PartialView("_Create", vm);
         }
