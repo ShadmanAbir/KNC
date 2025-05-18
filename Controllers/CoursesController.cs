@@ -48,7 +48,7 @@ namespace KNC.Controllers
             if (ModelState.IsValid)
             {
                 _service.UpdateCourse(vm);
-                return Json(new { success = true });
+                return RedirectToAction("Index");
             }
             return PartialView("_Edit", vm);
         }
@@ -71,7 +71,7 @@ namespace KNC.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             _service.DeleteCourse(id);
-            return Json(new { success = true });
+            return RedirectToAction("Index");
         }
     }
 }
