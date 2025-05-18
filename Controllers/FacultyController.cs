@@ -45,7 +45,7 @@ namespace KNC.Controllers
                 .Select(d => new SelectListItem
                 {
                     Value = d.DesignationID.ToString(),
-                    Text = d.Title
+                    Text = d.DesignationName
                 }).ToList();
         }
 
