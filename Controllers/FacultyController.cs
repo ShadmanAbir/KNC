@@ -64,7 +64,7 @@ namespace KNC.Controllers
             {
                 _facultyService.AddFaculty(vm);
                 RedisCacheHelper.Remove("FacultyList");
-                return Json(new { success = true });
+                return RedirectToAction("Index");
             }
             PopulateDesignations(vm);
             return PartialView("_Create", vm);
@@ -86,7 +86,7 @@ namespace KNC.Controllers
             {
                 _facultyService.UpdateFaculty(vm);
                 RedisCacheHelper.Remove("FacultyList");
-                return Json(new { success = true });
+                return RedirectToAction("Index");
             }
             PopulateDesignations(vm);
             return PartialView("_Edit", vm);
@@ -112,7 +112,7 @@ namespace KNC.Controllers
         {
             _facultyService.DeleteFaculty(id);
             RedisCacheHelper.Remove("FacultyList");
-            return Json(new { success = true });
+            return RedirectToAction("Index");
         }
     }
 }

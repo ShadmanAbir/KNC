@@ -68,7 +68,7 @@ namespace KNC.Controllers
             {
                 _stService.AddStudent(stVM);
                 RedisCacheHelper.Remove("StudentList");
-                return Json(new { success = true });
+                return RedirectToAction("Index");
             }
             PopulatePrograms(stVM);
             return PartialView("_Create", stVM);
@@ -90,7 +90,7 @@ namespace KNC.Controllers
             {
                 _stService.UpdateStudent(stVM);
                 RedisCacheHelper.Remove("StudentList");
-                return Json(new { success = true });
+                RedirectToAction("Index");
             }
             PopulatePrograms(stVM);
             return PartialView("_Edit", stVM);

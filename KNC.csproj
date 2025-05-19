@@ -446,7 +446,6 @@
     <Content Include="Views\Faculty\_Details.cshtml" />
     <Content Include="Views\Faculty\_Edit.cshtml" />
     <Content Include="Views\Faculty\Index.cshtml" />
-    <Content Include="Views\Faculty\_FacultyForm.cshtml" />
     <Content Include="Views\Courses\Index.cshtml" />
     <Content Include="Views\Courses\_Create.cshtml" />
     <Content Include="Views\Courses\_Delete.cshtml" />
