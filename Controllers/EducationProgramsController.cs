@@ -1,6 +1,7 @@
 using KNC.Services;
 using KNC.ViewModels;
 using System;
+using System.Collections.Generic;
 using System.Web.Mvc;
 
 namespace KNC.Controllers
@@ -76,6 +77,21 @@ namespace KNC.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             _service.DeleteProgram(id);
+            return Json(new { success = true });
+        }
+
+        public ActionResult ProgramCourseMapping(int id)
+        {
+            
+            var model = _service.ProgramCourseMapping(id);
+            return PartialView("_Curriculum", model);
+        }
+
+
+        [HttpPost]
+        public ActionResult SaveMapping(int programId, List<int> mappedCourseIds, List<int> mappedCourseDurations)
+        {
+            _service.SaveMapping(programId, mappedCourseIds,mappedCourseDurations);
             return Json(new { success = true });
         }
     }

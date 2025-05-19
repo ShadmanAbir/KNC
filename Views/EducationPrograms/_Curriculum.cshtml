@@ -1,0 +1,106 @@
+﻿@model KNC.ViewModels.ProgramCourseMappingViewModel
+
+@{
+    ViewBag.Title = "Course Mapping";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Trigger Button -->
+<button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#mappingModal">Map Courses</button>
+
+<!-- Mapping Modal -->
+<div class="modal fade" id="mappingModal" tabindex="-1" aria-labelledby="mappingModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Map Courses to Program</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+
+                    <!-- Available Courses -->
+                    <div class="col-md-6">
+                        <h6>Available Courses</h6>
+                        <ul id="availableCourses" class="connectedSortable list-group">
+                            @foreach (var course in Model.UnmappedCourses)
+                            {
+                                <li class="list-group-item" data-id="@course.CourseID">@course.CourseCode - @course.CourseName</li>
+                            }
+                        </ul>
+                    </div>
+
+                    <!-- Mapped Courses -->
+                    <div class="col-md-6">
+                        <h6>Mapped Courses</h6>
+                        <ul id="mappedCourses" class="connectedSortable list-group">
+                            @foreach (var course in Model.MappedCoursesByDuration)
+                            {
+                                <li class="list-group-item" data-id="@course.Key">@course.Value</li>
+                            }
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button id="saveMapping" class="btn btn-success">Save Mapping</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <!-- jQuery and jQuery UI -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+
+    <!-- Bootstrap (Ensure it is loaded after jQuery) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        $(function () {
+            $(".connectedSortable").sortable({
+                connectWith: ".connectedSortable",
+                placeholder: "ui-sortable-placeholder"
+            }).disableSelection();
+
+            $('#mappingModal').on('shown.bs.modal', function () {
+                $(".connectedSortable").sortable("refresh");
+            });
+
+            $("#saveMapping").click(function () {
+                const mappedCourseIds = [];
+                $("#mappedCourses li").each(function () {
+                    mappedCourseIds.push($(this).data("id"));
+                });
+
+                console.log("Mapped Courses:", mappedCourseIds);
+                // TODO: Send to backend via AJAX if needed
+            });
+        });
+    </script>
+
+    <style>
+        .connectedSortable {
+            min-height: 200px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #f8f9fa;
+        }
+
+            .connectedSortable li {
+                cursor: move;
+                margin-bottom: 5px;
+            }
+
+        .ui-sortable-placeholder {
+            background: #e0e0e0;
+            border: 2px dashed #aaa;
+            height: 40px;
+            visibility: visible !important;
+        }
+    </style>
+}

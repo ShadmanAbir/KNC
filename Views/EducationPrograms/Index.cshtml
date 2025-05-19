@@ -39,6 +39,9 @@
                                 <a class="dropdown-item btnDetails" href="javascript:void(0);" data-id="@item.EducationProgramID">Details</a>
                             </li>
                             <li>
+                                <a class="dropdown-item btnCurriculum" href="javascript:void(0);" data-id="@item.EducationProgramID">Curriculum</a>
+                            </li>
+                            <li>
                                 <a class="dropdown-item btnDelete text-danger" href="javascript:void(0);" data-id="@item.EducationProgramID">Delete</a>
                             </li>
                         </ul>
@@ -63,6 +66,9 @@
             });
             $('#programTable').on('click', '.btnDetails', function () {
                 loadModal('@Url.Action("Details/", new { id = "" })' + $(this).data('id'));
+            });
+            $('#programTable').on('click', '.btnCurriculum', function () {
+                loadModal('@Url.Action("ProgramCourseMapping/", new { id = "" })' + $(this).data('id'));
             });
             $('#programTable').on('click', '.btnDelete', function () {
                 loadModal('@Url.Action("Delete/", new { id = "" })' + $(this).data('id'));

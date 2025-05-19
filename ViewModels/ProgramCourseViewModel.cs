@@ -8,5 +8,9 @@ namespace KNC.ViewModels
         public int ProgramID { get; set; }
         public int CourseID { get; set; }
         public int Year { get; set; }
+
+        public string CourseCode { get; set; }
+        public string CourseName { get; set; }
+
     }
 }

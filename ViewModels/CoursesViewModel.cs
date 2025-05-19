@@ -9,5 +9,9 @@ namespace KNC.ViewModels
         public string CourseCode { get; set; } 
         public string CourseName { get; set; } 
         public string Description { get; set; }
+
+
+        //for mapping with program
+        public int Year { get; set; }
     }
 }
