@@ -57,7 +57,7 @@ namespace KNC.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        
         public ActionResult Create(FacultyViewModel vm)
         {
             if (ModelState.IsValid)
@@ -79,7 +79,6 @@ namespace KNC.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult Edit(FacultyViewModel vm)
         {
             if (ModelState.IsValid)
@@ -107,7 +106,6 @@ namespace KNC.Controllers
         }
 
         [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
             _facultyService.DeleteFaculty(id);

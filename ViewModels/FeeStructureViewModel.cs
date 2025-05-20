@@ -1,3 +1,4 @@
+using KNC.Helper;
 using System;
 
 namespace KNC.ViewModels
@@ -9,5 +10,8 @@ namespace KNC.ViewModels
         public decimal Amount { get; set; }
         public string Description { get; set; }
         public int Year { get; set; }
+
+        public string FeeType { get; set; } // e.g., Registration, Tuition
+        public string Frequency { get; set; } // Use the enum
     }
 }

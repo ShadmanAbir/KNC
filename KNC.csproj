@@ -274,6 +274,8 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helper\AutoMapperProfile.cs" />
+    <Compile Include="Helper\DropDownhelper.cs" />
+    <Compile Include="Helper\enums.cs" />
     <Compile Include="Helper\ErrorHandler.cs" />
     <Compile Include="Helper\GlobalExceptionFilter.cs" />
     <Compile Include="Helper\KNCHub.cs" />

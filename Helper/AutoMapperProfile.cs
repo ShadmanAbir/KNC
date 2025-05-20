@@ -25,6 +25,7 @@ namespace KNC.Helper
             CreateMap<MonthlyFee, MonthlyFeeViewModel>().ReverseMap();
             CreateMap<CourseTeacherAssignment, CourseTeacherAssignmentViewModel>().ReverseMap();
             CreateMap<Courses, CoursesViewModel>().ReverseMap();
+            CreateMap<FeeStructure, FeeStructureViewModel>();
         }
     }
 }

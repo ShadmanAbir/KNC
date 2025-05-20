@@ -59,6 +59,7 @@ namespace KNC
             container.RegisterType<MonthlyFeeService>(new PerRequestLifetimeManager());
             container.RegisterType<CourseTeacherAssignmentService>(new PerRequestLifetimeManager());
             container.RegisterType<CoursesService>(new PerRequestLifetimeManager());
+            
         }
     }
 }

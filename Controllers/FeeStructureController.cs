@@ -1,3 +1,4 @@
+using KNC.Helper;
 using KNC.Services;
 using KNC.ViewModels;
 using System;
@@ -21,6 +22,7 @@ namespace KNC.Controllers
 
         public ActionResult Create()
         {
+            ViewBag.FrequencyList = DropDownHelper.GetFrequencyTypes();
             return PartialView("_Create", new FeeStructureViewModel());
         }
 
@@ -30,15 +32,18 @@ namespace KNC.Controllers
             if (ModelState.IsValid)
             {
                 _service.AddFeeStructure(vm);
+                ViewBag.FrequencyList = DropDownHelper.GetFrequencyTypes(vm.Frequency);
                 return Json(new { success = true });
             }
+            ViewBag.FrequencyList = DropDownHelper.GetFrequencyTypes(vm.Frequency);
             return PartialView("_Create", vm);
         }
 
         public ActionResult Edit(int id)
         {
             var item = _service.GetFeeStructureById(id);
-            if (item == null) return HttpNotFound();
+            if (item == null) 
+                return HttpNotFound();
             return PartialView("_Edit", item);
         }
 
