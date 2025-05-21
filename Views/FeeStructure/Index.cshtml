@@ -1,4 +1,4 @@
-@model IEnumerable<KNC.ViewModels.FeeStructureViewModel>
+@model List<KNC.ViewModels.FeeStructureViewModel>
 
 @{
     ViewBag.Title = "Fee Structures";
@@ -40,13 +40,13 @@
                         </button>
                         <ul class="dropdown-menu">
                             <li>
-                                <a class="dropdown-item btnEdit" href="javascript:void(0);" data-id="@item.FeeStructureID">Edit</a>
+                                <a class="dropdown-item btnEdit" href="javascript:void(0);" data-id="@item.ID">Edit</a>
                             </li>
                             <li>
-                                <a class="dropdown-item btnDetails" href="javascript:void(0);" data-id="@item.FeeStructureID">Details</a>
+                                <a class="dropdown-item btnDetails" href="javascript:void(0);" data-id="@item.ID">Details</a>
                             </li>
                             <li>
-                                <a class="dropdown-item btnDelete text-danger" href="javascript:void(0);" data-id="@item.FeeStructureID">Delete</a>
+                                <a class="dropdown-item btnDelete text-danger" href="javascript:void(0);" data-id="@item.ID">Delete</a>
                             </li>
                         </ul>
                     </div>

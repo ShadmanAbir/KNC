@@ -1,7 +1,10 @@
 using KNC.Helper;
 using KNC.Services;
 using KNC.ViewModels;
+using Microsoft.AspNet.Identity;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Web.Mvc;
 
 namespace KNC.Controllers
@@ -9,9 +12,12 @@ namespace KNC.Controllers
     public class FeeStructureController : Controller
     {
         private readonly FeeStructureService _service;
-        public FeeStructureController(FeeStructureService service)
+        private readonly ProgramsService _programService;
+
+        public FeeStructureController(FeeStructureService service, ProgramsService programService)
         {
             _service = service;
+            _programService = programService;
         }
 
         public ActionResult Index()
@@ -22,20 +28,24 @@ namespace KNC.Controllers
 
         public ActionResult Create()
         {
-            ViewBag.FrequencyList = DropDownHelper.GetFrequencyTypes();
-            return PartialView("_Create", new FeeStructureViewModel());
+            var vm = new FeeStructureViewModel
+            {
+                Programs = GetProgramsList()
+            };
+            return PartialView("_Create", vm);
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Create(FeeStructureViewModel vm)
         {
             if (ModelState.IsValid)
             {
+                vm.CreatedBy = User.Identity.GetUserId<int>();
                 _service.AddFeeStructure(vm);
-                ViewBag.FrequencyList = DropDownHelper.GetFrequencyTypes(vm.Frequency);
                 return Json(new { success = true });
             }
-            ViewBag.FrequencyList = DropDownHelper.GetFrequencyTypes(vm.Frequency);
+            vm.Programs = GetProgramsList();
             return PartialView("_Create", vm);
         }
 
@@ -44,17 +54,22 @@ namespace KNC.Controllers
             var item = _service.GetFeeStructureById(id);
             if (item == null) 
                 return HttpNotFound();
+                
+            item.Programs = GetProgramsList();
             return PartialView("_Edit", item);
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Edit(FeeStructureViewModel vm)
         {
             if (ModelState.IsValid)
             {
+                vm.CreatedBy = User.Identity.GetUserId<int>();
                 _service.UpdateFeeStructure(vm);
                 return Json(new { success = true });
             }
+            vm.Programs = GetProgramsList();
             return PartialView("_Edit", vm);
         }
 
@@ -77,6 +92,17 @@ namespace KNC.Controllers
         {
             _service.DeleteFeeStructure(id);
             return Json(new { success = true });
+        }
+
+        private IEnumerable<SelectListItem> GetProgramsList()
+        {
+            return _programService.GetAllPrograms()
+                .Where(p => !p.IsDeleted)
+                .Select(p => new SelectListItem
+                {
+                    Value = p.EducationProgramID.ToString(),
+                    Text = p.ProgramName
+                });
         }
     }
 }

@@ -3,35 +3,60 @@
 <div class="modal fade" id="modalForm" tabindex="-1" aria-labelledby="modalFormLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
-            @using (Html.BeginForm("Create", "FeeStructure", FormMethod.Post, new { @class = "form" }))
+            @using (Html.BeginForm("Create", "FeeStructure", FormMethod.Post, new { @class = "form ajax-form" }))
             {
+                @Html.AntiForgeryToken()
                 <div class="modal-header">
                     <h4 class="modal-title" id="modalFormLabel">Create Fee Structure</h4>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    @Html.HiddenFor(m => m.FeeStructureID)
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    @Html.HiddenFor(m => m.ID)
+
                     <div class="row g-3">
                         <div class="col-md-6">
-                            @Html.LabelFor(m => m.ProgramID, new { @class = "form-label" })
-                            @Html.TextBoxFor(m => m.ProgramID, new { @class = "form-control" })
+                            @Html.LabelFor(m => m.FeeType, new { @class = "form-label" })
+                            @Html.TextBoxFor(m => m.FeeType,
+                                         new { @class = "form-control"})
+                            @Html.ValidationMessageFor(m => m.FeeType, "", new { @class = "text-danger" })
                         </div>
                         <div class="col-md-6">
-                            @Html.LabelFor(m => m.Amount, new { @class = "form-label" })
-                            @Html.TextBoxFor(m => m.Amount, new { @class = "form-control" })
+                            @Html.LabelFor(m => m.ProgramID, "Program", new { @class = "form-label required" })
+                            @Html.DropDownListFor(m => m.ProgramID,
+                                          Model.Programs ?? Enumerable.Empty<SelectListItem>(),
+                                          "-- Select Program --",
+                                          new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.ProgramID, "", new { @class = "text-danger" })
                         </div>
-                        <div class="col-md-6">
-                            @Html.LabelFor(m => m.Year, new { @class = "form-label" })
-                            @Html.TextBoxFor(m => m.Year, new { @class = "form-control" })
-                        </div>
-                        <div class="col-md-12">
-                            @Html.LabelFor(m => m.Description, new { @class = "form-label" })
-                            @Html.TextAreaFor(m => m.Description, new { @class = "form-control" })
-                        </div>
-                        <div class="col-md-12">
-                            @Html.LabelFor(m => m.Frequency, new { @class = "form-label" })
-                            @Html.DropDownListFor(m => m.Frequency, new SelectList(KNC.Helper.DropDownHelper.GetFrequencyTypes()), "-- Select Frequency --", new { @class = "form-control" })
 
+                        <div class="col-md-6">
+                            @Html.LabelFor(m => m.Amount, new { @class = "form-label required" })
+                            @Html.TextBoxFor(m => m.Amount, "{0:N2}",
+                                          new
+                                          {
+                                              @class = "form-control",
+                                              type = "number",
+                                              step = "0.01",
+                                              min = "0"
+                                          })
+                            @Html.ValidationMessageFor(m => m.Amount, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="col-md-6">
+                            @Html.LabelFor(m => m.Frequency, new { @class = "form-label required" })
+                            @Html.DropDownListFor(m => m.Frequency,
+                                KNC.Helper.DropDownHelper.GetFrequencyTypes(),
+                                "-- Select Frequency --",
+                                new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.Frequency, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="col-md-6">
+                            @Html.LabelFor(m => m.Description, new { @class = "form-label" })
+                            @Html.TextBoxFor(m => m.Description,
+                                          new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.Description, "", new { @class = "text-danger" })
                         </div>
                     </div>
                 </div>
@@ -43,3 +68,10 @@
         </div>
     </div>
 </div>
+
+<style>
+    .required:after {
+        content: " *";
+        color: red;
+    }
+</style>

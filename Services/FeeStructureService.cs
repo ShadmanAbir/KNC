@@ -67,7 +67,7 @@ namespace KNC.Services
 
         public void UpdateFeeStructure(FeeStructureViewModel vm)
         {
-            var existing = _context.FeeStructures.Find(vm.FeeStructureID);
+            var existing = _context.FeeStructures.Find(vm.ID);
             if (existing != null)
             {
                 // Keep track of deletion status
